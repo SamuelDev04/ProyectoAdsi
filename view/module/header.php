@@ -1,10 +1,10 @@
-<header class="main-header ">
+<header class="main-header">
     <!-- Logo -->
     <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b></b>RP</span>
+      <span class="logo-mini"><b>S</b>NA</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg text-white"><b>RikoPollo</b></span>
+      <span class="logo-lg"><b>Sena</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
