@@ -6,12 +6,12 @@
     if (isset($_GET['ruta'])) {
         
         switch ($_GET['ruta']) {
-            case 'value':
-                # code...
+            case 'ruta=usuario':
+                include_once("view/module/usuario.php");
                 break;
             
             default:
-                # code...
+                include_once("view/module/presentation.php");
                 break;
         }
     }else {

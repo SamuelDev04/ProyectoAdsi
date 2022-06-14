@@ -8,7 +8,7 @@
 
         public function __construct($objDtoUsuario)
         {
-            $this -> idUsuario = $objDtoUsuario -> getIdUsuario();
+            $this -> idUsuario = $objDtoUsuario -> getIdUser();
             $this -> nombre = $objDtoUsuario -> getNombre();
             $this -> apellido = $objDtoUsuario -> getApellido();
             $this -> usuario = $objDtoUsuario -> getUsuario();
