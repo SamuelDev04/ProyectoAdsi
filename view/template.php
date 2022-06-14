@@ -6,7 +6,7 @@
     if (isset($_GET['ruta'])) {
         
         switch ($_GET['ruta']) {
-            case 'ruta=usuario':
+            case 'usuario':
                 include_once("view/module/usuario.php");
                 break;
             

@@ -35,7 +35,7 @@
         
         public function mIdInsertUsuario()
         {
-            $sql = "CALL spInsertUsuario(?, ?, ?, ?);";
+            $sql = "CALL spInsertarUsuario(?, ?, ?, ?);";
             $estado = false;
             try {
                 $objCon = new Conexion();
@@ -71,7 +71,7 @@
         {
             $respon = false;
 
-            $sql = "call spDeleteUsuario(?)";
+            $sql = "call spBorrarUsuario(?)";
 
             try {
                 $objCon = new Conexion;
