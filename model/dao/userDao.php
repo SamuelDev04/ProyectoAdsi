@@ -71,12 +71,12 @@
         {
             $respon = false;
 
-            $sql = "call spBorrarUsuario(?)";
+            $sql = "CALL spBorrarUsuario(?)";
 
             try {
                 $objCon = new Conexion;
                 $stmt = $objCon -> getConec() -> prepare($sql);
-                $stmt -> bindParam(1, $this->idUsuario, PDO::PARAM_INT);
+                $stmt -> bindParam(1, $this-> idUsuario, PDO::PARAM_INT);
                 $stmt -> execute();
                 $respon = true;
             } catch (PDOException $e) {

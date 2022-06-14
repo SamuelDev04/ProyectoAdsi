@@ -9,6 +9,9 @@
             case 'usuario':
                 include_once("view/module/usuario.php");
                 break;
+            case 'erase':
+                include_once("view/module/erase.php");
+                break;
             
             default:
                 include_once("view/module/presentation.php");

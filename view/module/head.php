@@ -31,8 +31,6 @@
   <link rel="stylesheet" href="view/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- OhSnap! css -->
   <link rel="stylesheet" href="view/css/ohsnap.css">
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="view/css/styles.css" rel="stylesheet">
   
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

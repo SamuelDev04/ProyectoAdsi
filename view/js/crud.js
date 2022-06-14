@@ -1,5 +1,5 @@
 function erase(obj) {
-    let codigo = obj.children[0].innerHTML;
+    let idUsuario = obj.children[0].innerHTML;
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -19,7 +19,7 @@ function erase(obj) {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location = "index.php?ruta=erase&codigo=" + codigo;
+            window.location = "index.php?ruta=erase&codigo=" + idUsuario;
 
             /*swalWithBootstrapButtons.fire(
                 'Eliminado!',
@@ -58,5 +58,5 @@ function getData(obj) {
 
 function getGenerarReporte(e) {
     e.preventDefault();
-    window.open('view/module/alluser.php', '_blank');
+    window.open('view/module/allUser.php', '_blank');
 }

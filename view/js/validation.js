@@ -71,6 +71,9 @@ function validateMod(e) {
     
     if (lVali == true) {
         formulario.submit();
+        if (window.history.replaceState) { // verificamos disponibilidad
+            window.history.replaceState(null, null, window.location.href);
+        }
     }
     
 }
