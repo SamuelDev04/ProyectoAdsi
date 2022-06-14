@@ -9,6 +9,7 @@
         /***********************/
         /**      Getters      **/
         /***********************/
+        
         public function getIdUser()
         {
             return $this -> idUsuario;
@@ -33,6 +34,7 @@
         /***********************/
         /**      Setters      **/
         /***********************/
+
         public function setIdUser($idUsuario)
         {
             $this -> idUsuario = $idUsuario;

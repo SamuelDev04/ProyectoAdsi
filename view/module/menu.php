@@ -15,9 +15,9 @@
         </li>
         <!--<li class="inutil2 treeview" onclick="validateSidebarMa(event)">-->
         <li class="inutil2">
-          <a href="matricula">
+          <a href="index.php?ruta=productos">
             <i class="fa fa-mortar-board"></i>
-            <span>Matricula 😀</span>
+            <span>Productos 😀</span>
           </a>
         </li>
         <!--<li class="inutil3 treeview" onclick="validateSidebarUs(event)">-->

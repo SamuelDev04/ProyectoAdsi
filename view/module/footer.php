@@ -55,18 +55,11 @@
 <script src="view/js/ohsnap.js"></script>
 <!-- SweetAlert -->
 <script src="view/js/TweenMax.min.js"></script>
-<!-- Para las validaciones de user -->
-<script src="view/js/validation.js"></script>
-<!-- Para las validaciones de aprendiz -->
-<script src="view/js/validationApren.js"></script>
-<!-- Para las validaciones de Matricula -->
-<script src="view/js/validationMatricula.js"></script>
-<!-- Para realizar el CRUD -->
-<script src="view/js/crud.js"></script>
-<!-- Para realizar el CRUD de aprendiz -->
-<script src="view/js/crudAprendiz.js"></script>
-<!-- Para realizar el CRUD de Matricula -->
-<script src="view/js/crudMatricula.js"></script>
+<!-- Para las validaciones de productos -->
+<script src="view/js/validationProducto.js"></script>
+<!-- Para realizar el CRUD de productos-->
+<script src="view/js/crudProducto.js"></script>
+
 
 <!-- Para exportar la datatable -->
 
