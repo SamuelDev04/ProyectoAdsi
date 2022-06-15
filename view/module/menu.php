@@ -22,7 +22,8 @@
         </li>
         <!--<li class="inutil3 treeview" onclick="validateSidebarUs(event)">-->
         <li class="inutil3">
-          <a href="usuario">
+          <a href="index.php?ruta=usuario"
+">
             <i class="fa fa-user"></i>
             <span>Usuarios 🥵</span>
           </a>
