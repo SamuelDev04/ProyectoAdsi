@@ -68,6 +68,7 @@
             </div>
             <!-- ./col -->
           </div>
+          <br>
         <!-- /.box-body -->
         <div class="box-footer">
           <button class="btn btn-app bg-blue" type="submit" onclick="validate(event)">

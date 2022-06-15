@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>RikoPollo</title>
@@ -47,8 +48,6 @@
     <!-- SweetAlert -->
     <link rel="stylesheet" href="view/css/sweetalert2.min.css">
     <script src="view/js/sweetalert2.all.min.js"></script>
-    <!-- Convertir de option a string - fillbook -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">

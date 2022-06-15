@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="index.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>NA</span>
+      <span class="logo-mini"><b></b>RP</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Sena</b></span>
+      <span class="logo-lg"><b>RikoPollo</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -17,7 +17,7 @@
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <span class="hidden-xs">Samuel Yepes</span>
             </a>
             <ul class="dropdown-menu">
