@@ -65,6 +65,21 @@
                 echo "Error al modificar la Producto parcero" . $e->getMessage();
             }
         }
+
+        //Este es para el select option
+        public function getSearchAllTipoProducto(){
+            $respon = false;
+            try {
+                $objDtoProducto = new Producto();
+                $objDaoProducto = new ProductoModel($objDtoProducto);
+                $respon = $objDaoProducto -> mIdSearchAllTipoProducto() -> fetchAll(); //La funcion fetchAll es para convertir todos los datos en un arreglo asociativo
+
+            } catch (PDOException $e) {
+                echo "Error en la creacion del controlador para mostrar todo ". $e -> getMessage();
+            }
+
+            return $respon;
+        }
     }
 
 ?>
