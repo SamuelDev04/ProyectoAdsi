@@ -6,12 +6,27 @@
     if (isset($_GET['ruta'])) {
         
         switch ($_GET['ruta']) {
-            case 'value':
-                # code...
+            case 'usuario':
+                include_once("view/module/usuario.php");
+                break;
+            case 'productos':
+                include_once("view/module/producto.php");
+                break;
+            case 'tipoProductos':
+                include_once("view/module/tipoProducto.php");
+                break;
+            case 'erase':
+                include_once("view/module/erase.php");
+                break;
+            case 'eraseProducto':
+                include_once("view/module/eraseProducto.php");
+                break;
+            case 'eraseTipoProducto':
+                include_once("view/module/eraseTipoProducto.php");
                 break;
             
             default:
-                # code...
+                include_once("view/module/presentation.php");
                 break;
         }
     }else {

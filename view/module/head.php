@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SENA MPP</title>
+  <title>RikoPollo</title>
+  <link rel="shortcut icon" href="view/img/Logo2.png" type="image/x-icon">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -31,8 +33,7 @@
   <link rel="stylesheet" href="view/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- OhSnap! css -->
   <link rel="stylesheet" href="view/css/ohsnap.css">
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="view/css/styles.css" rel="stylesheet">
+  
   
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,8 +48,6 @@
     <!-- SweetAlert -->
     <link rel="stylesheet" href="view/css/sweetalert2.min.css">
     <script src="view/js/sweetalert2.all.min.js"></script>
-    <!-- Convertir de option a string - fillbook -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
