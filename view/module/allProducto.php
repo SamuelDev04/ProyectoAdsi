@@ -46,9 +46,9 @@
 
             // Cabecera
             $header = array('Codigo', 'Descripcion', 'Cantidad', 'Costo', 'Tipo Producto');
-            foreach($header as $col)
+            foreach($header as $col)  
                 $this-> pdf -> Cell(38,10,$col,1,0,'C');
-                $this-> pdf -> Ln(10);
+                $this-> pdf -> Ln(10); 
             
             foreach ($respon as $key => $value) {
                 $this -> pdf->Cell(38,10, $value['idProducto'],1,0,'C');
@@ -59,7 +59,7 @@
                 $this -> pdf -> Ln(10);
             }      
 
-        } 
+        }
 
         // Pie de página
         function fooReport() {

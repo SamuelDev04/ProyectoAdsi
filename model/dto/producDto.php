@@ -5,7 +5,6 @@
         private $cantProducto;
         private $costoProducto;
         private $idTipoProducto;
-        private $descripcion;
 
         /***********************/
         /**      Getters      **/

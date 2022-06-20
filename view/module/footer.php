@@ -61,8 +61,12 @@
 <script src="view/js/crudProducto.js"></script>
 <!-- Para las validaciones de user -->
 <script src="view/js/validation.js"></script>
-<!-- Para realizar el CRUD -->
+<!-- Para realizar el CRUD de user -->
 <script src="view/js/crud.js"></script>
+<!-- Para las validaciones de tipo producto -->
+<script src="view/js/validationTipoPro.js"></script>
+<!-- Para realizar el CRUD de tipo producto -->
+<script src="view/js/crudTipoPro.js"></script>
 
 
 <!-- Para exportar la datatable -->

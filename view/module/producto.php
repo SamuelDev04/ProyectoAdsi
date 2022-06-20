@@ -68,7 +68,7 @@
                   <select class="form-control" id="tipPro" name="tipPro">
                     <option value="" selected disabled hidden>Seleccione tipo de producto</option>
                     <?php
-                      $objCtrTipoProductoAll = new ProductoController();
+                      $objCtrTipoProductoAll = new TipoProController();
 
                       if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
                         echo '

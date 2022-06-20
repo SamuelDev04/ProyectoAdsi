@@ -1,7 +1,7 @@
 <?php
-    require_once("../../controller/usuarioController.php");
-    require_once("../../model/dao/userDao.php");
-    require_once("../../model/dto/userDto.php");
+    require_once("../../controller/tipoProController.php");
+    require_once("../../model/dao/tipoProDao.php");
+    require_once("../../model/dto/tipoProDto.php");
     require_once("../../model/conexion.php");
 
     class Reporte{
@@ -34,28 +34,25 @@
             $this -> pdf->SetFont('Arial','B',12);
 
             try {
-                $objDtoUser = new Usuario();
-                $objDaoUser = new UsuarioModel($objDtoUser);
-                $respon = $objDaoUser -> mIdSearchAllUsuario() -> fetchAll(); //La funcion fetchAll es para convertir todos los datos en un arreglo asociativo
+                $objDtoTipoPro = new TipoPro();
+                $objDaoTipoPro = new TipoProModel($objDtoTipoPro);
+                $respon = $objDaoTipoPro -> mIdSearchAllTipoProducto() -> fetchAll(); //La funcion fetchAll es para convertir todos los datos en un arreglo asociativo
 
             } catch (PDOException $e) {
                 echo "Error en la creacion del controlador para mostrar todo ". $e -> getMessage();
             }
 
-            $header = array('Codigo', 'Nombre', 'Apellido', 'Usuario', 'Contrasena');
-            foreach ($header as $col)
-                $this-> pdf -> Cell(38,10,$col,1,0,'C');
+            // Cabecera
+            $header = array('Codigo', 'Descripcion');
+            foreach($header as $col)  
+                $this-> pdf -> Cell(40,10,$col,1,0,'C');
                 $this-> pdf -> Ln(10);
-            
 
             foreach ($respon as $key => $value) {
-                $this -> pdf->Cell(38,10, $value['idUsuario'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['nombre'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['apellido'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['usuario'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['contrasena'],1,0,'C');
+                $this -> pdf->Cell(40,10, $value['idTipoProducto'],1,0,'C');
+                $this -> pdf->Cell(40,10, $value['descripcion'],1,0,'C');
                 $this -> pdf -> Ln(10);
-            }
+            }      
 
         } 
 

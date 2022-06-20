@@ -162,7 +162,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar usuario 😜</h4>
+          <h4 class="modal-title">Modificar usuario</h4>
         </div>
 
         <!-- Modal body -->
