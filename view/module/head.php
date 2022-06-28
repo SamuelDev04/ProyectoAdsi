@@ -49,5 +49,5 @@
     <link rel="stylesheet" href="view/css/sweetalert2.min.css">
     <script src="view/js/sweetalert2.all.min.js"></script>
 </head>
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition skin-red sidebar-mini">
     <div class="wrapper">

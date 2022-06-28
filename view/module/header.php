@@ -26,7 +26,7 @@
                 <div class="pull-right">
                   <form method="post">
                     <input type="hidden" name="txtSalir">
-                    <button type="submit" class="btn btn-default btn-flat bg-blue">Salir</button>
+                    <button type="submit" class="btn btn-default btn-flat bg-red">Salir</button>
                   </form>
                   <?php
                     if (isset($_POST['txtSalir'])){

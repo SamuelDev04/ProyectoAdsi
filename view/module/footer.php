@@ -3,7 +3,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2021-2023 <a href="#">Samuel Yepes Osorio - David Andres Noreña - ADSI</a>.</strong> Todos los derechos reservados
+    <strong>Copyright &copy; 2021-2023 <a href="#">GRUPO 9 - ADSI</a>.</strong> Todos los derechos reservados
 </footer>
 
 
