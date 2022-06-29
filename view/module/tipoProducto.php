@@ -99,8 +99,8 @@
                       foreach ($objCtrTipoProAll -> getSearchAllTipoProducto() as $key => $value) {
                         echo '
                         <tr>
-                          <td>'. $value["idTipoProducto"] .'</td>
-                          <td>'. $value["descripcion"] .'</td>
+                          <td class="text-center">'. $value["idTipoProducto"] .'</td>
+                          <td class="text-center">'. $value["descripcion"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="eraseTipoProducto(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataTipoProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>

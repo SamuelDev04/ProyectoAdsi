@@ -130,11 +130,11 @@
                       foreach ($objCtrUserAll -> getSearchAllUsuario() as $key => $value) {
                         echo '
                         <tr>
-                          <td>'. $value["idUsuario"] .'</td>
-                          <td>'. $value["nombre"] .'</td>
-                          <td>'. $value["apellido"] .'</td>
-                          <td>'. $value["usuario"] .'</td>
-                          <td>'. $value["contrasena"] .'</td>
+                          <td class="text-center">'. $value["idUsuario"] .'</td>
+                          <td class="text-center">'. $value["nombre"] .'</td>
+                          <td class="text-center">'. $value["apellido"] .'</td>
+                          <td class="text-center">'. $value["usuario"] .'</td>
+                          <td class="text-center">'. $value["contrasena"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="erase(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>

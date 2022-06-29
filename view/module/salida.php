@@ -93,9 +93,6 @@
           <button class="btn btn-app bg-blue" type="submit" onclick="validateProducto(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <a class="btn btn-app bg-gray" href="tipoProductos">
-            <i class="glyphicon glyphicon-th-list"></i> Tipo producto
-          </a>
           <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteAprendiz(event)">
             <i class="fa fa-print"></i> Reporte
           </button>
