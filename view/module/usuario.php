@@ -91,9 +91,9 @@
     </div>
     <!-- /.box -->
 
-    <!-- Otro box -->
-    <div class="box">
-      <div class="box-header with-border">
+      <!-- Otro box -->
+      <div class="box">
+        <div class="box-header with-border">
         <h3 class="box-title">Usuarios</h3>
         
         <div class="box-tools pull-right">
