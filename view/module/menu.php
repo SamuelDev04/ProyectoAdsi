@@ -28,7 +28,7 @@
           </li>
           <!-- MENU - MODULO DE PRODUCTOS -->        
           <li class="">
-            <a href="index.php?ruta=productos">
+            <a href="productos">
               <i class="glyphicon glyphicon-th-list"></i>
               <span>Productos</span>
             </a>
