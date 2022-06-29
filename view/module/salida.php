@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Productos
+        Salidas
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-pencil"></i> Productos</a></li>
+        <li><a href="#"><i class="fa fa-pencil"></i> Salidas</a></li>
       </ol>
     </section>
 
@@ -18,8 +18,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Ingreso de productos</h3>
-
+          <h3 class="box-title">Salidas de productos</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                     title="Collapse">
@@ -28,69 +27,100 @@
         </div>
         
       <div class="box-body">  
-      <form method="POST" id="formularioProducto">
+      <form method="POST" id="formularioSalida">
 
-          <!-- ROW 1 -->
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
+        <!-- ROW 1 -->
+        <div class="row">
+            <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Descripcion Producto</span>
-                  <input id="descripPro" name="descripPro" type="text" class="form-control">
+                    <span class="input-group-addon">Fecha salida</span>
+                    <input id="fechaSal" name="fechaSal" type="date" class="form-control">
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Cantidad Producto</span>
-                  <input id="cantPro" name="cantPro" type="number" class="form-control">
-                </div>
-              </div>
             </div>
-
-            <br>
-
-          <!-- ROW 2 -->  
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
+            <!-- ./col -->
+            <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Costo Producto</span>
-                  <input id="costPro" name="costPro" type="number" class="form-control">
+                    <span class="input-group-addon">Cantidad salida</span>
+                    <input id="cantSal" name="cantSal" type="number" class="form-control">
                 </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
+            </div>
+        </div>
+
+        <br>
+
+        <!-- ROW 2 -->  
+        <div class="row">
+            <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Tipo Producto</span>
-                  <select class="form-control" id="tipPro" name="tipPro">
-                    <option value="" selected disabled hidden>Seleccione tipo de producto</option>
-                    <?php
-                      $objCtrTipoProductoAll = new TipoProController();
+                    <span class="input-group-addon">Valor total</span>
+                    <input id="valTot" name="valTot" type="number" class="form-control">
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-6 col-xs-6">
+                <!-- small box -->
+                <div class="input-group">
+                    <span class="input-group-addon">Cliente</span>
+                    <select class="form-control" id="clienSal" name="clienSal">
+                        <option value="" selected disabled hidden>Seleccione el cliente</option>
+                        <?php
+                            $objCtrTipoProductoAll = new TipoProController();
 
-                      if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                            if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                            echo '
+                                <option value="1">No hay datos que mostrar</option>
+                            ';  
+                            } else {
+                            foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
+                                echo '
+                                <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
+                                ';
+                                }
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- ROW 3 -->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <!-- small box -->
+                <div class="input-group">
+                    <span class="input-group-addon">Producto</span>
+                    <select class="form-control" id="prodSal" name="prodSal">
+                    <option value="" selected disabled hidden>Seleccione el producto</option>
+                    <?php
+                        $objCtrTipoProductoAll = new TipoProController();
+
+                        if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
                         echo '
-                          <option value="1">No hay datos que mostrar</option>
+                            <option value="1">No hay datos que mostrar</option>
                         ';  
-                      } else {
+                        } else {
                         foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
-                          echo '
+                            echo '
                             <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
                             ';
-                          }
-                      }
+                            }
+                        }
                     ?>
-                  </select>
-                  <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
+                    </select>
+                    <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
                 </div>
-              </div>
             </div>
-          <br>
+        </div>
+        
+        <br>
         
         <div class="box-footer">
-          <button class="btn btn-app bg-blue" type="submit" onclick="validateProducto(event)">
+          <button class="btn btn-app bg-blue" type="submit" onclick="validateSalida(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
           <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteAprendiz(event)">
@@ -101,9 +131,9 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['descripPro'])){
-          $objCtrProducto = new ProductoController();
-          $objCtrProducto -> setInsertarProducto($_POST['descripPro'], $_POST['cantPro'], $_POST['costPro'], $_POST['tipPro']);
+        if (isset($_POST['fechaSal'])){
+          $objCtrSalida = new SalidaController();
+          $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
         }
       ?>
     </div>
@@ -127,35 +157,37 @@
                 <!-- Este tr sirve para los títulos -->
                 <tr>
                   <th class="text-center">Codigo</th>
-                  <th class="text-center">Descripcion</th>
+                  <th class="text-center">Fecha Salida</th>
                   <th class="text-center">Cantidad</th>
-                  <th class="text-center">Costo</th>
-                  <th class="text-center">Tipo de producto</th>
+                  <th class="text-center">Valor Total</th>
+                  <th class="text-center">Cliente</th>
+                  <th class="text-center">Producto</th>
                   <th class="text-center">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <form action="" method="post">
                   <?php
-                    $objCtrProductoAll = new ProductoController();
+                    $objCtrSalidaAll = new SalidaController();
 
-                    if (gettype($objCtrProductoAll -> getSearchAllProducto()) == 'boolean') {
+                    if (gettype($objCtrSalidaAll -> getSearchAllSalida()) == 'boolean') {
                       echo '
                       <tr>
                         <td colspan = "5">No hay datos que mostrar</td>
                       </tr>';  
                     } else {
-                      foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
+                      foreach ($objCtrSalidaAll -> getSearchAllSalida() as $key => $value) {
                         echo '
                         <tr>
+                          <td class="text-center">'. $value["idDetSalida"] .'</td>
+                          <td class="text-center">'. $value["fechaSalida"] .'</td>
+                          <td class="text-center">'. $value["cantidadSalida"] .'</td>
+                          <td class="text-center">'. $value["valorTotal"] .'</td>
+                          <td class="text-center">'. $value["idCliente"] .'</td>
                           <td class="text-center">'. $value["idProducto"] .'</td>
-                          <td class="text-center">'. $value["descripProducto"] .'</td>
-                          <td class="text-center">'. $value["cantProducto"] .'</td>
-                          <td class="text-center">'. $value["costoProducto"] .'</td>
-                          <td class="text-center">'. $value["idTipoProducto"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-social-icon bg-blue" onclick="getDataSalida(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
                         }

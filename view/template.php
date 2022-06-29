@@ -12,11 +12,11 @@
             case 'productos':
                 include_once("view/module/producto.php");
                 break;
-            case 'salidas':
-                include_once("view/module/salida.php");
-                break;
             case 'tipoProductos':
                 include_once("view/module/tipoProducto.php");
+                break;
+            case 'salidas':
+                include_once("view/module/salida.php");
                 break;
             case 'erase':
                 include_once("view/module/erase.php");
