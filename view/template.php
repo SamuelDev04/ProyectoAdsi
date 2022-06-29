@@ -18,6 +18,9 @@
             case 'tipoProductos':
                 include_once("view/module/tipoProducto.php");
                 break;
+            case 'proveedores':
+                include_once("view/module/proveedor.php");
+                break;
             case 'erase':
                 include_once("view/module/erase.php");
                 break;
