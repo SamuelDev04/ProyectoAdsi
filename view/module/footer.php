@@ -72,8 +72,7 @@
 <!-- Para realizar el CRUD de Salidas -->
 <script src="view/js/crudSalida.js"></script>
 
-<!-- Para exportar la datatable -->
-
+<!-- Diccionario de la datatable -->
 <script>
   $(function () {
     $('#users').DataTable({

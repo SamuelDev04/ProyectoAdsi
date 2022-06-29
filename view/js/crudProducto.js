@@ -55,7 +55,7 @@ function getDataProducto(obj) {
 
 }
 
-function getGenerarReporteAprendiz(e) {
+function getGenerarReporteProducto(e) {
     e.preventDefault();
     window.open('view/module/allProducto.php', '_blank');
 }

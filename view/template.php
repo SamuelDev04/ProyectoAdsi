@@ -27,6 +27,9 @@
             case 'eraseTipoProducto':
                 include_once("view/module/eraseTipoProducto.php");
                 break;
+            case 'eraseSalida':
+                include_once("view/module/eraseSalida.php");
+                break;
             
             default:
                 include_once("view/module/presentation.php");

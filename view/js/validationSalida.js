@@ -41,34 +41,40 @@ function validateSalida(e) {
 
 }
 
-function validateProductoMod(e) {
+function validateSalidaMod(e) {
     e.preventDefault();
-    formulario = document.getElementById('formularioProductom');
-    descripcion = document.getElementById('descripProm');
-    cantidadProducto = document.getElementById('cantProm');
-    costoProducto = document.getElementById('costProm');
-    tipoProducto = document.getElementById('tipProm')
+    formulario = document.getElementById('formularioSalidam');
+    fechaSal = document.getElementById('fechaSalm');
+    cantSal = document.getElementById('cantSalm');
+    valorTotal = document.getElementById('valTotm');
+    clienteSal = document.getElementById('clienSalm');
+    productoSal = document.getElementById('prodSalm');
     
     lVali = true;
     
-    if (descripcion.value == "") {
-        descripcion.style.borderColor = "red";
-        ohSnap('Ingrese la descripcion...', { color: 'red' }); // alert will have class 'alert-color'
+    if (fechaSal.value == "") {
+        fechaSal.style.borderColor = "red";
+        ohSnap('Ingrese la fecha de salida...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
-    if (cantidadProducto.value == "") {
-        cantidadProducto.style.borderColor = "red";
+    if (cantSal.value == "") {
+        cantSal.style.borderColor = "red";
         ohSnap('Ingrese la cantidad del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
-    if (costoProducto.value == "") {
-        costoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el costo del producto...', { color: 'red' }); // alert will have class 'alert-color'
+    if (valorTotal.value == "") {
+        valorTotal.style.borderColor = "red";
+        ohSnap('Ingrese el valor total...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
-    if (tipoProducto.value == "") {
-        tipoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el tipo de producto...', { color: 'red' }); // alert will have class 'alert-color'
+    if (clienteSal.value == "") {
+        clienteSal.style.borderColor = "red";
+        ohSnap('Ingrese el cliente...', { color: 'red' }); // alert will have class 'alert-color'
+        lVali = false;
+    }
+    if (productoSal.value == "") {
+        productoSal.style.borderColor = "red";
+        ohSnap('Ingrese el producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     

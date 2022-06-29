@@ -7,8 +7,9 @@
         Tipo productos
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> Tipo productos</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+        <li><a href="productos"><i class="glyphicon glyphicon-th-list"></i> Productos</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-th-list"></i> Tipo productos</a></li>
       </ol>
     </section>
 
@@ -48,7 +49,7 @@
             <i class="fa fa-save"></i> Guardar
           </button>
           <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteTipoPro(event)">
-            <i class="fa fa-print"></i> Reporte
+            <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
         <!-- /.box-footer-->
@@ -102,7 +103,7 @@
                           <td class="text-center">'. $value["idTipoProducto"] .'</td>
                           <td class="text-center">'. $value["descripcion"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseTipoProducto(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseTipoProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataTipoProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
@@ -153,7 +154,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button class="btn btn-google bg-blue" type="submit" onclick="validateModTipoPro(event)">
-            <i class="fa fa-save"></i> Guardar
+            <i class="glyphicon glyphicon-ok-sign"></i> Guardar
           </button>
             <?php
                 if (isset($_POST['idescripm'])){
@@ -162,7 +163,7 @@
                 }
             ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
-          <i class="fa fa-close"></i> Cerrar
+          <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
           </button>
         </div>
 

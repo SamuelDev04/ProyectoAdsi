@@ -1,4 +1,4 @@
-<input type="hidden" id="icodeProduc" name="icodeProduc">
+<input type="hidden" id="icodeSalida" name="icodeSalida">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -7,8 +7,8 @@
         Salidas
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-pencil"></i> Salidas</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-open"></i> Salidas</a></li>
       </ol>
     </section>
 
@@ -97,16 +97,16 @@
                     <select class="form-control" id="prodSal" name="prodSal">
                     <option value="" selected disabled hidden>Seleccione el producto</option>
                     <?php
-                        $objCtrTipoProductoAll = new TipoProController();
+                        $objCtrProductoAll = new ProductoController();
 
-                        if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                        if (gettype($objCtrProductoAll -> getSearchAllProducto()) == 'boolean') {
                         echo '
                             <option value="1">No hay datos que mostrar</option>
                         ';  
                         } else {
-                        foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
+                        foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
                             echo '
-                            <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
+                            <option value='. $value["idProducto"] .'>'.$value["idProducto"]. "- " .$value["descripProducto"] .'</option>
                             ';
                             }
                         }
@@ -123,8 +123,8 @@
           <button class="btn btn-app bg-blue" type="submit" onclick="validateSalida(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteAprendiz(event)">
-            <i class="fa fa-print"></i> Reporte
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteSalida(event)">
+            <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
         <!-- /.box-footer-->
@@ -186,7 +186,7 @@
                           <td class="text-center">'. $value["idCliente"] .'</td>
                           <td class="text-center">'. $value["idProducto"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataSalida(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
@@ -217,63 +217,108 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form method="POST" id="formularioProductom">
-            <input type="hidden" name="icodeProducm" id="icodeProducm">
+          <form method="POST" id="formularioSalidam">
+            <input type="hidden" name="icodeSalidam" id="icodeSalidam">
 
-            <!-- ROW 1 MOD CONTIENE NOMBRE Y FECHA DE NACIMIENTO-->
+            <!-- ROW 1 MOD CONTIENE FECHA DE SALIDA Y CANTIDAD DE SALIDA-->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Descripcion Producto</span>
-                  <input id="descripProm" name="descripProm" type="text" class="form-control">
-                </div>
+                  <!-- small box -->
+                  <div class="input-group">
+                      <span class="input-group-addon">Fecha salida</span>
+                      <input id="fechaSalm" name="fechaSalm" type="date" class="form-control">
+                  </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Cantidad Producto</span>
-                  <input id="cantProm" name="cantProm" type="number" class="form-control">
-                </div>
+                  <!-- small box -->
+                  <div class="input-group">
+                      <span class="input-group-addon">Cantidad salida</span>
+                      <input id="cantSalm" name="cantSalm" type="number" class="form-control">
+                  </div>
               </div>
             </div>
             <br>
-            <!-- ROW 2 MOD CONTIENE SEXO Y CIUDAD-->
+            <!-- ROW 2 MOD CONTIENE VALOR TOTAL Y CLIENTE-->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Costo Producto</span>
-                  <input id="costProm" name="costProm" type="number" class="form-control">
-                </div>
+                  <!-- small box -->
+                  <div class="input-group">
+                      <span class="input-group-addon">Valor total</span>
+                      <input id="valTotm" name="valTotm" type="number" class="form-control">
+                  </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Tipo Producto</span>
-                  <input id="tipProm" name="tipProm" type="number" class="form-control">
+                    <span class="input-group-addon">Cliente</span>
+                    <select class="form-control" id="clienSalm" name="clienSalm">
+                        <option value="" selected disabled hidden>Seleccione el cliente</option>
+                        <?php
+                            $objCtrTipoProductoAll = new TipoProController();
+
+                            if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                            echo '
+                                <option value="1">No hay datos que mostrar</option>
+                            ';  
+                            } else {
+                            foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
+                                echo '
+                                <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
+                                ';
+                                }
+                            }
+                        ?>
+                    </select>
                 </div>
               </div>
               <!-- ./col -->
+            </div>
+            <br>
+            <!-- ROW 3 MOD CONTIENE PRODUCTO-->
+            <div class="row">
+              <div class="col-lg-12 col-xs-12">
+                  <!-- small box -->
+                  <div class="input-group">
+                      <span class="input-group-addon">Producto</span>
+                      <select class="form-control" id="prodSalm" name="prodSalm">
+                      <option value="" selected disabled hidden>Seleccione el producto</option>
+                      <?php
+                          $objCtrProductoAll = new ProductoController();
+
+                          if (gettype($objCtrProductoAll -> getSearchAllProducto()) == 'boolean') {
+                          echo '
+                              <option value="1">No hay datos que mostrar</option>
+                          ';  
+                          } else {
+                          foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
+                              echo '
+                              <option value='. $value["idProducto"] .'>'.$value["idProducto"]. "- " .$value["descripProducto"] .'</option>
+                              ';
+                              }
+                          }
+                      ?>
+                      </select>
+                  </div>
+              </div>
             </div>
           </form>
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateProductoMod(event)">
-            <i class="fa fa-save"></i> Guardar
+          <button class="btn btn-google bg-blue" type="submit" onclick="validateSalidaMod(event)">
+            <i class="glyphicon glyphicon-ok-sign"></i> Guardar
           </button>
           <?php
-          if (isset($_POST['descripProm'])) {
-            $objCtrProducto = new ProductoController();
-            $objCtrProducto -> setUpdateProducto($_POST['icodeProducm'], $_POST['descripProm'], $_POST['cantProm'], $_POST['costProm'], $_POST['tipProm']);
-          }
+            if (isset($_POST['fechaSalm'])) {
+              $objCtrSalida = new SalidaController();
+              $objCtrSalida -> setUpdateSalida($_POST['icodeSalidam'], $_POST['fechaSalm'], $_POST['cantSalm'], $_POST['valTotm'], $_POST['clienSalm'],$_POST['prodSalm']);
+            }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
-            <i class="fa fa-close"></i> Cerrar
+            <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
           </button>
         </div>
 
