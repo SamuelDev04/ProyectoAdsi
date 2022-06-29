@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2022 a las 05:13:23
+-- Tiempo de generación: 29-06-2022 a las 02:55:08
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -20,147 +20,211 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_rikopollo`
 --
-CREATE DATABASE IF NOT EXISTS `db_rikopollo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `db_rikopollo`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
-DROP PROCEDURE IF EXISTS `spBorrarProducto`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarCliente` (IN `_idCliente` INT(10))  BEGIN
+
+DELETE FROM `cliente` WHERE idCliente = _idCliente;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarDetEnt` (IN `_idDetEntrada` INT(10))  BEGIN
+
+DELETE FROM `detalle_entrada` WHERE idDetEntrada = _idDetEntrada;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarDetSal` (IN `_idDetSalida` INT(10))  BEGIN
+
+DELETE FROM `detalle_salida` WHERE idDetSalida = _idDetSalida;
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProducto` (IN `_idProducto` INT(10))  BEGIN
 
 DELETE FROM `producto` WHERE idProducto = _idProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spBorrarProveedor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProveedor` (IN `_idProveedor ` INT(10))  BEGIN
 
 DELETE FROM `proveedor` WHERE idProveedor = _idProveedor;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spBorrarTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarTipoPro` (IN `_idTipoProducto ` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarTipoPro` (IN `_idTipoProducto` INT(10))  BEGIN
 
 DELETE FROM `tipo_producto` WHERE idTipoProducto = _idTipoProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spBorrarUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarUsuario` (IN `_idUsuario` INT(10))  BEGIN
 
 DELETE FROM `usuarios` WHERE idUsuario = _idUsuario;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarCliente`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCliente` (IN `_idCliente` INT(10))  BEGIN
 
 SELECT idCliente, nombre, telefono, celular, direccion FROM `cliente` WHERE idCliente = _idCliente;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarDetEnt`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetEnt` (IN `_idDetEntrada` INT(10))  BEGIN
 
 SELECT idDetEntrada, fechaEntrada, cantProEntrada, precioEntrada, idProveedor, idProducto FROM `detalle_entrada` WHERE idDetEntrada = _idDetEntrada;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarDetSal`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetSal` (IN `_idDetSalida` INT(10))  BEGIN
 
 SELECT idDetSalida, fechaSalida, cantidadSalida, valorTotal, idCliente, idProducto FROM `detalle_salida` WHERE idDetSalida = _idDetSalida;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarProducto`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProducto` (IN `_idProducto` INT(10))  BEGIN
 
 SELECT idProducto, descripProducto, cantProducto, costoProducto, idTipoProducto FROM `producto` WHERE idProducto = _idProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarProveedor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProveedor` (IN `_idProveedor` INT(10))  BEGIN
 
 SELECT idProveedor, nombre, numeroTelefono, direccion FROM `proveedor` WHERE idProveedor = _idProveedor;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarTipoPro`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarTipoPro` (IN `_idTipoProducto` INT(10))  BEGIN
 
 SELECT idTipoProducto, descripcion FROM `tipo_producto` WHERE idTipoProducto = _idTipoProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spConsultarUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarUsuario` (IN `_idUsuario` INT(10))  BEGIN
 
 SELECT idUsuario, nombre, apellido, usuario, contrasena FROM `usuarios` WHERE idUsuario = _idUsuario;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spInsertarProducto`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarCliente` (IN `_nombre` VARCHAR(150), IN `_telefono` VARCHAR(50), IN `_celular` VARCHAR(50), IN `_direccion` VARCHAR(150))  BEGIN
+
+INSERT INTO `cliente`(nombre, telefono, celular, direccion) VALUES (_nombre, _telefono, _celular, _direccion);
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarDetEnt` (IN `_fechaEntrada` DATE, IN `_cantProEntrada` INT(50), IN `_precioEntrada` INT(50), IN `_idProveedor` INT(10), IN `_idProducto` INT(10))  BEGIN
+
+INSERT INTO `detalle_entrada`(fechaEntrada, cantProEntrada, precioEntrada, idProveedor, idProducto) VALUES (_fechaEntrada, _cantProEntrada, _precioEntrada, _idProveedor, _idProducto);
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarDetSal` (IN `_fechaSalida` DATE, IN `_cantidadSalida` INT(50), IN `_valorTotal` INT(50), IN `_idCliente` INT(10), IN `_idProducto` INT(10))  BEGIN
+
+INSERT INTO `detalle_salida`(fechaSalida, cantidadSalida, valorTotal, idCliente, idProducto) VALUES (_fechaSalida, _cantidadSalida, _valorTotal, _idCliente, _idProducto);
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProducto` (IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))  BEGIN
 
 INSERT INTO `producto`(descripProducto, cantProducto, costoProducto, idTipoProducto) VALUES (_descripProducto, _cantProducto, _costoProducto, _idTipoProducto);
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spInsertarProveedor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProveedor` (IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))  BEGIN
 
 INSERT INTO `proveedor`(nombre, numeroTelefono, direccion) VALUES (_nombre, _numeroTelefono, _direccion);
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spInsertarTipoPro`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarTipoPro` (IN `_descripcion` VARCHAR(150))  BEGIN
 
 INSERT INTO `tipo_producto`(descripcion) VALUES (_descripcion);
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spInsertarUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarUsuario` (IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
 
 INSERT INTO `usuarios`(nombre, apellido, usuario, contrasena) VALUES (_nombre, _apellido, _usuario, _contrasena);
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchAllProducto`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllCliente` ()  BEGIN
+
+SELECT idCliente, nombre, telefono, celular, direccion FROM cliente;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllDetEnt` ()  BEGIN
+
+SELECT idDetEntrada, fechaEntrada, cantProEntrada, precioEntrada, idProveedor, idProducto FROM detalle_entrada;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllDetSal` ()  BEGIN
+
+SELECT idDetSalida, fechaSalida, cantidadSalida, valorTotal, idCliente, idProducto FROM detalle_salida;
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProducto` ()  BEGIN
 
 SELECT idProducto, descripProducto, cantProducto, costoProducto, idTipoProducto FROM producto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchAllProveedor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProveedor` ()  BEGIN
 
 SELECT idProveedor, nombre, numeroTelefono, direccion FROM proveedor;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchAllTipoPro`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllTipoPro` ()  BEGIN
 
 SELECT idTipoProducto, descripcion FROM tipo_producto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spSearchAllUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUsuario` ()  BEGIN
 
 SELECT idUsuario, nombre, apellido, usuario, contrasena FROM usuarios;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateProducto`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateCliente` (IN `_idCliente` INT(10), IN `_nombre` VARCHAR(150), IN `_telefono` VARCHAR(50), IN `_celular` VARCHAR(50), IN `_direccion` VARCHAR(150))  BEGIN
+
+UPDATE `cliente` SET nombre = _nombre,
+telefono = _telefono,
+celular = _celular,
+direccion = _direccion
+WHERE idCliente = _idCliente;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateDetEnt` (IN `_idDetEntrada` INT(10), IN `_fechaEntrada` DATE, IN `_cantProEntrada` INT(50), IN `_precioEntrada` INT(50), IN `_idProveedor` INT(10), IN `_idProducto` INT(10))  BEGIN
+
+UPDATE `detalle_entrada` SET fechaEntrada = _fechaEntrada,
+cantProEntrada = _cantProEntrada,
+precioEntrada = _precioEntrada,
+idProveedor = _idProveedor,
+idProducto = _idProducto
+WHERE idDetEntrada = _idDetEntrada;
+
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateDetSal` (IN `_idDetSalida` INT(10), IN `_fechaSalida` DATE, IN `_cantidadSalida` INT(50), IN `_valorTotal` INT(50), IN `_idCliente` INT(10), IN `_idProducto` INT(10))  BEGIN
+
+UPDATE `detalle_salida` SET fechaSalida= _fechaSalida,
+cantidadSalida= _cantidadSalida,
+valorTotal= _valorTotal,
+idCliente= _idCliente,
+idProducto= _idProducto 
+WHERE idDetSalida= _idDetSalida;
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProducto` (IN `_idProducto` INT(10), IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))  BEGIN
 
 UPDATE `producto` SET descripProducto = _descripProducto,
@@ -171,7 +235,6 @@ WHERE idProducto = _idProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateProveedor`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProveedor` (IN `_idProveedor ` INT(10), IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))  BEGIN
 
 UPDATE `proveedor` SET nombre = _nombre,
@@ -181,7 +244,6 @@ WHERE idProveedor = _idProveedor;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateTipoPro`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateTipoPro` (IN `_idTipoProducto` INT(10), IN `_descripcion` VARCHAR(150))  BEGIN
 
 UPDATE `tipo_producto` SET descripcion = _descripcion
@@ -189,7 +251,6 @@ WHERE idTipoProducto = _idTipoProducto;
 
 END$$
 
-DROP PROCEDURE IF EXISTS `spUpdateUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_idUsuario` INT(10), IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
 
 UPDATE `usuarios` SET nombre = _nombre,
@@ -208,14 +269,12 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE IF NOT EXISTS `cliente` (
-  `idCliente` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cliente` (
+  `idCliente` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `telefono` varchar(50) NOT NULL,
   `celular` varchar(50) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idCliente`)
+  `direccion` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -224,17 +283,13 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 -- Estructura de tabla para la tabla `detalle_entrada`
 --
 
-DROP TABLE IF EXISTS `detalle_entrada`;
-CREATE TABLE IF NOT EXISTS `detalle_entrada` (
+CREATE TABLE `detalle_entrada` (
   `idDetEntrada` int(10) NOT NULL,
   `fechaEntrada` date NOT NULL,
   `cantProEntrada` int(50) NOT NULL,
   `precioEntrada` int(50) NOT NULL,
   `idProveedor` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetEntrada`),
-  KEY `idProducto` (`idProducto`),
-  KEY `idProveedor` (`idProveedor`)
+  `idProducto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -243,17 +298,13 @@ CREATE TABLE IF NOT EXISTS `detalle_entrada` (
 -- Estructura de tabla para la tabla `detalle_salida`
 --
 
-DROP TABLE IF EXISTS `detalle_salida`;
-CREATE TABLE IF NOT EXISTS `detalle_salida` (
-  `idDetSalida` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detalle_salida` (
+  `idDetSalida` int(10) NOT NULL,
   `fechaSalida` date NOT NULL,
   `cantidadSalida` int(50) NOT NULL,
   `valorTotal` int(50) NOT NULL,
   `idCliente` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetSalida`),
-  KEY `idCliente` (`idCliente`),
-  KEY `idProducto` (`idProducto`)
+  `idProducto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -262,16 +313,13 @@ CREATE TABLE IF NOT EXISTS `detalle_salida` (
 -- Estructura de tabla para la tabla `producto`
 --
 
-DROP TABLE IF EXISTS `producto`;
-CREATE TABLE IF NOT EXISTS `producto` (
-  `idProducto` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producto` (
+  `idProducto` int(10) NOT NULL,
   `descripProducto` varchar(150) NOT NULL,
   `cantProducto` int(50) NOT NULL,
   `costoProducto` int(50) NOT NULL,
-  `idTipoProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idProducto`),
-  KEY `idTipoProducto` (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `idTipoProducto` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -287,13 +335,11 @@ INSERT INTO `producto` (`idProducto`, `descripProducto`, `cantProducto`, `costoP
 -- Estructura de tabla para la tabla `proveedor`
 --
 
-DROP TABLE IF EXISTS `proveedor`;
-CREATE TABLE IF NOT EXISTS `proveedor` (
-  `idProveedor` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `proveedor` (
+  `idProveedor` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `numeroTelefono` varchar(150) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idProveedor`)
+  `direccion` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -302,19 +348,17 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
 -- Estructura de tabla para la tabla `tipo_producto`
 --
 
-DROP TABLE IF EXISTS `tipo_producto`;
-CREATE TABLE IF NOT EXISTS `tipo_producto` (
-  `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tipo_producto` (
+  `idTipoProducto` int(10) NOT NULL,
+  `descripcion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_producto`
 --
 
 INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
-(1, 'Muslos');
+(1, 'Pechuga');
 
 -- --------------------------------------------------------
 
@@ -322,15 +366,13 @@ INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `idUsuario` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `idUsuario` int(10) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `usuario` varchar(150) NOT NULL,
-  `contrasena` varchar(150) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `contrasena` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -339,6 +381,97 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`) VALUES
 (1, 'Samuel', 'Yepes', 'admin', '1234'),
 (2, 'Sebastian', 'Quiceno', 'admin2', '12345');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`);
+
+--
+-- Indices de la tabla `detalle_entrada`
+--
+ALTER TABLE `detalle_entrada`
+  ADD PRIMARY KEY (`idDetEntrada`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `idProveedor` (`idProveedor`);
+
+--
+-- Indices de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  ADD PRIMARY KEY (`idDetSalida`),
+  ADD KEY `idCliente` (`idCliente`),
+  ADD KEY `idProducto` (`idProducto`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`),
+  ADD KEY `idTipoProducto` (`idTipoProducto`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`idProveedor`);
+
+--
+-- Indices de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  ADD PRIMARY KEY (`idTipoProducto`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  MODIFY `idDetSalida` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `idProveedor` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  MODIFY `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
