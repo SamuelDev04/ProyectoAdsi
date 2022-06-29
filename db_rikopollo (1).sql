@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2022 a las 05:13:23
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.11
+-- Tiempo de generación: 30-06-2022 a las 00:58:50
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,141 +27,170 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `spBorrarCliente`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarCliente` (IN `_idCliente` INT(4))   BEGIN
+DELETE FROM `cliente` WHERE idCliente = _idCliente;
+
+END$$
+
 DROP PROCEDURE IF EXISTS `spBorrarProducto`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProducto` (IN `_idProducto` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProducto` (IN `_idProducto` INT(10))   BEGIN
 
 DELETE FROM `producto` WHERE idProducto = _idProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spBorrarProveedor`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProveedor` (IN `_idProveedor ` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarProveedor` (IN `_idProveedor ` INT(10))   BEGIN
 
 DELETE FROM `proveedor` WHERE idProveedor = _idProveedor;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spBorrarTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarTipoPro` (IN `_idTipoProducto ` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarTipoPro` (IN `_idTipoProducto ` INT(10))   BEGIN
 
 DELETE FROM `tipo_producto` WHERE idTipoProducto = _idTipoProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spBorrarUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarUsuario` (IN `_idUsuario` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spBorrarUsuario` (IN `_idUsuario` INT(10))   BEGIN
 
 DELETE FROM `usuarios` WHERE idUsuario = _idUsuario;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarCliente`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCliente` (IN `_idCliente` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarCliente` (IN `_idCliente` INT(10))   BEGIN
 
 SELECT idCliente, nombre, telefono, celular, direccion FROM `cliente` WHERE idCliente = _idCliente;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarDetEnt`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetEnt` (IN `_idDetEntrada` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetEnt` (IN `_idDetEntrada` INT(10))   BEGIN
 
 SELECT idDetEntrada, fechaEntrada, cantProEntrada, precioEntrada, idProveedor, idProducto FROM `detalle_entrada` WHERE idDetEntrada = _idDetEntrada;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarDetSal`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetSal` (IN `_idDetSalida` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarDetSal` (IN `_idDetSalida` INT(10))   BEGIN
 
 SELECT idDetSalida, fechaSalida, cantidadSalida, valorTotal, idCliente, idProducto FROM `detalle_salida` WHERE idDetSalida = _idDetSalida;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarProducto`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProducto` (IN `_idProducto` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProducto` (IN `_idProducto` INT(10))   BEGIN
 
 SELECT idProducto, descripProducto, cantProducto, costoProducto, idTipoProducto FROM `producto` WHERE idProducto = _idProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarProveedor`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProveedor` (IN `_idProveedor` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarProveedor` (IN `_idProveedor` INT(10))   BEGIN
 
 SELECT idProveedor, nombre, numeroTelefono, direccion FROM `proveedor` WHERE idProveedor = _idProveedor;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarTipoPro` (IN `_idTipoProducto` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarTipoPro` (IN `_idTipoProducto` INT(10))   BEGIN
 
 SELECT idTipoProducto, descripcion FROM `tipo_producto` WHERE idTipoProducto = _idTipoProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spConsultarUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarUsuario` (IN `_idUsuario` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarUsuario` (IN `_idUsuario` INT(10))   BEGIN
 
 SELECT idUsuario, nombre, apellido, usuario, contrasena FROM `usuarios` WHERE idUsuario = _idUsuario;
 
 END$$
 
+DROP PROCEDURE IF EXISTS `spInsertarCliente`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarCliente` (IN `_nombre` VARCHAR(150), IN `_celular` VARCHAR(50), IN `_telefono` VARCHAR(50), IN `_direccion` VARCHAR(50))   BEGIN
+INSERT INTO cliente (nombre, telefono, celular, direccion)
+VALUES (_nombre, _celular, _telefono, _direccion );
+
+END$$
+
 DROP PROCEDURE IF EXISTS `spInsertarProducto`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProducto` (IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProducto` (IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))   BEGIN
 
 INSERT INTO `producto`(descripProducto, cantProducto, costoProducto, idTipoProducto) VALUES (_descripProducto, _cantProducto, _costoProducto, _idTipoProducto);
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertarProveedor`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProveedor` (IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarProveedor` (IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))   BEGIN
 
 INSERT INTO `proveedor`(nombre, numeroTelefono, direccion) VALUES (_nombre, _numeroTelefono, _direccion);
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertarTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarTipoPro` (IN `_descripcion` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarTipoPro` (IN `_descripcion` VARCHAR(150))   BEGIN
 
 INSERT INTO `tipo_producto`(descripcion) VALUES (_descripcion);
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertarUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarUsuario` (IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarUsuario` (IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))   BEGIN
 
 INSERT INTO `usuarios`(nombre, apellido, usuario, contrasena) VALUES (_nombre, _apellido, _usuario, _contrasena);
 
 END$$
 
+DROP PROCEDURE IF EXISTS `spSearchAllCliente`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllCliente` ()   BEGIN
+SELECT * FROM `cliente`;  
+END$$
+
 DROP PROCEDURE IF EXISTS `spSearchAllProducto`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProducto` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProducto` ()   BEGIN
 
 SELECT idProducto, descripProducto, cantProducto, costoProducto, idTipoProducto FROM producto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllProveedor`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProveedor` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProveedor` ()   BEGIN
 
 SELECT idProveedor, nombre, numeroTelefono, direccion FROM proveedor;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllTipoPro` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllTipoPro` ()   BEGIN
 
 SELECT idTipoProducto, descripcion FROM tipo_producto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUsuario` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUsuario` ()   BEGIN
 
 SELECT idUsuario, nombre, apellido, usuario, contrasena FROM usuarios;
 
 END$$
 
+DROP PROCEDURE IF EXISTS `spUpdateCliente`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateCliente` (IN `_idCliente` INT(4), IN `_nombre` VARCHAR(150), IN `_telefono` VARCHAR(50), IN `_celular` VARCHAR(50), IN `_direccion` VARCHAR(150))   BEGIN
+UPDATE cliente SET 
+nombre = _nombre, 
+telefono = _telefono, 
+celular = _celular, 
+direccion= _direccion
+WHERE 
+idCliente = _idCliente;
+END$$
+
 DROP PROCEDURE IF EXISTS `spUpdateProducto`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProducto` (IN `_idProducto` INT(10), IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProducto` (IN `_idProducto` INT(10), IN `_descripProducto` VARCHAR(150), IN `_cantProducto` INT(50), IN `_costoProducto` INT(50), IN `_idTipoProducto` INT(10))   BEGIN
 
 UPDATE `producto` SET descripProducto = _descripProducto,
 cantProducto = _cantProducto,
@@ -172,7 +201,7 @@ WHERE idProducto = _idProducto;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateProveedor`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProveedor` (IN `_idProveedor ` INT(10), IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateProveedor` (IN `_idProveedor ` INT(10), IN `_nombre` VARCHAR(150), IN `_numeroTelefono` VARCHAR(150), IN `_direccion` VARCHAR(150))   BEGIN
 
 UPDATE `proveedor` SET nombre = _nombre,
 numeroTelefono = _numeroTelefono,
@@ -182,7 +211,7 @@ WHERE idProveedor = _idProveedor;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateTipoPro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateTipoPro` (IN `_idTipoProducto` INT(10), IN `_descripcion` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateTipoPro` (IN `_idTipoProducto` INT(10), IN `_descripcion` VARCHAR(150))   BEGIN
 
 UPDATE `tipo_producto` SET descripcion = _descripcion
 WHERE idTipoProducto = _idTipoProducto;
@@ -190,7 +219,7 @@ WHERE idTipoProducto = _idTipoProducto;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_idUsuario` INT(10), IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_idUsuario` INT(10), IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))   BEGIN
 
 UPDATE `usuarios` SET nombre = _nombre,
 apellido = _apellido,
@@ -216,7 +245,15 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `celular` varchar(50) NOT NULL,
   `direccion` varchar(150) NOT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`idCliente`, `nombre`, `telefono`, `celular`, `direccion`) VALUES
+(3, 'Lucas', '4758756', '56456846', 'Cra 55A'),
+(5, 'maria', '347214545', '56565487', 'cll 35a');
 
 -- --------------------------------------------------------
 
@@ -271,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `idTipoProducto` int(10) NOT NULL,
   PRIMARY KEY (`idProducto`),
   KEY `idTipoProducto` (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
@@ -279,7 +316,8 @@ CREATE TABLE IF NOT EXISTS `producto` (
 
 INSERT INTO `producto` (`idProducto`, `descripProducto`, `cantProducto`, `costoProducto`, `idTipoProducto`) VALUES
 (1, 'Muslos - Friko', 20, 7800, 1),
-(2, 'Pechugas - Chickensi', 27, 9607, 1);
+(2, 'Pechugas - Chickensi', 27, 9607, 1),
+(5, 'pollaEspañola', 565555, 55555555, 1);
 
 -- --------------------------------------------------------
 
