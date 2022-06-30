@@ -71,6 +71,10 @@
 <script src="view/js/validationSalida.js"></script>
 <!-- Para realizar el CRUD de Salidas -->
 <script src="view/js/crudSalida.js"></script>
+<!-- Para validaciones de cliente -->
+<script src="view/js/validationCliente.js"></script>
+<!-- Para validaciones para crud Cliente -->
+<script src="view/js/crudCliente.js"></script>
 
 <!-- Diccionario de la datatable -->
 <script>
