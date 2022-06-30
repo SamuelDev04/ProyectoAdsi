@@ -1,7 +1,7 @@
 <?php
     class ClienteModel{
         private $idCliente;
-        private $nombreCliente;
+        private $nombre;
         private $telefono;
         private $celular;
         private $direccion;
@@ -9,7 +9,7 @@
         public function __construct($objDtoCliente)
         {
             $this -> idCliente = $objDtoCliente -> getIdCliente();
-            $this -> nombreCliente = $objDtoCliente -> getNombrecliente();
+            $this -> nombre = $objDtoCliente -> getNombreCliente();
             $this -> telefono = $objDtoCliente -> getTelefono();
             $this -> celular = $objDtoCliente -> getCelular();
             $this -> direccion = $objDtoCliente -> getDireccion();
@@ -22,7 +22,7 @@
             try {
                 $objCon = new Conexion();
                 $stmt = $objCon -> getConec() -> prepare($sql);
-                $stmt -> bindParam(1, $this -> nombreCliente,     PDO::PARAM_STR);
+                $stmt -> bindParam(1, $this -> nombre,     PDO::PARAM_STR);
                 $stmt -> bindParam(2, $this -> telefono, PDO::PARAM_STR);
                 $stmt -> bindParam(3, $this -> celular,    PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> direccion, PDO::PARAM_STR);
@@ -75,13 +75,13 @@
                 $objCon = new Conexion();
                 $stmt = $objCon -> getConec() -> prepare($sql);
                 $stmt -> bindParam(1, $this -> idCliente,     PDO::PARAM_INT);
-                $stmt -> bindParam(2, $this -> nombreCliente,     PDO::PARAM_STR);
+                $stmt -> bindParam(2, $this -> nombre,     PDO::PARAM_STR);
                 $stmt -> bindParam(3, $this -> telefono, PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> celular,    PDO::PARAM_STR);
                 $stmt -> bindParam(5, $this -> direccion, PDO::PARAM_STR);
                 $estado = $stmt -> execute();
             } catch (PDOexception $e) {
-                echo "Error al modificar Cliente " . $e -> getMessage();
+                echo "Error al modificar cliente " . $e -> getMessage();
             }
             return $estado;
         }

@@ -67,16 +67,16 @@
                     <select class="form-control" id="clienSal" name="clienSal">
                         <option value="" selected disabled hidden>Seleccione el cliente</option>
                         <?php
-                            $objCtrTipoProductoAll = new TipoProController();
+                            $objCtrClienteAll = new ClienteController();
 
-                            if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                            if (gettype($objCtrClienteAll -> getSearchAllCliente()) == 'boolean') {
                             echo '
                                 <option value="1">No hay datos que mostrar</option>
                             ';  
                             } else {
-                            foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
+                            foreach ($objCtrClienteAll -> getSearchAllCliente() as $key => $value) {
                                 echo '
-                                <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
+                                <option value='. $value["idCliente"] .'>'.$value["idCliente"]. "- " .$value["nombre"] .'</option>
                                 ';
                                 }
                             }
@@ -118,7 +118,7 @@
         </div>
         
         <br>
-        
+
         <div class="box-footer">
           <button class="btn btn-app bg-blue" type="submit" onclick="validateSalida(event)">
             <i class="fa fa-save"></i> Guardar
@@ -178,7 +178,7 @@
                     } else {
                       foreach ($objCtrSalidaAll -> getSearchAllSalida() as $key => $value) {
                         echo '
-                        <tr>
+                        <tr id="i" class="filafondo">
                           <td class="text-center">'. $value["idDetSalida"] .'</td>
                           <td class="text-center">'. $value["fechaSalida"] .'</td>
                           <td class="text-center">'. $value["cantidadSalida"] .'</td>

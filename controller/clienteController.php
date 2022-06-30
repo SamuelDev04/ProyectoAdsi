@@ -14,10 +14,10 @@ class ClienteController{
         return $respon;
     }
 
-    public function setInsertCliente($nombreCliente, $telefono, $celular, $direccion){
+    public function setInsertCliente($nombre, $telefono, $celular, $direccion){
         try {
             $objDtoCliente = new Cliente();
-            $objDtoCliente -> setNombreCliente($nombreCliente);
+            $objDtoCliente -> setNombreCliente($nombre);
             $objDtoCliente -> setTelefono($telefono);
             $objDtoCliente -> setCelular($celular);
             $objDtoCliente -> setDireccion($direccion);
@@ -40,11 +40,11 @@ class ClienteController{
         }
 
     }
-    public function setUpdateCliente($idCliente ,$nombreCliente, $telefono, $celular, $direccion){
+    public function setUpdateCliente($idCliente ,$nombre, $telefono, $celular, $direccion){
         try {
             $objDtoCliente = new Cliente();
             $objDtoCliente -> setIdCliente($idCliente);
-            $objDtoCliente -> setNombreCliente($nombreCliente);
+            $objDtoCliente -> setNombreCliente($nombre);
             $objDtoCliente -> setTelefono($telefono);
             $objDtoCliente -> setCelular($celular);
             $objDtoCliente -> setDireccion($direccion);
@@ -54,7 +54,7 @@ class ClienteController{
             if ($objDaoCliente -> mIdUpdateCliente()) {
                 echo "
                 <script>
-                location.replace('clientes');
+                    location.replace('clientes');
                 </script>";
             
             }
