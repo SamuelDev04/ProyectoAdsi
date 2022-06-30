@@ -13,6 +13,7 @@ class ClienteController{
 
         return $respon;
     }
+
     public function setInsertCliente($nombreCliente, $telefono, $celular, $direccion){
         try {
             $objDtoCliente = new Cliente();
@@ -33,11 +34,34 @@ class ClienteController{
                     })
                 </script>";
             }
-
+            
         } catch (Exception $e) {
             echo "Error en el controlador de insercion" .$e -> getMessage();
         }
 
+    }
+    public function setUpdateCliente($idCliente ,$nombreCliente, $telefono, $celular, $direccion){
+        try {
+            $objDtoCliente = new Cliente();
+            $objDtoCliente -> setIdCliente($idCliente);
+            $objDtoCliente -> setNombreCliente($nombreCliente);
+            $objDtoCliente -> setTelefono($telefono);
+            $objDtoCliente -> setCelular($celular);
+            $objDtoCliente -> setDireccion($direccion);
+
+            $objDaoCliente = new ClienteModel($objDtoCliente);
+
+            if ($objDaoCliente -> mIdUpdateCliente()) {
+                echo "
+                <script>
+                location.replace('clientes');
+                </script>";
+            
+            }
+
+        } catch(PDOException $e) {
+            echo "Error al modificar " .$e -> getMessage();
+        }
     }
 }
 ?>

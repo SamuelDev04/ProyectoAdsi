@@ -36,5 +36,25 @@ function eraseCliente(obj) {
                 'error'
             )
         }
+
     })
+}
+function getDataCliente(obj) {
+    let codigo = obj.children[0].innerHTML;
+    let nombre = obj.children[1].innerHTML;
+    let telefono = obj.children[2].innerHTML;
+    let celular = obj.children[3].innerHTML;
+    let direccion = obj.children[4].innerHTML;
+
+
+    document.getElementById('icodemc').value = codigo;
+    document.getElementById('sunombre').value = nombre;
+    document.getElementById('sutelefono').value = telefono;
+    document.getElementById('sucelular').value = celular;
+    document.getElementById('sudireccion').value = direccion;
+
+}
+function getGenerarReporteCliente(e) {
+    e.preventDefault();
+    window.open('view/module/allCliente.php', '_blank');
 }

@@ -74,7 +74,7 @@
           <button class="btn btn-app bg-blue" type="submit" onclick="validateCliente(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporte(event)">
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteCliente(event)">
             <i class="fa fa-print"></i> Reporte
           </button>
         </div>
@@ -137,7 +137,7 @@
                           <td class="text-center">'. $value["direccion"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="eraseCliente(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-social-icon bg-blue" onclick="getDataCliente(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
                         }
@@ -162,28 +162,28 @@
 
         <!-- Modal Header -->
         <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar usuario</h4>
+          <h4 class="modal-title">Modificar cliente</h4>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-        <form method="POST" id="modifiUsuario">
-          <input type="hidden" name="icodem" id="icodem">
+        <form method="POST" id="modifiElCliente">
+          <input type="hidden" name="icodemc" id="icodemc">
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Nombre</span>
-                <input id="inamem" name="inamem" type="text" class="form-control">
+                <input id="sunombre" name="sunombre" type="text" class="form-control">
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Apellido</span>
-                <input id="iapem" name="iapem" type="text" class="form-control">
+                <span class="input-group-addon">telefono</span>
+                <input id="sutelefono" name="sutelefono" type="number" class="form-control">
               </div>
             </div>
           </div>
@@ -193,16 +193,16 @@
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">Usuario</span>
-              <input id="iuserm" name="iuserm" type="text" class="form-control">
+              <span class="input-group-addon">celular</span>
+              <input id="sucelular" name="sucelular" type="number" class="form-control">
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">Contraseña</span>
-              <input id="icontram" name="icontram" type="password" class="form-control">
+              <span class="input-group-addon">direccion</span>
+              <input id="sudireccion" name="sudireccion" type="text" class="form-control">
             </div>
           </div>
           <!-- ./col -->
@@ -212,13 +212,13 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateMod(event)">
+          <button class="btn btn-google bg-blue" type="submit" onclick="validateModCliente(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
           <?php
-            if (isset($_POST['inamem'])){
-              $objCtrUser = new UsuarioController();
-              $objCtrUser -> setUpdateUsuario($_POST['icodem'], $_POST['inamem'], $_POST['iapem'], $_POST['iuserm'], $_POST['icontram']);
+            if (isset($_POST['sunombre'])){
+              $objCtrUser= new ClienteController();
+              $objCtrUser -> setUpdateCliente($_POST['icodemc'], $_POST['sunombre'], $_POST['sutelefono'], $_POST['sucelular'], $_POST['sudireccion']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
