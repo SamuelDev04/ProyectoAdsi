@@ -1,34 +1,34 @@
 <?php
-    class Salida{
-        private $idDetSalida;
-        private $fechaSalida;
-        private $cantidadSalida;
-        private $valorTotal;
-        private $idCliente;
+    class Entrada{
+        private $idDetEntrada;
+        private $fechaEntrada;
+        private $cantProEntrada;
+        private $precioEntrada;
+        private $idProveedor;
         private $idProducto;
 
         /***********************/
         /**      Getters      **/
         /***********************/
-        public function getIdDetSal()
+        public function getIdDetEnt()
         {
-            return $this -> idDetSalida;
+            return $this -> idDetEntrada;
         }
-        public function getFechaSal()
+        public function getFechaEnt()
         {
-            return $this -> fechaSalida;
+            return $this -> fechaEntrada;
         }
-        public function getCantSal()
+        public function getCantEnt()
         {
-            return $this -> cantidadSalida;
+            return $this -> cantProEntrada;
         }
-        public function getValTot()
+        public function getPrecioEnt()
         {
-            return $this -> valorTotal;
+            return $this -> precioEntrada;
         }
-        public function getIdCliente()
+        public function getIdProvee()
         {
-            return $this -> idCliente;
+            return $this -> idProveedor;
         }
         public function getIdProduc()
         {
@@ -38,17 +38,29 @@
         /***********************/
         /**      Setters      **/
         /***********************/
-        public function setIdDetSal($idDetSalida)
+        public function setIdDetEnt($idDetEntrada)
         {
-            $this -> idDetSalida = $idDetSalida;
+            $this -> idDetEntrada = $idDetEntrada;
         }
-        public function setFechaSal($fechaSalida)
+        public function setFechaEnt($fechaEntrada)
         {
-            $this -> fechaSalida = $fechaSalida;
+            $this -> fechaEntrada = $fechaEntrada;
         }
-        public function setCantSal($cantidadSalida)
+        public function setCantEnt($cantProEntrada)
         {
-            $this -> cantidadSalida = $cantidadSalida;
+            $this -> cantProEntrada = $cantProEntrada;
+        }
+        public function setPrecioEnt($precioEntrada)
+        {
+            $this -> precioEntrada = $precioEntrada;
+        }
+        public function setIdProvee($idProveedor)
+        {
+            $this -> idProveedor = $idProveedor;
+        }
+        public function setIdProduc($idProducto)
+        {
+            $this -> idProducto = $idProducto;
         }
     }
 
