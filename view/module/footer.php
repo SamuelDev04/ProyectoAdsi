@@ -67,26 +67,28 @@
 <script src="view/js/validationTipoPro.js"></script>
 <!-- Para realizar el CRUD de tipo producto -->
 <script src="view/js/crudTipoPro.js"></script>
+<!-- Para las validaciones de Salidas -->
+<script src="view/js/validationSalida.js"></script>
+<!-- Para realizar el CRUD de Salidas -->
+<script src="view/js/crudSalida.js"></script>
 <!-- Para validaciones de cliente -->
 <script src="view/js/validationCliente.js"></script>
 <!-- Para validaciones para crud Cliente -->
 <script src="view/js/crudCliente.js"></script>
 
-
-<!-- Para exportar la datatable -->
-
+<!-- Diccionario de la datatable -->
 <script>
   $(function () {
     $('#users').DataTable({
     language: {
         "decimal": "",
         "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ Datos",
+        "infoEmpty": "Mostrando 0 to 0 of 0 Datos",
         "infoFiltered": "(Filtrado de _MAX_ total entradas)",
         "infoPostFix": "",
         "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
+        "lengthMenu": "Mostrar _MENU_ Datos",
         "loadingRecords": "Cargando...",
         "processing": "Procesando...",
         "search": "Buscar:",

@@ -1,7 +1,7 @@
 <?php
     class Cliente{
         private $idCliente;
-        private $nombreCliente;
+        private $nombre;
         private $telefono;
         private $celular;
         private $direccion;
@@ -16,7 +16,7 @@
         }
         public function getNombreCliente()
         {
-            return $this -> nombreCliente;
+            return $this -> nombre;
         }
         public function getTelefono()
         {
@@ -39,9 +39,9 @@
         {
             $this -> idCliente = $idCliente;
         }
-        public function setNombreCliente($nombreCliente)
+        public function setNombreCliente($nombre)
         {
-            $this -> nombreCliente = $nombreCliente;
+            $this -> nombre = $nombre;
         }
         public function setTelefono($telefono)
         {

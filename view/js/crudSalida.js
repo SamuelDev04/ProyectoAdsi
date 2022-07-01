@@ -1,5 +1,5 @@
-function eraseProducto(obj) {
-    let codigoProducto = obj.children[0].innerHTML;
+function eraseSalida(obj) {
+    let codigoSalida = obj.children[0].innerHTML;
 
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -19,7 +19,7 @@ function eraseProducto(obj) {
         reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location = "index.php?ruta=eraseProducto&codigo=" + codigoProducto;
+            window.location = "index.php?ruta=eraseSalida&codigo=" + codigoSalida;
 
             /*swalWithBootstrapButtons.fire(
                 'Eliminado!',
@@ -39,23 +39,25 @@ function eraseProducto(obj) {
     })
 }
 
-function getDataProducto(obj) {
-    let codigoProducto = obj.children[0].innerHTML;
-    let descripcionProducto = obj.children[1].innerHTML;
-    let cantidadProducto = obj.children[2].innerHTML;
-    let costoProducto = obj.children[3].innerHTML;
-    let codigoTipoPro = obj.children[4].innerHTML;
+function getDataSalida(obj) {
+    let codigoSalida = obj.children[0].innerHTML;
+    let fechaSalida = obj.children[1].innerHTML;
+    let cantidadSalida = obj.children[2].innerHTML;
+    let valorTotalSal = obj.children[3].innerHTML;
+    let codigoCliente = obj.children[4].innerHTML;
+    let codigoProducto = obj.children[5].innerHTML;
 
 
-    document.getElementById('icodeProducm').value = codigoProducto;
-    document.getElementById('descripProm').value = descripcionProducto;
-    document.getElementById('cantProm').value = cantidadProducto;
-    document.getElementById('costProm').value = costoProducto;
-    document.getElementById('tipProm').value = codigoTipoPro;
+    document.getElementById('icodeSalidam').value = codigoSalida;
+    document.getElementById('fechaSalm').value = fechaSalida;
+    document.getElementById('cantSalm').value = cantidadSalida;
+    document.getElementById('valTotm').value = valorTotalSal;
+    document.getElementById('clienSalm').value = codigoCliente;
+    document.getElementById('prodSalm').value = codigoProducto;
 
 }
 
-function getGenerarReporteProducto(e) {
+function getGenerarReporteSalida(e) {
     e.preventDefault();
-    window.open('view/module/allProducto.php', '_blank');
+    window.open('view/module/allSalida.php', '_blank');
 }

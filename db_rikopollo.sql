@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_rikopollo`
 --
-CREATE DATABASE IF NOT EXISTS `db_rikopollo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `db_rikopollo`;
 
 DELIMITER $$
 --
@@ -237,9 +235,8 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE IF NOT EXISTS `cliente` (
-  `idCliente` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cliente` (
+  `idCliente` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `telefono` varchar(50) NOT NULL,
   `celular` varchar(50) NOT NULL,
@@ -261,17 +258,13 @@ INSERT INTO `cliente` (`idCliente`, `nombre`, `telefono`, `celular`, `direccion`
 -- Estructura de tabla para la tabla `detalle_entrada`
 --
 
-DROP TABLE IF EXISTS `detalle_entrada`;
-CREATE TABLE IF NOT EXISTS `detalle_entrada` (
+CREATE TABLE `detalle_entrada` (
   `idDetEntrada` int(10) NOT NULL,
   `fechaEntrada` date NOT NULL,
   `cantProEntrada` int(50) NOT NULL,
   `precioEntrada` int(50) NOT NULL,
   `idProveedor` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetEntrada`),
-  KEY `idProducto` (`idProducto`),
-  KEY `idProveedor` (`idProveedor`)
+  `idProducto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -280,17 +273,13 @@ CREATE TABLE IF NOT EXISTS `detalle_entrada` (
 -- Estructura de tabla para la tabla `detalle_salida`
 --
 
-DROP TABLE IF EXISTS `detalle_salida`;
-CREATE TABLE IF NOT EXISTS `detalle_salida` (
-  `idDetSalida` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detalle_salida` (
+  `idDetSalida` int(10) NOT NULL,
   `fechaSalida` date NOT NULL,
   `cantidadSalida` int(50) NOT NULL,
   `valorTotal` int(50) NOT NULL,
   `idCliente` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetSalida`),
-  KEY `idCliente` (`idCliente`),
-  KEY `idProducto` (`idProducto`)
+  `idProducto` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -299,9 +288,8 @@ CREATE TABLE IF NOT EXISTS `detalle_salida` (
 -- Estructura de tabla para la tabla `producto`
 --
 
-DROP TABLE IF EXISTS `producto`;
-CREATE TABLE IF NOT EXISTS `producto` (
-  `idProducto` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producto` (
+  `idProducto` int(10) NOT NULL,
   `descripProducto` varchar(150) NOT NULL,
   `cantProducto` int(50) NOT NULL,
   `costoProducto` int(50) NOT NULL,
@@ -325,13 +313,11 @@ INSERT INTO `producto` (`idProducto`, `descripProducto`, `cantProducto`, `costoP
 -- Estructura de tabla para la tabla `proveedor`
 --
 
-DROP TABLE IF EXISTS `proveedor`;
-CREATE TABLE IF NOT EXISTS `proveedor` (
-  `idProveedor` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `proveedor` (
+  `idProveedor` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `numeroTelefono` varchar(150) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idProveedor`)
+  `direccion` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -340,19 +326,17 @@ CREATE TABLE IF NOT EXISTS `proveedor` (
 -- Estructura de tabla para la tabla `tipo_producto`
 --
 
-DROP TABLE IF EXISTS `tipo_producto`;
-CREATE TABLE IF NOT EXISTS `tipo_producto` (
-  `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tipo_producto` (
+  `idTipoProducto` int(10) NOT NULL,
+  `descripcion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_producto`
 --
 
 INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
-(1, 'Muslos');
+(1, 'Pechuga');
 
 -- --------------------------------------------------------
 
@@ -360,15 +344,13 @@ INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `idUsuario` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `idUsuario` int(10) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `usuario` varchar(150) NOT NULL,
-  `contrasena` varchar(150) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `contrasena` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -377,6 +359,97 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`) VALUES
 (1, 'Samuel', 'Yepes', 'admin', '1234'),
 (2, 'Sebastian', 'Quiceno', 'admin2', '12345');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`);
+
+--
+-- Indices de la tabla `detalle_entrada`
+--
+ALTER TABLE `detalle_entrada`
+  ADD PRIMARY KEY (`idDetEntrada`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `idProveedor` (`idProveedor`);
+
+--
+-- Indices de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  ADD PRIMARY KEY (`idDetSalida`),
+  ADD KEY `idCliente` (`idCliente`),
+  ADD KEY `idProducto` (`idProducto`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`),
+  ADD KEY `idTipoProducto` (`idTipoProducto`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`idProveedor`);
+
+--
+-- Indices de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  ADD PRIMARY KEY (`idTipoProducto`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  MODIFY `idDetSalida` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `idProveedor` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  MODIFY `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

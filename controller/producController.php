@@ -62,7 +62,7 @@
                         </script>";
                 }
             } catch (PDOException $e) {
-                echo "Error al modificar la Producto parcero" . $e->getMessage();
+                echo "Error al modificar el producto " . $e->getMessage();
             }
         }
 

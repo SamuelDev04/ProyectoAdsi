@@ -7,8 +7,8 @@
         Productos
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-pencil"></i> Productos</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-th-list"></i> Productos</a></li>
       </ol>
     </section>
 
@@ -77,7 +77,7 @@
                       } else {
                         foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
                           echo '
-                            <option value='. $value["idTipoProducto"] .'>'. $value["descripcion"] .'</option>
+                            <option value='. $value["idTipoProducto"] .'>'. $value["idTipoProducto"] . "- " . $value["descripcion"] .'</option>
                             ';
                           }
                       }
@@ -96,8 +96,8 @@
           <a class="btn btn-app bg-gray" href="tipoProductos">
             <i class="glyphicon glyphicon-th-list"></i> Tipo producto
           </a>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteAprendiz(event)">
-            <i class="fa fa-print"></i> Reporte
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteProducto(event)">
+            <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
         <!-- /.box-footer-->
@@ -115,7 +115,7 @@
     <!-- Otro box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Usuarios</h3>
+        <h3 class="box-title">Productos</h3>
         
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -157,7 +157,7 @@
                           <td class="text-center">'. $value["costoProducto"] .'</td>
                           <td class="text-center">'. $value["idTipoProducto"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
@@ -235,7 +235,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button class="btn btn-google bg-blue" type="submit" onclick="validateProductoMod(event)">
-            <i class="fa fa-save"></i> Guardar
+            <i class="glyphicon glyphicon-ok-sign"></i> Guardar
           </button>
           <?php
           if (isset($_POST['descripProm'])) {
@@ -244,7 +244,7 @@
           }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
-            <i class="fa fa-close"></i> Cerrar
+            <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
           </button>
         </div>
 
