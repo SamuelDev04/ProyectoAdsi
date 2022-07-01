@@ -14,13 +14,18 @@ class EntradaController{
         return $respon;
     }
 
-    public function setInsertEntrada($nombreEntrada, $telefono, $celular, $direccion){
+    public function setInsertEntrada($nombreEntrada, $idDetEntrada, $fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
         try {
             $objDtoEntrada = new Entrada();
             $objDtoEntrada -> setNombreEntrada($nombreEntrada);
-            $objDtoEntrada -> setTelefono($telefono);
-            $objDtoEntrada -> setCelular($celular);
-            $objDtoEntrada -> setDireccion($direccion);
+            $objDtoEntrada -> setIdDetEnt($idDetEntrada);
+            $objDtoEntrada -> setFechaEnt($fechaEntrada);
+            $objDtoEntrada -> setCantEnt($cantProEntrada);
+            $objDtoEntrada -> setPrecioEnt($precioEntrada);
+            $objDtoEntrada -> setIdProvee($idProveedor);
+            $objDtoEntrada -> setIdProduc($idProducto);
+
+
 
             $objDaoEntrada = new EntradaModel($objDtoEntrada);
 
@@ -40,14 +45,16 @@ class EntradaController{
         }
 
     }
-    public function setUpdateEntrada($idEntrada ,$nombreEntrada, $telefono, $celular, $direccion){
+    public function setUpdateEntrada($idDetEntrada ,$fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
         try {
             $objDtoEntrada = new Entrada();
-            $objDtoEntrada -> setIdEntrada($idEntrada);
-            $objDtoEntrada -> setNombreEntrada($nombreEntrada);
-            $objDtoEntrada -> setTelefono($telefono);
-            $objDtoEntrada -> setCelular($celular);
-            $objDtoEntrada -> setDireccion($direccion);
+            $objDtoEntrada -> setIdDetEnt($idDetEntrada);
+            $objDtoEntrada -> setFechaEnt($fechaEntrada);
+            $objDtoEntrada -> setCantEnt($cantProEntrada);
+            $objDtoEntrada -> setPrecioEnt($precioEntrada);
+            $objDtoEntrada -> setIdProvee($idProveedor);
+            $objDtoEntrada -> setIdProduc($idProducto);
+            
 
             $objDaoEntrada = new EntradaModel($objDtoEntrada);
 

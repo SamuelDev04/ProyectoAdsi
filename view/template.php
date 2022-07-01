@@ -21,6 +21,9 @@
             case 'salidas':
                 include_once("view/module/salida.php");
                 break;
+            case 'entradas':
+                include_once("view/module/entrada.php");
+                break;
             case 'erase':
                 include_once("view/module/erase.php");
                 break;
