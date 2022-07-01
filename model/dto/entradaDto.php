@@ -36,7 +36,7 @@
         }
 
         /***********************/
-        /**      Setters      **/
+        /***      Setters      ***/
         /***********************/
         public function setIdDetEnt($idDetEntrada)
         {
