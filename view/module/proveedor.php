@@ -153,29 +153,29 @@
 
         <!-- Modal Header -->
         <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar producto</h4>
+          <h4 class="modal-title">Modificar proveedores</h4>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-          <form method="POST" id="formularioProductom">
-            <input type="hidden" name="icodeProducm" id="icodeProducm">
+          <form method="POST" id="formularioProveedorm">
+            <input type="hidden" name="icodeProveedorm" id="icodeProveedorm">
 
             <!-- ROW 1 MOD CONTIENE NOMBRE Y FECHA DE NACIMIENTO-->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Descripcion Producto</span>
-                  <input id="descripProm" name="descripProm" type="text" class="form-control">
+                  <span class="input-group-addon">Nombre</span>
+                  <input id="nombreProm" name="nombreProm" type="text" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Cantidad Producto</span>
-                  <input id="cantProm" name="cantProm" type="number" class="form-control">
+                  <span class="input-group-addon">Numero de Telefono</span>
+                  <input id="numTelm" name="numTelm" type="number" class="form-control">
                 </div>
               </div>
             </div>
@@ -185,19 +185,10 @@
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Costo Producto</span>
-                  <input id="costProm" name="costProm" type="number" class="form-control">
+                  <span class="input-group-addon">Direccion</span>
+                  <input id="dirProm" name="dirProm" type="number" class="form-control">
                 </div>
               </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Tipo Producto</span>
-                  <input id="tipProm" name="tipProm" type="number" class="form-control">
-                </div>
-              </div>
-              <!-- ./col -->
             </div>
           </form>
         </div>
@@ -209,8 +200,8 @@
           </button>
           <?php
           if (isset($_POST['descripProm'])) {
-            $objCtrProducto = new ProductoController();
-            $objCtrProducto -> setUpdateProducto($_POST['icodeProducm'], $_POST['descripProm'], $_POST['cantProm'], $_POST['costProm'], $_POST['tipProm']);
+            $objCtrProveedor = new proveedorController();
+            $objCtrProveedor -> setUpdateProveedor($_POST['nombreProm'], $_POST['numTelm'], $_POST['dirProm'], $_POST[''], $_POST['']);
           }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

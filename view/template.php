@@ -30,6 +30,9 @@
             case 'eraseTipoProducto':
                 include_once("view/module/eraseTipoProducto.php");
                 break;
+            case 'eraseProveedor':
+                include_once("view/module/eraseProveedor.php");
+                break;    
             
             default:
                 include_once("view/module/presentation.php");
