@@ -14,10 +14,9 @@ class EntradaController{
         return $respon;
     }
 
-    public function setInsertEntrada($nombreEntrada, $idDetEntrada, $fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
+    public function setInsertEntrada($idDetEntrada, $fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
         try {
             $objDtoEntrada = new Entrada();
-            $objDtoEntrada -> setNombreEntrada($nombreEntrada);
             $objDtoEntrada -> setIdDetEnt($idDetEntrada);
             $objDtoEntrada -> setFechaEnt($fechaEntrada);
             $objDtoEntrada -> setCantEnt($cantProEntrada);
