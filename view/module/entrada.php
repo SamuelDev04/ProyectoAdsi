@@ -1,14 +1,14 @@
-<input type="hidden" id="icode" name="icode">
+<input type="hidden" id="nomEnt" name="nomEnt">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Sebastian Salas Papasito hermoso
+        Entradas
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Entradas</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-user"></i>Entradas</a></li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Ingreso de Entradas</h3>
+          <h3 class="box-title">Entrada de Productos</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -28,53 +28,56 @@
         </div>
         
       <div class="box-body">  
-      <form method="POST" id="formuCliente">
+      <form method="POST" id="formuEntrada">
 
           <!-- ROW 1 -->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">NombreEntrada</span>
-                  <input id="inamec" name="inamec" type="text" class="form-control">
+                  <span class="input-group-addon">Nombre Entrada</span>
+                  <input id="nomEnt" name="nomEnt" type="text" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">IdDetalleEntrada</span>
-                  <input id="tele" name="tele" type="number" class="form-control">
+                  <span class="input-group-addon">IdDetalle Entrada</span>
+                  <input id="detEnt" name="detEnt" type="number" class="form-control">
                 </div>
               </div>
             </div>
+          
           <br>
           <!-- ROW 2 -->
-          <div class="row">
-            <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
-              <div class="input-group">
-                <span class="input-group-addon">FechaEntrada</span>
-                <input id="cel" name="cel" type="number" class="form-control">
+            <div class="row">
+              <div class="col-lg-6 col-xs-6">
+                <!-- small box -->
+                <div class="input-group">
+                  <span class="input-group-addon">Fecha Entrada</span>
+                  <input id="fechEnt" name="fechEnt" type="number" class="form-control">
+                </div>
               </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
-              <div class="input-group">
-                <span class="input-group-addon">CantidadEntrada</span>
-                <input id="direc" name="direc" type="text" class="form-control">
+              <!-- ./col -->
+              <div class="col-lg-6 col-xs-6">
+                <!-- small box -->
+                <div class="input-group">
+                  <span class="input-group-addon">Cantidad Entrada</span>
+                  <input id="cantEnt" name="cantEnt" type="number" class="form-control">
+                </div>
               </div>
+              <!-- ./col -->
             </div>
-            <!-- ./col -->
-          </div>
           <br>
+          
         <!-- /.box-body -->
+
         <div class="box-footer">
-          <button class="btn btn-app bg-blue" type="submit" onclick="validateCliente(event)">
+          <button class="btn btn-app bg-blue" type="submit" onclick="validateEntrada(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteCliente(event)">
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteEntrada(event)">
             <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
@@ -82,19 +85,19 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['inamec'])){
-          $objCtrUser = new ClienteController();
-          $objCtrUser -> setInsertCliente($_POST['inamec'], $_POST['tele'], $_POST['cel'], $_POST['direc']);
+        if (isset($_POST['nomEnt'])){
+          $objCtrEntrada = new EntradaController();
+          $objCtrEntrada -> setInsertEntrada($_POST['nomEnt'], $_POST['detEnt'], $_POST['fechEnt'], $_POST['cantEnt']);
         }
       ?>
-
+      
     </div>
-    <!-- /.box -->
+      <!-- /.box -->
 
     <!-- Otro box -->
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title">Clientes</h3>
+        <h3 class="box-title">Entradas</h3>
         
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -109,10 +112,11 @@
                 <!-- Este tr sirve para los títulos -->
                 <tr>
                   <th class="text-center">Codigo</th>
-                  <th class="text-center">Nombre</th>
-                  <th class="text-center">Telefono</th>
-                  <th class="text-center">Celular</th>
-                  <th class="text-center">Direccion</th>
+                  <th class="text-center">Fecha</th>
+                  <th class="text-center">Cantidad</th>
+                  <th class="text-center">Precio</th>
+                  <th class="text-center">IdProveedor</th>
+                  <th class="text-center">IdProducto</th>
                   <th class="text-center">Acciones</th>
                 </tr>
               </thead>
@@ -120,24 +124,25 @@
                 <form action="" method="post">
                   <?php
 
-                    $objCtrUserAll = new ClienteController();
-                    if (gettype($objCtrUserAll -> getSearchAllCliente()) == 'boolean') {
+                    $objCtrEntradaAll = new EntradaController();
+                    if (gettype($objCtrEntradaAll -> getSearchAllEntrada()) == 'boolean') {
                       echo '
                       <tr>
                         <td colspan = "5">No hay datos que mostrar</td>
                       </tr>';  
                     } else {
-                      foreach ($objCtrUserAll -> getSearchAllCliente() as $key => $value) {
+                      foreach ($objCtrEntradaAll -> getSearchAllEntrada() as $key => $value) {
                         echo '
                         <tr>
-                          <td class="text-center">'. $value["idCliente"] .'</td>
-                          <td class="text-center">'. $value["nombre"] .'</td>
-                          <td class="text-center">'. $value["telefono"] .'</td>
-                          <td class="text-center">'. $value["celular"] .'</td>
-                          <td class="text-center">'. $value["direccion"] .'</td>
+                          <td class="text-center">'. $value["idDetEntrada"] .'</td>
+                          <td class="text-center">'. $value["fechaEntrada"] .'</td>
+                          <td class="text-center">'. $value["cantProEntrada"] .'</td>
+                          <td class="text-center">'. $value["precioEntrada"] .'</td>
+                          <td class="text-center">'. $value["idProveedor"] .'</td>
+                          <td class="text-center">'. $value["idProducto"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseCliente(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getDataCliente(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseEntrada(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                            <button class="btn btn-social-icon bg-blue" onclick="getDataEntrada(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
                         }
@@ -162,63 +167,76 @@
 
         <!-- Modal Header -->
         <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar cliente</h4>
+          <h4 class="modal-title">Modificar entrada</h4>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-        <form method="POST" id="modifiElCliente">
-          <input type="hidden" name="icodemc" id="icodemc">
+        <form method="POST" id="modifiEntrada">
+          <input type="hidden" name="idEntradam" id="idEntradam">
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Nombre</span>
-                <input id="sunombre" name="sunombre" type="text" class="form-control">
+                <span class="input-group-addon">Fecha Entrada</span>
+                <input id="fechaEntradam" name="fechaEntradam" type="date" class="form-control">
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">telefono</span>
-                <input id="sutelefono" name="sutelefono" type="number" class="form-control">
+                <span class="input-group-addon">CantidadProEnt</span>
+                <input id="cantProEntradam" name="cantProEntradam" type="number" class="form-control">
               </div>
             </div>
           </div>
-        <br>
+          <br>
         <!-- ROW 2 -->
-        <div class="row">
-          <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
-            <div class="input-group">
-              <span class="input-group-addon">celular</span>
-              <input id="sucelular" name="sucelular" type="number" class="form-control">
+          <div class="row">
+            <div class="col-lg-6 col-xs-6">
+              <!-- small box -->
+              <div class="input-group">
+                <span class="input-group-addon">Precio Entrada</span>
+                <input id="precioEntm" name="precioEntm" type="number" class="form-control">
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-6 col-xs-6">
+              <!-- small box -->
+              <div class="input-group">
+                <span class="input-group-addon">Id Proveedor</span>
+                <input id="idProveedorm" name="idProveedorm" type="number" class="form-control">
+              </div>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
-            <div class="input-group">
-              <span class="input-group-addon">direccion</span>
-              <input id="sudireccion" name="sudireccion" type="text" class="form-control">
+          <br>
+        
+        <!-- ROW 3 -->
+            <div class="row">
+              <div class="col-lg-6 col-xs-6">
+                <!-- small box -->
+                <div class="input-group">
+                  <span class="input-group-addon">Id Producto</span>
+                  <input id="idProductom" name="idProductom" type="number" class="form-control">
+                </div>
+              </div>
             </div>
-          </div>
-          <!-- ./col -->
-        </div>
+          <br>
         </form>
         </div>
 
+
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateModCliente(event)">
+          <button class="btn btn-google bg-blue" type="submit" onclick="validateModEntrada(event)">
             <i class="glyphicon glyphicon-ok-sign"></i> Guardar
           </button>
           <?php
-            if (isset($_POST['sunombre'])){
-              $objCtrUser= new ClienteController();
-              $objCtrUser -> setUpdateCliente($_POST['icodemc'], $_POST['sunombre'], $_POST['sutelefono'], $_POST['sucelular'], $_POST['sudireccion']);
+            if (isset($_POST['idEntradam'])){
+              $objCtrEntrada= new EntradaController();
+              $objCtrEntrada -> setUpdateEntrada($_POST['idEntradam'], $_POST['fechaEntradam'], $_POST['cantProEntradam'], $_POST['precioEntradam'], $_POST['idProveedorm'], $_POST['idProductom']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
