@@ -56,8 +56,3 @@ function getDataEntrada(obj) {
     document.getElementById('idProductom').value = idProducto;
 
 }
-
-function getGenerarReporteEntrada(e) {
-    e.preventDefault();
-    window.open('view/module/allEntrada.php', '_blank');
-}

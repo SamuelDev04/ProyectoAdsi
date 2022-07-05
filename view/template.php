@@ -39,6 +39,9 @@
             case 'eraseSalida':
                 include_once("view/module/eraseSalida.php");
                 break;
+            case 'eraseEntrada':
+                include_once("view/module/eraseEntrada.php");
+                break;
             default:
                 include_once("view/module/presentation.php");
                 break;
