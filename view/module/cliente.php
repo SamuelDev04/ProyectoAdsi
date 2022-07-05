@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Usuarios
+        Cliente
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
       </ol>
     </section>
 
@@ -18,7 +18,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Ingreso de usuarios</h3>
+          <h3 class="box-title">Ingreso de Clientes</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -28,7 +28,7 @@
         </div>
         
       <div class="box-body">  
-      <form method="POST" id="formu">
+      <form method="POST" id="formuCliente">
 
           <!-- ROW 1 -->
             <div class="row">
@@ -36,15 +36,15 @@
                 <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Nombre</span>
-                  <input id="iname" name="iname" type="text" class="form-control">
+                  <input id="inamec" name="inamec" type="text" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Apellido</span>
-                  <input id="iape" name="iape" type="text" class="form-control">
+                  <span class="input-group-addon">Telefono</span>
+                  <input id="tele" name="tele" type="number" class="form-control">
                 </div>
               </div>
             </div>
@@ -54,16 +54,16 @@
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Usuario</span>
-                <input id="iuser" name="iuser" type="text" class="form-control">
+                <span class="input-group-addon">celular</span>
+                <input id="cel" name="cel" type="number" class="form-control">
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Contraseña</span>
-                <input id="icontra" name="icontra" type="password" class="form-control">
+                <span class="input-group-addon">direccion</span>
+                <input id="direc" name="direc" type="text" class="form-control">
               </div>
             </div>
             <!-- ./col -->
@@ -71,10 +71,10 @@
           <br>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button class="btn btn-app bg-blue" type="submit" onclick="validate(event)">
+          <button class="btn btn-app bg-blue" type="submit" onclick="validateCliente(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporte(event)">
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteCliente(event)">
             <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
@@ -82,19 +82,19 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['iname'])){
-          $objCtrUser = new UsuarioController();
-          $objCtrUser -> setInsertUsuario($_POST['iname'], $_POST['iape'], $_POST['iuser'], $_POST['icontra']);
+        if (isset($_POST['inamec'])){
+          $objCtrUser = new ClienteController();
+          $objCtrUser -> setInsertCliente($_POST['inamec'], $_POST['tele'], $_POST['cel'], $_POST['direc']);
         }
       ?>
 
     </div>
     <!-- /.box -->
 
-      <!-- Otro box -->
-      <div class="box">
-        <div class="box-header with-border">
-        <h3 class="box-title">Usuarios</h3>
+    <!-- Otro box -->
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Clientes</h3>
         
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -110,9 +110,9 @@
                 <tr>
                   <th class="text-center">Codigo</th>
                   <th class="text-center">Nombre</th>
-                  <th class="text-center">Apellido</th>
-                  <th class="text-center">Usuario</th>
-                  <th class="text-center">Contraseña</th>
+                  <th class="text-center">Telefono</th>
+                  <th class="text-center">Celular</th>
+                  <th class="text-center">Direccion</th>
                   <th class="text-center">Acciones</th>
                 </tr>
               </thead>
@@ -120,24 +120,24 @@
                 <form action="" method="post">
                   <?php
 
-                    $objCtrUserAll = new UsuarioController();
-                    if (gettype($objCtrUserAll -> getSearchAllUsuario()) == 'boolean') {
+                    $objCtrUserAll = new ClienteController();
+                    if (gettype($objCtrUserAll -> getSearchAllCliente()) == 'boolean') {
                       echo '
                       <tr>
                         <td colspan = "5">No hay datos que mostrar</td>
                       </tr>';  
                     } else {
-                      foreach ($objCtrUserAll -> getSearchAllUsuario() as $key => $value) {
+                      foreach ($objCtrUserAll -> getSearchAllCliente() as $key => $value) {
                         echo '
                         <tr>
-                          <td class="text-center">'. $value["idUsuario"] .'</td>
+                          <td class="text-center">'. $value["idCliente"] .'</td>
                           <td class="text-center">'. $value["nombre"] .'</td>
-                          <td class="text-center">'. $value["apellido"] .'</td>
-                          <td class="text-center">'. $value["usuario"] .'</td>
-                          <td class="text-center">'. $value["contrasena"] .'</td>
+                          <td class="text-center">'. $value["telefono"] .'</td>
+                          <td class="text-center">'. $value["celular"] .'</td>
+                          <td class="text-center">'. $value["direccion"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="erase(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseCliente(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                            <button class="btn btn-social-icon bg-blue" onclick="getDataCliente(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
                         }
@@ -162,28 +162,28 @@
 
         <!-- Modal Header -->
         <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar usuario</h4>
+          <h4 class="modal-title">Modificar cliente</h4>
         </div>
 
         <!-- Modal body -->
         <div class="modal-body">
-        <form method="POST" id="modifiUsuario">
-          <input type="hidden" name="icodem" id="icodem">
+        <form method="POST" id="modifiElCliente">
+          <input type="hidden" name="icodemc" id="icodemc">
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Nombre</span>
-                <input id="inamem" name="inamem" type="text" class="form-control">
+                <input id="sunombre" name="sunombre" type="text" class="form-control">
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Apellido</span>
-                <input id="iapem" name="iapem" type="text" class="form-control">
+                <span class="input-group-addon">telefono</span>
+                <input id="sutelefono" name="sutelefono" type="number" class="form-control">
               </div>
             </div>
           </div>
@@ -193,16 +193,16 @@
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">Usuario</span>
-              <input id="iuserm" name="iuserm" type="text" class="form-control">
+              <span class="input-group-addon">celular</span>
+              <input id="sucelular" name="sucelular" type="number" class="form-control">
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">Contraseña</span>
-              <input id="icontram" name="icontram" type="password" class="form-control">
+              <span class="input-group-addon">direccion</span>
+              <input id="sudireccion" name="sudireccion" type="text" class="form-control">
             </div>
           </div>
           <!-- ./col -->
@@ -212,13 +212,13 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateMod(event)">
+          <button class="btn btn-google bg-blue" type="submit" onclick="validateModCliente(event)">
             <i class="glyphicon glyphicon-ok-sign"></i> Guardar
           </button>
           <?php
-            if (isset($_POST['inamem'])){
-              $objCtrUser = new UsuarioController();
-              $objCtrUser -> setUpdateUsuario($_POST['icodem'], $_POST['inamem'], $_POST['iapem'], $_POST['iuserm'], $_POST['icontram']);
+            if (isset($_POST['sunombre'])){
+              $objCtrUser= new ClienteController();
+              $objCtrUser -> setUpdateCliente($_POST['icodemc'], $_POST['sunombre'], $_POST['sutelefono'], $_POST['sucelular'], $_POST['sudireccion']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

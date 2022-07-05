@@ -9,20 +9,28 @@
             case 'usuario':
                 include_once("view/module/usuario.php");
                 break;
+            case 'clientes':
+                include_once("view/module/cliente.php");
+                break;
             case 'productos':
                 include_once("view/module/producto.php");
-                break;
-            case 'salidas':
-                include_once("view/module/salida.php");
                 break;
             case 'tipoProductos':
                 include_once("view/module/tipoProducto.php");
                 break;
             case 'proveedores':
                 include_once("view/module/proveedor.php");
+            case 'salidas':
+                include_once("view/module/salida.php");
+                break;
+            case 'entradas':
+                include_once("view/module/entrada.php");
                 break;
             case 'erase':
                 include_once("view/module/erase.php");
+                break;
+            case 'eraseClientes':
+                include_once("view/module/eraseCliente.php");
                 break;
             case 'eraseProducto':
                 include_once("view/module/eraseProducto.php");
@@ -34,6 +42,12 @@
                 include_once("view/module/eraseProveedor.php");
                 break;    
             
+            case 'eraseSalida':
+                include_once("view/module/eraseSalida.php");
+                break;
+            case 'eraseEntrada':
+                include_once("view/module/eraseEntrada.php");
+                break;
             default:
                 include_once("view/module/presentation.php");
                 break;

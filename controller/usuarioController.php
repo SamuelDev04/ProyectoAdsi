@@ -21,6 +21,8 @@
                     ";
                 }else{
                     $_SESSION['login'] = false;
+                    $varNom = $objDaoUsuario -> getQueryLogin() -> fetch();
+                    $_SESSION['name'] = $varNom[1];
                     header('location:index.php');
                 }
 
