@@ -35,16 +35,16 @@
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Nombre Entrada</span>
-                  <input id="nomEnt" name="nomEnt" type="text" class="form-control">
+                  <span class="input-group-addon">Fecha Entrada</span>
+                  <input id="fechaEnt" name="fechaEnt" type="date" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">IdDetalle Entrada</span>
-                  <input id="detEnt" name="detEnt" type="number" class="form-control">
+                  <span class="input-group-addon">Cantidad Entrada</span>
+                  <input id="cantidadEnt" name="cantidadEnt" type="number" class="form-control">
                 </div>
               </div>
             </div>
@@ -55,22 +55,67 @@
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Fecha Entrada</span>
-                  <input id="fechEnt" name="fechEnt" type="number" class="form-control">
+                  <span class="input-group-addon">Precio Entrada</span>
+                  <input id="precioEnt" name="precioEnt" type="number" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
               <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Cantidad Entrada</span>
-                  <input id="cantEnt" name="cantEnt" type="number" class="form-control">
+                    <span class="input-group-addon">Proveedor</span>
+                    <select class="form-control" id="proveedorEnt" name="proveedorEnt">
+                        <option value="" selected disabled hidden>Seleccione el proveedor</option>
+                        <?php
+                            $objCtrProveedorAll = new ProveedorController();
+ 
+                            if (gettype($objCtrProveedorAll -> getSearchAllProveedor()) == 'boolean') {
+                            echo '
+                                <option value="1">No hay datos que mostrar</option>
+                            ';  
+                            } else {
+                            foreach ($objCtrProveedorAll -> getSearchAllProveedor() as $key => $value) {
+                                echo '
+                                <option value='. $value["idProveeedor"] .'>'.$value["idProveeedor"]. "- " .$value["nombre"] .'</option>
+                                ';
+                                }
+                            }
+                        ?>
+                    </select>
                 </div>
-              </div>
+            </div>
               <!-- ./col -->
             </div>
           <br>
-          
+          <!-- ROW 3 -->
+          <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <!-- small box -->
+                <div class="input-group">
+                    <span class="input-group-addon">Producto</span>
+                    <select class="form-control" id="prodSal" name="prodSal">
+                    <option value="" selected disabled hidden>Seleccione el producto</option>
+                    <?php
+                        $objCtrProductoAll = new ProductoController();
+
+                        if (gettype($objCtrProductoAll -> getSearchAllProducto()) == 'boolean') {
+                        echo '
+                            <option value="1">No hay datos que mostrar</option>
+                        ';  
+                        } else {
+                        foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
+                            echo '
+                            <option value='. $value["idProducto"] .'>'.$value["idProducto"]. "- " .$value["descripProducto"] .'</option>
+                            ';
+                            }
+                        }
+                    ?>
+                    </select>
+                    <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
+                </div>
+            </div>
+        </div>
+          <br>
         <!-- /.box-body -->
 
         <div class="box-footer">
