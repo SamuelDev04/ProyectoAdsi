@@ -14,10 +14,9 @@ class EntradaController{
         return $respon;
     }
 
-    public function setInsertEntrada($idDetEntrada, $fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
+    public function setInsertEntrada( $fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
         try {
             $objDtoEntrada = new Entrada();
-            $objDtoEntrada -> setIdDetEnt($idDetEntrada);
             $objDtoEntrada -> setFechaEnt($fechaEntrada);
             $objDtoEntrada -> setCantEnt($cantProEntrada);
             $objDtoEntrada -> setPrecioEnt($precioEntrada);
@@ -32,7 +31,7 @@ class EntradaController{
                 echo "<script>
                     Swal.fire({
                         icon: 'success',
-                        title: 'El usuario se ha guardado',
+                        title: 'La entrada se ha guardado',
                         showConfirmButton: false,
                         timer: 1500
                     })

@@ -65,7 +65,7 @@
                 <div class="input-group">
                     <span class="input-group-addon">Proveedor</span>
                     <select class="form-control" id="proveedorEnt" name="proveedorEnt">
-                        <option value="" selected disabled hidden>Seleccione el proveedor</option>
+                        <option value="" selected disabled hidden>Seleccione el Proveedor</option>
                         <?php
                             $objCtrProveedorAll = new ProveedorController();
  
@@ -76,7 +76,7 @@
                             } else {
                             foreach ($objCtrProveedorAll -> getSearchAllProveedor() as $key => $value) {
                                 echo '
-                                <option value='. $value["idProveeedor"] .'>'.$value["idProveeedor"]. "- " .$value["nombre"] .'</option>
+                                <option value='. $value["idProveedor"] .'>'.$value["idProveedor"]. "- " .$value["nombre"] .'</option>
                                 ';
                                 }
                             }
@@ -93,7 +93,7 @@
                 <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Producto</span>
-                    <select class="form-control" id="prodSal" name="prodSal">
+                    <select class="form-control" id="prodEnt" name="prodEnt">
                     <option value="" selected disabled hidden>Seleccione el producto</option>
                     <?php
                         $objCtrProductoAll = new ProductoController();
@@ -130,9 +130,9 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['nomEnt'])){
+        if (isset($_POST['fechaEnt'])){
           $objCtrEntrada = new EntradaController();
-          $objCtrEntrada -> setInsertEntrada($_POST['nomEnt'], $_POST['detEnt'], $_POST['fechEnt'], $_POST['cantEnt']);
+          $objCtrEntrada -> setInsertEntrada($_POST['fechaEnt'], $_POST['cantidadEnt'], $_POST['precioEnt'], $_POST['proveedorEnt'], $_POST['prodEnt']);
         }
       ?>
       
@@ -160,8 +160,8 @@
                   <th class="text-center">Fecha</th>
                   <th class="text-center">Cantidad</th>
                   <th class="text-center">Precio</th>
-                  <th class="text-center">IdProveedor</th>
-                  <th class="text-center">IdProducto</th>
+                  <th class="text-center">Proveedor</th>
+                  <th class="text-center">Producto</th>
                   <th class="text-center">Acciones</th>
                 </tr>
               </thead>
@@ -232,8 +232,8 @@
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">CantidadProEnt</span>
-                <input id="cantProEntradam" name="cantProEntradam" type="number" class="form-control">
+                <span class="input-group-addon">Cantidad Entrada</span>
+                <input id="cantidadEntm" name="cantidadEntm" type="number" class="form-control">
               </div>
             </div>
           </div>
@@ -249,25 +249,60 @@
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
-              <div class="input-group">
-                <span class="input-group-addon">Id Proveedor</span>
-                <input id="idProveedorm" name="idProveedorm" type="number" class="form-control">
-              </div>
+                <!-- small box -->
+                <div class="input-group">
+                    <span class="input-group-addon">Proveedor</span>
+                    <select class="form-control" id="proveedorEntm" name="proveedorEntm">
+                        <option value="" selected disabled hidden>Seleccione el Proveedor</option>
+                        <?php
+                            $objCtrProveedorAll = new ProveedorController();
+ 
+                            if (gettype($objCtrProveedorAll -> getSearchAllProveedor()) == 'boolean') {
+                            echo '
+                                <option value="1">No hay datos que mostrar</option>
+                            ';  
+                            } else {
+                            foreach ($objCtrProveedorAll -> getSearchAllProveedor() as $key => $value) {
+                                echo '
+                                <option value='. $value["idProveedor"] .'>'.$value["idProveedor"]. "- " .$value["nombre"] .'</option>
+                                ';
+                                }
+                            }
+                        ?>
+                    </select>
+                </div>
             </div>
           </div>
           <br>
         
         <!-- ROW 3 -->
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
                 <!-- small box -->
                 <div class="input-group">
-                  <span class="input-group-addon">Id Producto</span>
-                  <input id="idProductom" name="idProductom" type="number" class="form-control">
+                    <span class="input-group-addon">Producto</span>
+                    <select class="form-control" id="prodEntm" name="prodEntm">
+                    <option value="" selected disabled hidden>Seleccione el producto</option>
+                    <?php
+                        $objCtrProductoAll = new ProductoController();
+
+                        if (gettype($objCtrProductoAll -> getSearchAllProducto()) == 'boolean') {
+                        echo '
+                            <option value="1">No hay datos que mostrar</option>
+                        ';  
+                        } else {
+                        foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
+                            echo '
+                            <option value='. $value["idProducto"] .'>'.$value["idProducto"]. "- " .$value["descripProducto"] .'</option>
+                            ';
+                            }
+                        }
+                    ?>
+                    </select>
+                    <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
                 </div>
-              </div>
             </div>
+        </div>
           <br>
         </form>
         </div>
@@ -281,7 +316,7 @@
           <?php
             if (isset($_POST['idEntradam'])){
               $objCtrEntrada= new EntradaController();
-              $objCtrEntrada -> setUpdateEntrada($_POST['idEntradam'], $_POST['fechaEntradam'], $_POST['cantProEntradam'], $_POST['precioEntm'], $_POST['idProveedorm'], $_POST['idProductom']);
+              $objCtrEntrada -> setUpdateEntrada($_POST['idEntradam'], $_POST['fechaEntradam'], $_POST['cantidadEntm'], $_POST['precioEntm'], $_POST['proveedorEntm'], $_POST['prodEntm']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

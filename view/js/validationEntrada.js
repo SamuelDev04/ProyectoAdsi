@@ -3,10 +3,10 @@ function validateModEntrada(e) {
     formulario = document.getElementById('modifiEntrada');
     codigo = document.getElementById('idEntradam');
     fecha = document.getElementById('fechaEntradam');
-    cantidad = document.getElementById('cantProEntradam');
+    cantidad = document.getElementById('cantidadEntm');
     precio = document.getElementById('precioEntm');
-    idProveedor = document.getElementById('idProveedorm');
-    idProducto = document.getElementById('idProductom');
+    idProveedor = document.getElementById('proveedorEntm');
+    idProducto = document.getElementById('prodEntm');
     
     lVali = true;
     

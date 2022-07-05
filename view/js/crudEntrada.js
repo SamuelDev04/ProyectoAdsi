@@ -50,9 +50,14 @@ function getDataEntrada(obj) {
 
     document.getElementById('idEntradam').value = idDetEntrada;
     document.getElementById('fechaEntradam').value = fechaEntrada;
-    document.getElementById('cantProEntradam').value = cantProEntrada;
+    document.getElementById('cantidadEntm').value = cantProEntrada;
     document.getElementById('precioEntm').value = precioEntrada;
-    document.getElementById('idProveedorm').value = idProveedor;
-    document.getElementById('idProductom').value = idProducto;
+    document.getElementById('proveedorEntm').value = idProveedor;
+    document.getElementById('prodEntm').value = idProducto;
 
+}
+
+function getGenerarReporteEntrada(e) {
+    e.preventDefault();
+    window.open('view/module/allEntrada.php', '_blank');
 }
