@@ -60,7 +60,7 @@ class EntradaController{
             if ($objDaoEntrada -> mIdUpdateEntrada()) {
                 echo "
                 <script>
-                location.replace('Entradas');
+                location.replace('entradas');
                 </script>";
             
             }

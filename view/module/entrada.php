@@ -199,7 +199,7 @@
               <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Precio Entrada</span>
-                <input id="precioEntm" name="precioEntm" type="number" class="form-control">
+                <input id="precioEntm" name="precioEntm" type="text" class="form-control">
               </div>
             </div>
             <!-- ./col -->
@@ -236,7 +236,7 @@
           <?php
             if (isset($_POST['idEntradam'])){
               $objCtrEntrada= new EntradaController();
-              $objCtrEntrada -> setUpdateEntrada($_POST['idEntradam'], $_POST['fechaEntradam'], $_POST['cantProEntradam'], $_POST['precioEntradam'], $_POST['idProveedorm'], $_POST['idProductom']);
+              $objCtrEntrada -> setUpdateEntrada($_POST['idEntradam'], $_POST['fechaEntradam'], $_POST['cantProEntradam'], $_POST['precioEntm'], $_POST['idProveedorm'], $_POST['idProductom']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

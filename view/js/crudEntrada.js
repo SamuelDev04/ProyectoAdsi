@@ -48,12 +48,12 @@ function getDataEntrada(obj) {
     let idProducto = obj.children[5].innerHTML;
 
 
-    document.getElementById('icodeEnt').value = idDetEntrada;
-    document.getElementById('fechaEnt').value = fechaEntrada;
-    document.getElementById('cantEnt').value = cantProEntrada;
-    document.getElementById('valToEnt').value = precioEntrada;
-    document.getElementById('clienEnt').value = idProveedor;
-    document.getElementById('prodEnt').value = idProducto;
+    document.getElementById('idEntradam').value = idDetEntrada;
+    document.getElementById('fechaEntradam').value = fechaEntrada;
+    document.getElementById('cantProEntradam').value = cantProEntrada;
+    document.getElementById('precioEntm').value = precioEntrada;
+    document.getElementById('idProveedorm').value = idProveedor;
+    document.getElementById('idProductom').value = idProducto;
 
 }
 

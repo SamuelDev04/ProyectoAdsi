@@ -4,7 +4,7 @@ function validateModEntrada(e) {
     codigo = document.getElementById('idEntradam');
     fecha = document.getElementById('fechaEntradam');
     cantidad = document.getElementById('cantProEntradam');
-    precio = document.getElementById('precioEntradam');
+    precio = document.getElementById('precioEntm');
     idProveedor = document.getElementById('idProveedorm');
     idProducto = document.getElementById('idProductom');
     
@@ -43,9 +43,7 @@ function validateModEntrada(e) {
     
     if (lVali == true) {
         formulario.submit();
-        if (window.history.replaceState) { // verificamos disponibilidad
-            window.history.replaceState(null, null, window.location.href);
-        }
+        
     }
     
 }
