@@ -57,7 +57,7 @@
                 <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Direccion</span>
-                  <input id="dirPro" name="dirPro" type="number" class="form-control">
+                  <input id="dirPro" name="dirPro" type="text" class="form-control">
                 </div>
               </div>
               <!-- ./col -->
@@ -65,10 +65,10 @@
           <br>
         
         <div class="box-footer">
-          <button class="btn btn-app bg-blue" type="submit" onclick="validateProducto(event)">
+          <button class="btn btn-app bg-blue" type="submit" onclick="validateProveedor(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteAprendiz(event)">
+          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteProveedor(event)">
             <i class="fa fa-print"></i> Reporte
           </button>
         </div>
@@ -76,7 +76,7 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['descripPro'])){
+        if (isset($_POST['nombrePro'])){
           $objCtrProveedor = new ProveedorController();
           $objCtrProveedor -> setInsertarProveedor($_POST['nombrePro'], $_POST['numTel'], $_POST['dirPro']);
         }
@@ -186,7 +186,7 @@
                 <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Direccion</span>
-                  <input id="dirProm" name="dirProm" type="number" class="form-control">
+                  <input id="dirProm" name="dirProm" type="text" class="form-control">
                 </div>
               </div>
             </div>
@@ -195,13 +195,13 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateProductoMod(event)">
+          <button class="btn btn-google bg-blue" type="submit" onclick="validateProveedorMod(event)">
             <i class="fa fa-save"></i> Guardar
           </button>
           <?php
-          if (isset($_POST['descripProm'])) {
-            $objCtrProveedor = new proveedorController();
-            $objCtrProveedor -> setUpdateProveedor($_POST['nombreProm'], $_POST['numTelm'], $_POST['dirProm'], $_POST[''], $_POST['']);
+          if (isset($_POST['nombreProm'])) {
+            $objCtrProveedor = new ProveedorController();
+            $objCtrProveedor -> setUpdateProveedor($_POST['icodeProveedorm'], $_POST['nombreProm'], $_POST['numTelm'], $_POST['dirProm']);
           }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

@@ -40,19 +40,19 @@ function eraseProveedor(obj) {
 }
 
 function getDataProveedor(obj) {
-    let idProveedor = obj.children[0].innerHTML;
+    let codigoProveedor = obj.children[0].innerHTML;
     let nombre = obj.children[1].innerHTML;
     let numeroTelefono = obj.children[2].innerHTML;
     let direccion = obj.children[3].innerHTML;
 
 
-    document.getElementById('icodeProvm').value = codigoProducto;
-    document.getElementById('nombreProm').value = descripcionProducto;
-    document.getElementById('numTelm').value = cantidadProducto;
-    document.getElementById('dirProm').value = costoProducto;
+    document.getElementById('icodeProveedorm').value = codigoProveedor;
+    document.getElementById('nombreProm').value = nombre;
+    document.getElementById('numTelm').value = numeroTelefono;
+    document.getElementById('dirProm').value = direccion;
 }
 
-function getGenerarReporteAprendiz(e) {
+function getGenerarReporteProveedor(e) {
     e.preventDefault();
     window.open('view/module/allProveedor.php', '_blank');
 }

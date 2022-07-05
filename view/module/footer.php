@@ -79,6 +79,10 @@
 <script src="view/js/validationEntrada.js"></script>
 <!-- Para validaciones para crud Entrada -->
 <script src="view/js/crudEntrada.js"></script>
+<!-- para validaciones de proveedor -->
+<script src="view/js/validationProveedor.js"></script>
+<!-- Para realizar el CRUD de proveedor-->
+<script src="view/js/crudProveedor.js"></script>
 
 <!-- Diccionario de la datatable -->
 <script>

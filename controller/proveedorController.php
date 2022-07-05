@@ -56,7 +56,7 @@
                     //include_once("view/module/Producto.php");
                     echo 
                         "<script>
-                            location.replace('proveedor');
+                            location.replace('proveedores');
                         </script>";
                 }
             } catch (PDOException $e) {

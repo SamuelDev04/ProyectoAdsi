@@ -19,13 +19,13 @@
             $this -> pdf->SetFont('Arial','B',16);
 
             // Logo
-            $this -> pdf ->Image('../img/sena.png',20,5,30);
+            $this -> pdf ->Image('../img/Logo2.png',20,5,30);
             // Arial bold 15
             $this -> pdf ->SetFont('Arial','B',15);
             // Movernos a la derecha
             $this -> pdf ->Cell(80);
             // Título
-            $this -> pdf ->Cell(30,10,'Reporte Aprendices',0,0,'C');
+            $this -> pdf ->Cell(30,10,'Reporte Proveedores',0,0,'C');
             // Salto de línea
             $this -> pdf ->Ln(30);
 
@@ -47,14 +47,14 @@
             // Cabecera
             $header = array('Codigo', 'Nombre', 'Numero Telefono', 'Direccion');
             foreach($header as $col)  
-                $this-> pdf -> Cell(38,10,$col,1,0,'C');
+                $this-> pdf -> Cell(47,10,$col,1,0,'C');
                 $this-> pdf -> Ln(10); 
             
             foreach ($respon as $key => $value) {
-                $this -> pdf->Cell(38,10, $value['idProveedor'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['nombre'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['numeroTelefono'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['direccion'],1,0,'C');
+                $this -> pdf->Cell(47,10, $value['idProveedor'],1,0,'C');
+                $this -> pdf->Cell(47,10, $value['nombre'],1,0,'C');
+                $this -> pdf->Cell(47,10, $value['numeroTelefono'],1,0,'C');
+                $this -> pdf->Cell(47,10, $value['direccion'],1,0,'C');
                 $this -> pdf -> Ln(10);
             }      
 

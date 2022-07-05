@@ -20,6 +20,7 @@
                 break;
             case 'proveedores':
                 include_once("view/module/proveedor.php");
+                break;
             case 'salidas':
                 include_once("view/module/salida.php");
                 break;
