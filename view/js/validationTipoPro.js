@@ -7,7 +7,6 @@ function validateTipoPro(e) {
 
     if (descripcion.value == "") {
         descripcion.style.borderColor = "red";
-        ohSnap('Ingrese la descripcion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
 
@@ -28,7 +27,6 @@ function validateModTipoPro(e) {
     
     if (descripcion.value == "") {
         descripcion.style.borderColor = "red";
-        ohSnap('Ingrese la descripcion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     

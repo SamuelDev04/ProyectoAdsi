@@ -11,27 +11,22 @@ function validateSalida(e) {
 
     if (fechaSal.value == "") {
         fechaSal.style.borderColor = "red";
-        ohSnap('Ingrese la fecha de salida...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (cantSal.value == "") {
         cantSal.style.borderColor = "red";
-        ohSnap('Ingrese la cantidad del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (valorTotal.value == "") {
         valorTotal.style.borderColor = "red";
-        ohSnap('Ingrese el valor total del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (clienteSal.value == "") {
         clienteSal.style.borderColor = "red";
-        ohSnap('Ingrese el cliente...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (productoSal.value == "") {
         productoSal.style.borderColor = "red";
-        ohSnap('Ingrese el producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
 
@@ -54,27 +49,22 @@ function validateSalidaMod(e) {
     
     if (fechaSal.value == "") {
         fechaSal.style.borderColor = "red";
-        ohSnap('Ingrese la fecha de salida...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (cantSal.value == "") {
         cantSal.style.borderColor = "red";
-        ohSnap('Ingrese la cantidad del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (valorTotal.value == "") {
         valorTotal.style.borderColor = "red";
-        ohSnap('Ingrese el valor total...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (clienteSal.value == "") {
         clienteSal.style.borderColor = "red";
-        ohSnap('Ingrese el cliente...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (productoSal.value == "") {
         productoSal.style.borderColor = "red";
-        ohSnap('Ingrese el producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     

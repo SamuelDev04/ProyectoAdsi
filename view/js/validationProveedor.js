@@ -9,17 +9,14 @@ function validateProveedor(e) {
 
     if (nombre.value == "") {
         nombre.style.borderColor = "red";
-        ohSnap('Ingrese el nombre del proveedor...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (numeroTelefono.value == "") {
         numeroTelefono.style.borderColor = "red";
-        ohSnap('Ingrese el numero de telefono...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (direccion.value == "") {
         direccion.style.borderColor = "red";
-        ohSnap('Ingrese la direccion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
 
@@ -40,17 +37,14 @@ function validateProveedorMod(e) {
     
     if (nombre.value == "") {
         nombre.style.borderColor = "red";
-        ohSnap('Ingrese el nombre...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (numeroTelefono.value == "") {
         numeroTelefono.style.borderColor = "red";
-        ohSnap('Ingrese el numero de telefono...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (direccion.value == "") {
         direccion.style.borderColor = "red";
-        ohSnap('Ingrese la direccion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     
