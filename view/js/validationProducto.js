@@ -10,22 +10,18 @@ function validateProducto(e) {
 
     if (descripcion.value == "") {
         descripcion.style.borderColor = "red";
-        ohSnap('Ingrese la descripcion del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (cantidadProducto.value == "") {
         cantidadProducto.style.borderColor = "red";
-        ohSnap('Ingrese la cantidad del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (costoProducto.value == "") {
         costoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el costo del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (tipoProducto.value == "") {
         tipoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el tipo del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
 
@@ -47,22 +43,18 @@ function validateProductoMod(e) {
     
     if (descripcion.value == "") {
         descripcion.style.borderColor = "red";
-        ohSnap('Ingrese la descripcion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (cantidadProducto.value == "") {
         cantidadProducto.style.borderColor = "red";
-        ohSnap('Ingrese la cantidad del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (costoProducto.value == "") {
         costoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el costo del producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (tipoProducto.value == "") {
         tipoProducto.style.borderColor = "red";
-        ohSnap('Ingrese el tipo de producto...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     
