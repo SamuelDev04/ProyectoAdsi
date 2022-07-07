@@ -10,22 +10,18 @@ function validateCliente(e) {
 
     if (nombre.value == "") {
         nombre.style.borderColor = "red";
-        ohSnap('Ingrese su nombre...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (telefono.value == "") {
         telefono.style.borderColor = "red";
-        ohSnap('Ingrese su telefono...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (celular.value == "") {
         celular.style.borderColor = "red";
-        ohSnap('Ingrese su celular...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (direccion.value == "") {
         direccion.style.borderColor = "red";
-        ohSnap('Ingrese su direccion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
 
@@ -47,22 +43,18 @@ function validateModCliente(e) {
     
     if (nombre.value == "") {
         nombre.style.borderColor = "red";
-        ohSnap('Ingrese su nombre...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (telefono.value == "") {
         telefono.style.borderColor = "red";
-        ohSnap('Ingrese su telefono...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (celular.value == "") {
         celular.style.borderColor = "red";
-        ohSnap('Ingrese su celular...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     if (direccion.value == "") {
         direccion.style.borderColor = "red";
-        ohSnap('Ingrese su direccion...', { color: 'red' }); // alert will have class 'alert-color'
         lVali = false;
     }
     
