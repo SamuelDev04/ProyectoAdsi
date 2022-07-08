@@ -7,8 +7,8 @@
         Entradas
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-user"></i>Entradas</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-save"></i>Entradas</a></li>
       </ol>
     </section>
 

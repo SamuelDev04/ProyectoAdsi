@@ -7,7 +7,7 @@
         Cliente
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
         <li><a href="#"><i class="glyphicon glyphicon-user"></i> Clientes</a></li>
       </ol>
     </section>

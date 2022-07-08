@@ -7,8 +7,8 @@
         Proveedores
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.php"><i class="fa fa-home"></i> Home</a></li>
-        <li><a href="#"><i class="fa fa-pencil"></i> Proveedores</a></li>
+        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Proveedores</a></li>
       </ol>
     </section>
 
