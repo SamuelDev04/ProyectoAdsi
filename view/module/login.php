@@ -35,7 +35,7 @@
                 <div class="container-login-form-btn">
                     <div class="wrap-login-form-btn">
                         <div class="login-form-bgbtn"></div>
-                        <input type="submit" class="input100 login-form-btn" id="btnEnv" name="btnEnv" >
+                        <input type="submit" class="input100 login-form-btn" id="btnEnv" name="btnEnv" value="Entrar"> 
                         <!--<button type="submit" name="submit" class="login-form-btn">ENTRAR</button>-->
                     </div>
                 </div>
