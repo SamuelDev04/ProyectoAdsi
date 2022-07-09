@@ -89,6 +89,23 @@
             }
             return $estado;
         }
+
+        public function mIdUpdateMercancia()
+        {
+            $sql = "CALL spEntradaMercancia(?, ?)";
+            $estado = false;
+
+            try {
+                $objCon = new Conexion();
+                $stmt = $objCon -> getConec()->prepare($sql);
+                $stmt -> bindParam(1, $this -> idProducto,  PDO::PARAM_INT);
+                $stmt -> bindParam(2, $this -> cantProEntrada, PDO::PARAM_INT);
+                $estado = $stmt -> execute();
+            } catch (PDOException $e) {
+                echo "Error al actualizar stock " .$e -> getMessage();
+            }
+            return $estado;
+        }
     }
 
 ?>

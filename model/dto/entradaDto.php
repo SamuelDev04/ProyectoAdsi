@@ -35,8 +35,8 @@
             return $this -> idProducto;
         }
 
-        /***********************/
-        /***      Setters      ***/
+        /*************************/
+        /***      Setters     ***/
         /***********************/
         public function setIdDetEnt($idDetEntrada)
         {
