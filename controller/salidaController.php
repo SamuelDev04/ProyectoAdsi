@@ -68,6 +68,26 @@
                 echo "Error al modificar la salida " . $e->getMessage();
             }
         }
+
+        public function setUpdateMercanciaS($idProducto, $cantidadSalida)
+        {
+            try {
+                $objDtoSalida = new Salida();
+                $objDtoSalida -> setIdPro($idProducto);
+                $objDtoSalida -> setCantSal($cantidadSalida);
+
+                $objDaoSalida = new SalidaModel($objDtoSalida);
+
+                if ($objDaoSalida -> mIdUpdateMercanciaS()) {
+                    /*echo "
+                    <script>
+                        location.replace('entradas');
+                    </script>";*/
+                }
+            } catch (PDOException $e) {
+                echo "Error al actualizar en el controlador" . $e -> getMessage();
+            }
+        }
     }
 
 ?>

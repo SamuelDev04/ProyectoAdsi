@@ -134,6 +134,7 @@
         if (isset($_POST['fechaSal'])){
           $objCtrSalida = new SalidaController();
           $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
+          $objCtrSalida -> setUpdateMercanciaS($_POST['prodSal'], $_POST['cantSal']);
         }
       ?>
     </div>
