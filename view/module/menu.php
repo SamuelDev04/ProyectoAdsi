@@ -3,7 +3,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+      <ul class="nav sidebar-menu" data-widget="tree">
         <li class="header">Navegación principal</li>
           <!-- MENU - MODULO PARA EL REGISTRO DE USUARIOS -->
           <li class="">

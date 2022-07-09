@@ -83,6 +83,8 @@
 <script src="view/js/validationProveedor.js"></script>
 <!-- Para realizar el CRUD de proveedor-->
 <script src="view/js/crudProveedor.js"></script>
+<!-- Para activar los li -->
+<script src="view/js/activarNav.js"></script>
 
 <!-- Diccionario de la datatable -->
 <script>
