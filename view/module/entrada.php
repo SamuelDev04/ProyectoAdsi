@@ -133,6 +133,7 @@
         if (isset($_POST['fechaEnt'])){
           $objCtrEntrada = new EntradaController();
           $objCtrEntrada -> setInsertEntrada($_POST['fechaEnt'], $_POST['cantidadEnt'], $_POST['precioEnt'], $_POST['proveedorEnt'], $_POST['prodEnt']);
+          $objCtrEntrada -> setUpdateMercancia($_POST['prodEnt'], $_POST['cantidadEnt']);
         }
       ?>
       
