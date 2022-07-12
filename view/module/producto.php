@@ -224,7 +224,25 @@
                 <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Tipo Producto</span>
-                  <input id="tipProm" name="tipProm" type="number" class="form-control">
+                  <select class="form-control" id="tipProm" name="tipProm">
+                    <option value="" selected disabled hidden>Seleccione tipo de producto</option>
+                    <?php
+                      $objCtrTipoProductoAll = new TipoProController();
+
+                      if (gettype($objCtrTipoProductoAll -> getSearchAllTipoProducto()) == 'boolean') {
+                        echo '
+                          <option value="1">No hay datos que mostrar</option>
+                        ';  
+                      } else {
+                        foreach ($objCtrTipoProductoAll -> getSearchAllTipoProducto() as $key => $value) {
+                          echo '
+                            <option value='. $value["idTipoProducto"] .'>'. $value["idTipoProducto"] . "- " . $value["descripcion"] .'</option>
+                            ';
+                          }
+                      }
+                    ?>
+                  </select>
+                  <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
                 </div>
               </div>
               <!-- ./col -->

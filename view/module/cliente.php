@@ -54,7 +54,7 @@
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">celular</span>
+                <span class="input-group-addon">Celular</span>
                 <input id="cel" name="cel" type="number" class="form-control">
               </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">direccion</span>
+                <span class="input-group-addon">Direccion</span>
                 <input id="direc" name="direc" type="text" class="form-control">
               </div>
             </div>
@@ -182,7 +182,7 @@
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">telefono</span>
+                <span class="input-group-addon">Telefono</span>
                 <input id="sutelefono" name="sutelefono" type="number" class="form-control">
               </div>
             </div>
@@ -193,7 +193,7 @@
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">celular</span>
+              <span class="input-group-addon">Celular</span>
               <input id="sucelular" name="sucelular" type="number" class="form-control">
             </div>
           </div>
@@ -201,7 +201,7 @@
           <div class="col-lg-6 col-xs-6">
             <!-- small box -->
             <div class="input-group">
-              <span class="input-group-addon">direccion</span>
+              <span class="input-group-addon">Direccion</span>
               <input id="sudireccion" name="sudireccion" type="text" class="form-control">
             </div>
           </div>

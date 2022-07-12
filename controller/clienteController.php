@@ -28,7 +28,7 @@ class ClienteController{
                 echo "<script>
                     Swal.fire({
                         icon: 'success',
-                        title: 'El usuario se ha guardado',
+                        title: 'El cliente se ha guardado',
                         showConfirmButton: false,
                         timer: 1500
                     })

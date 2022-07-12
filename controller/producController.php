@@ -16,7 +16,7 @@
                     echo "<script>
                         Swal.fire({
                             icon: 'success',
-                            title: 'El Producto se ha guardado',
+                            title: 'El producto se ha guardado',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -39,6 +39,20 @@
                 echo "Error en la creacion del controlador para mostrar todo ". $e -> getMessage();
             }
 
+            return $respon;
+        }
+
+        public function getSearchAllByIdTipoProducto()
+        {
+            $respon = false;
+
+            try {
+                $objDtoProducto = new Producto();
+                $objDaoProducto = new ProductoModel($objDtoProducto);
+                $respon = $objDaoProducto -> mIdSearchAllByIdTipoProducto() -> fetchAll();
+            } catch (PDOException $e) {
+                echo "Error en la creacion del controlador para mostrar todo ". $e -> getMessage();
+            }
             return $respon;
         }
 

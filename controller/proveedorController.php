@@ -15,7 +15,7 @@
                     echo "<script>
                         Swal.fire({
                             icon: 'success',
-                            title: 'El Proveedor se ha guardado',
+                            title: 'El proveedor se ha guardado',
                             showConfirmButton: false,
                             timer: 1500
                         })

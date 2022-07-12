@@ -13,7 +13,7 @@
                     echo "<script>
                         Swal.fire({
                             icon: 'success',
-                            title: 'El Producto se ha guardado',
+                            title: 'El tipo de producto se ha guardado',
                             showConfirmButton: false,
                             timer: 1500
                         })

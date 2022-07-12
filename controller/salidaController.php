@@ -17,7 +17,7 @@
                     echo "<script>
                         Swal.fire({
                             icon: 'success',
-                            title: 'El Salida se ha guardado',
+                            title: 'La salida se ha guardado',
                             showConfirmButton: false,
                             timer: 1500
                         })

@@ -182,7 +182,7 @@
             <br>
             <!-- ROW 2 MOD CONTIENE SEXO Y CIUDAD-->
             <div class="row">
-              <div class="col-lg-6 col-xs-6">
+              <div class="col-lg-12 col-xs-12">
                 <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Direccion</span>
