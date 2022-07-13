@@ -328,3 +328,7 @@
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseEntrada');
+    activarIcon.classList.add('active');
+  </script>

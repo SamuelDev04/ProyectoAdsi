@@ -212,3 +212,8 @@
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseProveedor');
+
+    activarIcon.classList.add('active');
+  </script>

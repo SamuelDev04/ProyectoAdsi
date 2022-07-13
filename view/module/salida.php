@@ -326,3 +326,7 @@
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseSalida');
+    activarIcon.classList.add('active');
+  </script>

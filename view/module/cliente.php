@@ -229,3 +229,7 @@
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseCliente');
+    activarIcon.classList.add('active');
+  </script>

@@ -155,7 +155,7 @@
                           <td class="text-center">'. $value["descripProducto"] .'</td>
                           <td class="text-center">'. $value["cantProducto"] .'</td>
                           <td class="text-center">'. $value["costoProducto"] .'</td>
-                          <td class="text-center">'. $value["idTipoProducto"] .'</td>
+                          <td class="text-center">'. $value["descripcion"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
@@ -269,3 +269,7 @@
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseProducto');
+    activarIcon.classList.add('active');
+  </script>

@@ -1,3 +1,6 @@
+  <?php 
+    $_SESSION['activo'] = '' ;
+  ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-fondo">
 
