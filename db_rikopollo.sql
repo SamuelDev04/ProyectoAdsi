@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
-<<<<<<< HEAD
--- Tiempo de generación: 09-07-2022 a las 21:46:37
-=======
--- Tiempo de generación: 09-07-2022 a las 21:37:27
->>>>>>> 36e28e304d37311bb68927d13325410f0507fde6
+-- Tiempo de generación: 13-07-2022 a las 05:32:17
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -204,21 +200,30 @@ END$$
 DROP PROCEDURE IF EXISTS `spSearchAllDetEnt`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllDetEnt` ()  BEGIN
 
-SELECT idDetEntrada, fechaEntrada, cantProEntrada, precioEntrada, idProveedor, idProducto FROM detalle_entrada;
+SELECT detalle_entrada.idDetEntrada, detalle_entrada.fechaEntrada, detalle_entrada.cantProEntrada, detalle_entrada.precioEntrada, detalle_entrada.idProveedor, detalle_entrada.idProducto, proveedor.nombre, producto.descripProducto 
+FROM detalle_entrada 
+INNER JOIN proveedor ON detalle_entrada.idProveedor = proveedor.idProveedor 
+INNER JOIN producto ON detalle_entrada.idProducto = producto.idProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllDetSal`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllDetSal` ()  BEGIN
 
-SELECT idDetSalida, fechaSalida, cantidadSalida, valorTotal, idCliente, idProducto FROM detalle_salida;
+SELECT detalle_salida.idDetSalida, detalle_salida.fechaSalida, detalle_salida.cantidadSalida, detalle_salida.valorTotal, detalle_salida.idCliente, detalle_salida.idProducto, cliente.nombre, producto.descripProducto
+FROM detalle_salida
+INNER JOIN cliente ON detalle_salida.idCliente = cliente.idCliente
+INNER JOIN producto ON detalle_salida.idProducto = producto.idProducto;
 
 END$$
 
 DROP PROCEDURE IF EXISTS `spSearchAllProducto`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllProducto` ()  BEGIN
 
-SELECT idProducto, descripProducto, cantProducto, costoProducto, idTipoProducto FROM producto;
+SELECT producto.idProducto, producto.descripProducto, producto.cantProducto, producto.costoProducto, producto.idTipoProducto, tipo_producto.descripcion 
+FROM producto 
+INNER JOIN tipo_producto ON producto.idTipoProducto = tipo_producto.idTipoProducto;
+
 
 END$$
 
@@ -327,14 +332,13 @@ DELIMITER ;
 --
 
 DROP TABLE IF EXISTS `cliente`;
-CREATE TABLE IF NOT EXISTS `cliente` (
-  `idCliente` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cliente` (
+  `idCliente` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `telefono` varchar(50) NOT NULL,
   `celular` varchar(50) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `direccion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -350,17 +354,14 @@ INSERT INTO `cliente` (`idCliente`, `nombre`, `telefono`, `celular`, `direccion`
 --
 
 DROP TABLE IF EXISTS `detalle_entrada`;
-CREATE TABLE IF NOT EXISTS `detalle_entrada` (
-  `idDetEntrada` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detalle_entrada` (
+  `idDetEntrada` int(10) NOT NULL,
   `fechaEntrada` date NOT NULL,
   `cantProEntrada` int(50) NOT NULL,
   `precioEntrada` int(50) NOT NULL,
   `idProveedor` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetEntrada`),
-  KEY `idProducto` (`idProducto`),
-  KEY `idProveedor` (`idProveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+  `idProducto` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_entrada`
@@ -368,9 +369,9 @@ CREATE TABLE IF NOT EXISTS `detalle_entrada` (
 
 INSERT INTO `detalle_entrada` (`idDetEntrada`, `fechaEntrada`, `cantProEntrada`, `precioEntrada`, `idProveedor`, `idProducto`) VALUES
 (1, '2022-06-28', 80, 9000, 1, 2),
-(3, '2022-07-09', 40, 7500, 1, 1),
 (4, '2022-07-09', 20, 8500, 1, 1),
-(5, '2022-07-09', 10, 8000, 1, 1);
+(5, '2022-07-09', 10, 8000, 1, 1),
+(6, '2022-07-11', 100, 8700, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -379,24 +380,22 @@ INSERT INTO `detalle_entrada` (`idDetEntrada`, `fechaEntrada`, `cantProEntrada`,
 --
 
 DROP TABLE IF EXISTS `detalle_salida`;
-CREATE TABLE IF NOT EXISTS `detalle_salida` (
-  `idDetSalida` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `detalle_salida` (
+  `idDetSalida` int(10) NOT NULL,
   `fechaSalida` date NOT NULL,
   `cantidadSalida` int(50) NOT NULL,
   `valorTotal` int(50) NOT NULL,
   `idCliente` int(10) NOT NULL,
-  `idProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idDetSalida`),
-  KEY `idCliente` (`idCliente`),
-  KEY `idProducto` (`idProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `idProducto` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `detalle_salida`
 --
 
 INSERT INTO `detalle_salida` (`idDetSalida`, `fechaSalida`, `cantidadSalida`, `valorTotal`, `idCliente`, `idProducto`) VALUES
-(1, '2022-06-28', 15, 135000, 1, 2);
+(1, '2022-06-28', 15, 135000, 1, 2),
+(2, '2022-07-11', 20, 140000, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -405,23 +404,23 @@ INSERT INTO `detalle_salida` (`idDetSalida`, `fechaSalida`, `cantidadSalida`, `v
 --
 
 DROP TABLE IF EXISTS `producto`;
-CREATE TABLE IF NOT EXISTS `producto` (
-  `idProducto` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `producto` (
+  `idProducto` int(10) NOT NULL,
   `descripProducto` varchar(150) NOT NULL,
   `cantProducto` int(50) NOT NULL,
   `costoProducto` int(50) NOT NULL,
-  `idTipoProducto` int(10) NOT NULL,
-  PRIMARY KEY (`idProducto`),
-  KEY `idTipoProducto` (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+  `idTipoProducto` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
 INSERT INTO `producto` (`idProducto`, `descripProducto`, `cantProducto`, `costoProducto`, `idTipoProducto`) VALUES
-(1, 'Muslos - Friko', 110, 7800, 1),
-(2, 'Pechugas - Chickensi', 20, 9607, 1);
+(1, 'Muslos - Friko', 110, 7800, 4),
+(2, 'Pechugas - Chickensi', 100, 9607, 1),
+(4, 'Sisas', 90, 9000, 5),
+(5, 'Perro', 90, 8900, 4);
 
 -- --------------------------------------------------------
 
@@ -430,13 +429,12 @@ INSERT INTO `producto` (`idProducto`, `descripProducto`, `cantProducto`, `costoP
 --
 
 DROP TABLE IF EXISTS `proveedor`;
-CREATE TABLE IF NOT EXISTS `proveedor` (
-  `idProveedor` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `proveedor` (
+  `idProveedor` int(10) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `numeroTelefono` varchar(150) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idProveedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+  `direccion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
@@ -452,18 +450,19 @@ INSERT INTO `proveedor` (`idProveedor`, `nombre`, `numeroTelefono`, `direccion`)
 --
 
 DROP TABLE IF EXISTS `tipo_producto`;
-CREATE TABLE IF NOT EXISTS `tipo_producto` (
-  `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(150) NOT NULL,
-  PRIMARY KEY (`idTipoProducto`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `tipo_producto` (
+  `idTipoProducto` int(10) NOT NULL,
+  `descripcion` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `tipo_producto`
 --
 
 INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
-(1, 'Pechuga');
+(1, 'Pechuga'),
+(4, 'Muslo'),
+(5, 'Alas');
 
 -- --------------------------------------------------------
 
@@ -472,14 +471,13 @@ INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
 --
 
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `idUsuario` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `idUsuario` int(10) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `usuario` varchar(150) NOT NULL,
-  `contrasena` varchar(150) NOT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+  `contrasena` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -488,6 +486,103 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`) VALUES
 (1, 'Samuel', 'Yepes', 'admin', '1234'),
 (2, 'Sebastian', 'Quiceno', 'admin2', '12345');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`idCliente`);
+
+--
+-- Indices de la tabla `detalle_entrada`
+--
+ALTER TABLE `detalle_entrada`
+  ADD PRIMARY KEY (`idDetEntrada`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `idProveedor` (`idProveedor`);
+
+--
+-- Indices de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  ADD PRIMARY KEY (`idDetSalida`),
+  ADD KEY `idCliente` (`idCliente`),
+  ADD KEY `idProducto` (`idProducto`);
+
+--
+-- Indices de la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD PRIMARY KEY (`idProducto`),
+  ADD KEY `idTipoProducto` (`idTipoProducto`);
+
+--
+-- Indices de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  ADD PRIMARY KEY (`idProveedor`);
+
+--
+-- Indices de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  ADD PRIMARY KEY (`idTipoProducto`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `cliente`
+--
+ALTER TABLE `cliente`
+  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_entrada`
+--
+ALTER TABLE `detalle_entrada`
+  MODIFY `idDetEntrada` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_salida`
+--
+ALTER TABLE `detalle_salida`
+  MODIFY `idDetSalida` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `proveedor`
+--
+ALTER TABLE `proveedor`
+  MODIFY `idProveedor` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_producto`
+--
+ALTER TABLE `tipo_producto`
+  MODIFY `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
