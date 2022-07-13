@@ -184,8 +184,8 @@
                           <td class="text-center">'. $value["fechaSalida"] .'</td>
                           <td class="text-center">'. $value["cantidadSalida"] .'</td>
                           <td class="text-center">'. $value["valorTotal"] .'</td>
-                          <td class="text-center">'. $value["idCliente"] .'</td>
-                          <td class="text-center">'. $value["idProducto"] .'</td>
+                          <td class="text-center">'. $value["nombre"] .'</td>
+                          <td class="text-center">'. $value["descripProducto"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataSalida(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
