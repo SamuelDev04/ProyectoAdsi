@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2022 a las 05:32:17
+-- Tiempo de generación: 15-07-2022 a las 08:15:13
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -121,7 +121,7 @@ END$$
 DROP PROCEDURE IF EXISTS `spConsultarUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spConsultarUsuario` (IN `_idUsuario` INT(10))  BEGIN
 
-SELECT idUsuario, nombre, apellido, usuario, contrasena FROM `usuarios` WHERE idUsuario = _idUsuario;
+SELECT idUsuario, nombre, apellido, usuario, contrasena, idTipoUsuario FROM `usuarios` WHERE idUsuario = _idUsuario;
 
 END$$
 
@@ -176,9 +176,9 @@ INSERT INTO `tipo_producto`(descripcion) VALUES (_descripcion);
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertarUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarUsuario` (IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertarUsuario` (IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150), IN `_idTipoUsuario` INT(2))  BEGIN
 
-INSERT INTO `usuarios`(nombre, apellido, usuario, contrasena) VALUES (_nombre, _apellido, _usuario, _contrasena);
+INSERT INTO `usuarios`(nombre, apellido, usuario, contrasena, idTipoUsuario) VALUES (_nombre, _apellido, _usuario, _contrasena, _idTipoUsuario);
 
 END$$
 
@@ -241,10 +241,21 @@ SELECT idTipoProducto, descripcion FROM tipo_producto;
 
 END$$
 
+DROP PROCEDURE IF EXISTS `spSearchAllTipoUsua`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllTipoUsua` ()  BEGIN
+
+SELECT tipo_usuario.idTipoUsuario, tipo_usuario.descripcion, usuarios.idTipoUsuario
+FROM tipo_usuario
+INNER JOIN usuarios ON tipo_usuario.idTipoUsuario = usuarios.idTipoUsuario;
+
+END$$
+
 DROP PROCEDURE IF EXISTS `spSearchAllUsuario`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spSearchAllUsuario` ()  BEGIN
 
-SELECT idUsuario, nombre, apellido, usuario, contrasena FROM usuarios;
+SELECT usuarios.idUsuario, usuarios.nombre, usuarios.apellido, usuarios.usuario, usuarios.contrasena, usuarios.idTipoUsuario, tipo_usuario.descripcion
+FROM usuarios
+INNER JOIN tipo_usuario ON usuarios.idTipoUsuario = tipo_usuario.idTipoUsuario;
 
 END$$
 
@@ -313,12 +324,13 @@ WHERE idTipoProducto = _idTipoProducto;
 END$$
 
 DROP PROCEDURE IF EXISTS `spUpdateUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_idUsuario` INT(10), IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `spUpdateUsuario` (IN `_idUsuario` INT(10), IN `_nombre` VARCHAR(50), IN `_apellido` VARCHAR(50), IN `_usuario` VARCHAR(150), IN `_contrasena` VARCHAR(150), IN `_idTipoUsuario` INT(2))  BEGIN
 
 UPDATE `usuarios` SET nombre = _nombre,
 apellido = _apellido,
 usuario = _usuario,
-contrasena = _contrasena
+contrasena = _contrasena,
+idTipoUsuario = _idTipoUsuario
 WHERE idUsuario = _idUsuario;	
 
 END$$
@@ -467,6 +479,26 @@ INSERT INTO `tipo_producto` (`idTipoProducto`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tipo_usuario`
+--
+
+DROP TABLE IF EXISTS `tipo_usuario`;
+CREATE TABLE `tipo_usuario` (
+  `idTipoUsuario` int(3) NOT NULL,
+  `descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`idTipoUsuario`, `descripcion`) VALUES
+(1, 'Administrador'),
+(2, 'Empleado');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -476,16 +508,17 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(50) NOT NULL,
   `apellido` varchar(50) NOT NULL,
   `usuario` varchar(150) NOT NULL,
-  `contrasena` varchar(150) NOT NULL
+  `contrasena` varchar(150) NOT NULL,
+  `idTipoUsuario` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`) VALUES
-(1, 'Samuel', 'Yepes', 'admin', '1234'),
-(2, 'Sebastian', 'Quiceno', 'admin2', '12345');
+INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `usuario`, `contrasena`, `idTipoUsuario`) VALUES
+(1, 'Samuel', 'Yepes', 'Syepes', '1234', 1),
+(2, 'Sebastian', 'Quiceno', 'Demo', '12345', 2);
 
 --
 -- Índices para tablas volcadas
@@ -533,10 +566,17 @@ ALTER TABLE `tipo_producto`
   ADD PRIMARY KEY (`idTipoProducto`);
 
 --
+-- Indices de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  ADD PRIMARY KEY (`idTipoUsuario`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD KEY `idTipoUsuario` (`idTipoUsuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -579,10 +619,16 @@ ALTER TABLE `tipo_producto`
   MODIFY `idTipoProducto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `tipo_usuario`
+--
+ALTER TABLE `tipo_usuario`
+  MODIFY `idTipoUsuario` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
@@ -607,6 +653,12 @@ ALTER TABLE `detalle_salida`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idTipoProducto`) REFERENCES `tipo_producto` (`idTipoProducto`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idTipoUsuario`) REFERENCES `tipo_usuario` (`idTipoUsuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
