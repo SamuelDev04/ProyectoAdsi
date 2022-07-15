@@ -41,7 +41,20 @@
                 include_once("view/module/entrada.php");
                 break;
             case 'erase':
-                include_once("view/module/erase.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/erase.php");
+                } else {
+                    include_once("view/module/usuario.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'eraseClientes':
                 include_once("view/module/eraseCliente.php");
@@ -52,8 +65,21 @@
             case 'eraseTipoProducto':
                 include_once("view/module/eraseTipoProducto.php");
                 break;
-            case 'eraseProveedor':
-                include_once("view/module/eraseProveedor.php");
+            case  'eraseProveedor':
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseProveedor.php");
+                } else {
+                    include_once("view/module/proveedor.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'eraseSalida':
                 if ($_SESSION['rol'] == 1) {
@@ -72,7 +98,20 @@
                 }
                 break;
             case 'eraseEntrada':
-                include_once("view/module/eraseEntrada.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseEntrada.php");
+                } else {
+                    include_once("view/module/entrada.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             default:
                 include_once("view/module/presentation.php");
