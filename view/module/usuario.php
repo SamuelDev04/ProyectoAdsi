@@ -30,45 +30,77 @@
       <div class="box-body">  
       <form method="POST" id="formu">
 
-          <!-- ROW 1 -->
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Nombre</span>
-                  <input id="iname" name="iname" type="text" class="form-control">
-                </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Apellido</span>
-                  <input id="iape" name="iape" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-          <br>
-          <!-- ROW 2 -->
+        <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Usuario</span>
-                <input id="iuser" name="iuser" type="text" class="form-control">
+                <span class="input-group-addon">Nombre</span>
+                <input id="iname" name="iname" type="text" class="form-control">
               </div>
             </div>
             <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
               <!-- small box -->
               <div class="input-group">
-                <span class="input-group-addon">Contraseña</span>
-                <input id="icontra" name="icontra" type="password" class="form-control">
+                <span class="input-group-addon">Apellido</span>
+                <input id="iape" name="iape" type="text" class="form-control">
               </div>
             </div>
-            <!-- ./col -->
           </div>
-          <br>
+        <br>
+        <!-- ROW 2 -->
+        <div class="row">
+          <div class="col-lg-6 col-xs-6">
+            <!-- small box -->
+            <div class="input-group">
+              <span class="input-group-addon">Usuario</span>
+              <input id="iuser" name="iuser" type="text" class="form-control">
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-6 col-xs-6">
+            <!-- small box -->
+            <div class="input-group">
+              <span class="input-group-addon">Contraseña</span>
+              <input id="icontra" name="icontra" type="password" class="form-control">
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
+        <br>
+
+        <!-- ROW 3 -->
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+              <!-- small box -->
+              <div class="input-group">
+                  <span class="input-group-addon">Tipo Usuario</span>
+                  <select class="form-control" id="itipousua" name="itipousua">
+                  <option value="" selected disabled hidden>Seleccione el tipo de usuario</option>
+                  <?php
+                      $objCtrTipoUsuaAll = new TipoUsuarioController();
+
+                      if (gettype($objCtrTipoUsuaAll -> getSearchAllTipoUsuario()) == 'boolean') {
+                      echo '
+                          <option value="1">No hay datos que mostrar</option>
+                      ';  
+                      } else {
+                      foreach ($objCtrTipoUsuaAll -> getSearchAllTipoUsuario() as $key => $value) {
+                          echo '
+                          <option value='. $value["idTipoUsuario"] .'>'.$value["idTipoUsuario"]. "- " .$value["descripcion"] .'</option>
+                          ';
+                          }
+                      }
+                  ?>
+                  </select>
+              </div>
+          </div>
+        </div>
+
+        <br>
+
         <!-- /.box-body -->
         <div class="box-footer">
           <button class="btn btn-app bg-blue" type="submit" onclick="validate(event)">
@@ -84,7 +116,7 @@
       <?php
         if (isset($_POST['iname'])){
           $objCtrUser = new UsuarioController();
-          $objCtrUser -> setInsertUsuario($_POST['iname'], $_POST['iape'], $_POST['iuser'], $_POST['icontra']);
+          $objCtrUser -> setInsertUsuario($_POST['iname'], $_POST['iape'], $_POST['iuser'], $_POST['icontra'], $_POST['itipousua']);
         }
       ?>
 
@@ -113,6 +145,7 @@
                   <th class="text-center">Apellido</th>
                   <th class="text-center">Usuario</th>
                   <th class="text-center">Contraseña</th>
+                  <th class="text-center">Tipo Usuario</th>
                   <th class="text-center">Acciones</th>
                 </tr>
               </thead>
@@ -135,6 +168,7 @@
                           <td class="text-center">'. $value["apellido"] .'</td>
                           <td class="text-center">'. $value["usuario"] .'</td>
                           <td class="text-center">'. $value["contrasena"] .'</td>
+                          <td class="text-center">'. $value["descripcion"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="erase(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getData(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
@@ -207,6 +241,39 @@
           </div>
           <!-- ./col -->
         </div>
+
+        <br>
+
+        <!-- ROW 3 -->
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+              <!-- small box -->
+              <div class="input-group">
+                  <span class="input-group-addon">Tipo Usuario</span>
+                  <select class="form-control" id="itipousuam" name="itipousuam">
+                  <option value="" selected disabled hidden>Seleccione el tipo de usuario</option>
+                  <?php
+                      $objCtrTipoUsuaAll = new TipoUsuarioController();
+
+                      if (gettype($objCtrTipoUsuaAll -> getSearchAllTipoUsuario()) == 'boolean') {
+                      echo '
+                          <option value="1">No hay datos que mostrar</option>
+                      ';  
+                      } else {
+                      foreach ($objCtrTipoUsuaAll -> getSearchAllTipoUsuario() as $key => $value) {
+                          echo '
+                          <option value='. $value["idTipoUsuario"] .'>'.$value["idTipoUsuario"]. "- " .$value["descripcion"] .'</option>
+                          ';
+                          }
+                      }
+                  ?>
+                  </select>
+              </div>
+          </div>
+        </div>
+
+        <br>
+
         </form>
         </div>
 
@@ -218,7 +285,7 @@
           <?php
             if (isset($_POST['inamem'])){
               $objCtrUser = new UsuarioController();
-              $objCtrUser -> setUpdateUsuario($_POST['icodem'], $_POST['inamem'], $_POST['iapem'], $_POST['iuserm'], $_POST['icontram']);
+              $objCtrUser -> setUpdateUsuario($_POST['icodem'], $_POST['inamem'], $_POST['iapem'], $_POST['iuserm'], $_POST['icontram'], $_POST['itipousuam']);
             }
           ?>
           <button type="button" class="btn btn-google bg-red" data-dismiss="modal">

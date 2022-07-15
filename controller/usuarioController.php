@@ -31,13 +31,14 @@
             }
         }
 
-        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena){
+        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena, $idTipoUsuario){
             try {
                 $objDtoUsuario = new usuario();
                 $objDtoUsuario -> setNombre($nombre);
                 $objDtoUsuario -> setapellido($apellido);
                 $objDtoUsuario -> setUsuario($usuario);
                 $objDtoUsuario -> setcontrasena($contrasena);
+                $objDtoUsuario -> setIdTipoUsua($idTipoUsuario);
 
                 $objDaoUser = new UsuarioModel($objDtoUsuario);
 
@@ -58,7 +59,7 @@
 
         }
 
-        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena){
+        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena, $idTipoUsuario){
             try {
                 $objDtoUsuario = new Usuario();
                 $objDtoUsuario -> setIdUser($idUsuario);
@@ -66,20 +67,15 @@
                 $objDtoUsuario -> setApellido($apellido);
                 $objDtoUsuario -> setUsuario($usuario);
                 $objDtoUsuario -> setContrasena($contrasena);
+                $objDtoUsuario -> setIdTipoUsua($idTipoUsuario);
 
                 $objDaoUsuario = new UsuarioModel($objDtoUsuario);
 
                 if ($objDaoUsuario -> mIdUpdateUsuario()) {
-                    echo "
-                        <script>
-                        Swal.fire({
-                            'Actualizado!',
-                            'Los campos ingresados se han actualizado',
-                            'success'
-                        })
-                        </script>
-                    ";
-                    include_once("view/module/user.php");
+                    echo 
+                    "<script>
+                        location.replace('usuario');
+                    </script>";
                 }
 
             } catch(PDOException $e) {
@@ -103,9 +99,5 @@
 
         
     }
-
-    //$objContro = new UserController();
-    //$objContro -> getEvalClave("Juan32","22776172");
-    
 
 ?>

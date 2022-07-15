@@ -42,20 +42,6 @@
             return $respon;
         }
 
-        public function getSearchAllByIdTipoProducto()
-        {
-            $respon = false;
-
-            try {
-                $objDtoProducto = new Producto();
-                $objDaoProducto = new ProductoModel($objDtoProducto);
-                $respon = $objDaoProducto -> mIdSearchAllByIdTipoProducto() -> fetchAll();
-            } catch (PDOException $e) {
-                echo "Error en la creacion del controlador para mostrar todo ". $e -> getMessage();
-            }
-            return $respon;
-        }
-
         public function setUpdateProducto($idProducto, $descripProducto, $cantProducto, $costoProducto, $idTipoProducto)
         {
             try {

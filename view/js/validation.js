@@ -5,6 +5,7 @@ function validate(e) {
     apellido = document.getElementById('iape');
     usuario = document.getElementById('iuser');
     clave = document.getElementById('icontra');
+    tipoUsua = document.getElementById('itipousua');
 
     lVali = true;
 
@@ -22,6 +23,10 @@ function validate(e) {
     }
     if (clave.value == "") {
         clave.style.borderColor = "red";
+        lVali = false;
+    }
+    if(tipoUsua.value == "") {
+        tipoUsua.style.borderColor = "red";
         lVali = false;
     }
 
@@ -41,6 +46,7 @@ function validateMod(e) {
     apellido = document.getElementById('iapem');
     usuario = document.getElementById('iuserm');
     clave = document.getElementById('icontram');
+    tipoUsua = document.getElementById('itipousuam');
     
     lVali = true;
     
@@ -58,6 +64,10 @@ function validateMod(e) {
     }
     if (clave.value == "") {
         clave.style.borderColor = "red";
+        lVali = false;
+    }
+    if(tipoUsua.value == "") {
+        tipoUsua.style.borderColor = "red";
         lVali = false;
     }
     

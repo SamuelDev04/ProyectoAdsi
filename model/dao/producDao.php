@@ -66,21 +66,6 @@
             return $respon;
         }
 
-        public function mIdSearchAllByIdTipoProducto()
-        {
-            $sql = "Call spMostrarNombresTipoProducto()";
-
-            try {
-                $objCon = new Conexion();
-                $stmt = $objCon -> getConec() -> prepare($sql);
-                $stmt -> execute();
-                $respon = $stmt;
-            } catch (PDOException $e) {
-                echo "Ha ocurrido un error al mostrar los datos en el dao " .$e -> getMessage();
-            }
-            return $respon;
-        }
-
         public function mIdUpdateProducto()
         {
             $sql = "CALL spUpdateProducto(?, ?, ?, ?, ?);";

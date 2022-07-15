@@ -112,7 +112,6 @@
                         }
                     ?>
                     </select>
-                    <!--<input id="tipPro" name="tipPro" type="number" class="form-control">-->
                 </div>
             </div>
         </div>

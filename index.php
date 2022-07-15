@@ -4,6 +4,7 @@
 
     //Controladores
     include_once("controller/usuarioController.php");
+    include_once("controller/tipoUsuarioController.php");
     include_once("controller/producController.php");
     include_once("controller/tipoProController.php");
     include_once("controller/proveedorController.php");
@@ -13,6 +14,7 @@
 
     //Modelos dto
     include_once("model/dto/userDto.php");
+    include_once("model/dto/tipoUsuarioDto.php");
     include_once("model/dto/producDto.php");
     include_once("model/dto/tipoProDto.php");
     include_once("model/dto/proveedorDto.php");
@@ -22,6 +24,7 @@
 
     //Modelos dao
     include_once("model/dao/userDao.php");
+    include_once("model/dao/tipoUsuarioDao.php");
     include_once("model/dao/producDao.php");
     include_once("model/dao/tipoProDao.php");
     include_once("model/dao/proveedorDao.php");

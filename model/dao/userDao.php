@@ -5,6 +5,7 @@
         private $apellido;
         private $usuario;
         private $contrasena;
+        private $idTipoUsuario;
 
         public function __construct($objDtoUsuario)
         {
@@ -13,6 +14,7 @@
             $this -> apellido = $objDtoUsuario -> getApellido();
             $this -> usuario = $objDtoUsuario -> getUsuario();
             $this -> contrasena = $objDtoUsuario -> getContrasena();
+            $this -> idTipoUsuario = $objDtoUsuario -> getIdTipoUsua();
         }
 
         public function getQueryLogin()
@@ -35,7 +37,7 @@
         
         public function mIdInsertUsuario()
         {
-            $sql = "CALL spInsertarUsuario(?, ?, ?, ?);";
+            $sql = "CALL spInsertarUsuario(?, ?, ?, ?, ?);";
             $estado = false;
             try {
                 $objCon = new Conexion();
@@ -44,6 +46,7 @@
                 $stmt -> bindParam(2, $this -> apellido, PDO::PARAM_STR);
                 $stmt -> bindParam(3, $this -> usuario,    PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> contrasena, PDO::PARAM_STR);
+                $stmt -> bindParam(5, $this -> idTipoUsuario, PDO::PARAM_INT);
                 $estado = $stmt -> execute();
             } catch (PDOexception $e) {
                 echo "Error al insertar usuarios " . $e -> getMessage();
@@ -87,7 +90,7 @@
 
         public function mIdUpdateUsuario()
         {
-            $sql = "CALL spUpdateUsuario(?, ?, ?, ?, ?);";
+            $sql = "CALL spUpdateUsuario(?, ?, ?, ?, ?, ?);";
             $estado = false;
             try {
                 $objCon = new Conexion();
@@ -97,6 +100,7 @@
                 $stmt -> bindParam(3, $this -> apellido, PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> usuario,    PDO::PARAM_STR);
                 $stmt -> bindParam(5, $this -> contrasena, PDO::PARAM_STR);
+                $stmt -> bindParam(6, $this -> idTipoUsuario, PDO::PARAM_INT);
                 $estado = $stmt -> execute();
             } catch (PDOexception $e) {
                 echo "Error al modificar usuarios " . $e -> getMessage();
