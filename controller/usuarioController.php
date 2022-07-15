@@ -23,6 +23,7 @@
                     $_SESSION['login'] = false;
                     $varNom = $objDaoUsuario -> getQueryLogin() -> fetch();
                     $_SESSION['name'] = $varNom[1];
+                    $_SESSION['rol'] = $varNom[5];
                     header('location:index.php');
                 }
 

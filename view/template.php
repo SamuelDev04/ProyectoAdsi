@@ -7,7 +7,20 @@
         
         switch ($_GET['ruta']) {
             case 'usuario':
-                include_once("view/module/usuario.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/usuario.php");
+                } else {
+                    include_once("view/module/presentation.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'Usted no puede realizar esta acción',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'clientes':
                 include_once("view/module/cliente.php");
@@ -41,10 +54,22 @@
                 break;
             case 'eraseProveedor':
                 include_once("view/module/eraseProveedor.php");
-                break;    
-            
+                break;
             case 'eraseSalida':
-                include_once("view/module/eraseSalida.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseSalida.php");
+                } else {
+                    include_once("view/module/salida.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'eraseEntrada':
                 include_once("view/module/eraseEntrada.php");
