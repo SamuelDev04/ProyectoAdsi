@@ -178,19 +178,35 @@
                       </tr>';  
                     } else {
                       foreach ($objCtrEntradaAll -> getSearchAllEntrada() as $key => $value) {
-                        echo '
-                        <tr>
-                          <td class="text-center">'. $value["idDetEntrada"] .'</td>
-                          <td class="text-center">'. $value["fechaEntrada"] .'</td>
-                          <td class="text-center">'. $value["cantProEntrada"] .'</td>
-                          <td class="text-center">'. $value["precioEntrada"] .'</td>
-                          <td class="text-center">'. $value["nombre"] .'</td>
-                          <td class="text-center">'. $value["descripProducto"] .'</td>
-                          <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseEntrada(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getDataEntrada(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
-                            </td>
-                            </tr>';
+                        if ($_SESSION['rol'] == 1) {
+                          echo '
+                          <tr>
+                              <td class="text-center">'. $value["idDetEntrada"] .'</td>
+                              <td class="text-center">'. $value["fechaEntrada"] .'</td>
+                              <td class="text-center">'. $value["cantProEntrada"] .'</td>
+                              <td class="text-center">'. $value["precioEntrada"] .'</td>
+                              <td class="text-center">'. $value["nombre"] .'</td>
+                              <td class="text-center">'. $value["descripProducto"] .'</td>
+                              <td class="text-center">
+                              <button class="btn btn-social-icon btn-google" onclick="eraseEntrada(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                              <button class="btn btn-social-icon bg-blue" onclick="getDataEntrada(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                              </td>
+                            </tr>'; 
+                        } else {
+                          echo '
+                          <tr>
+                            <td class="text-center">'. $value["idDetEntrada"] .'</td>
+                            <td class="text-center">'. $value["fechaEntrada"] .'</td>
+                            <td class="text-center">'. $value["cantProEntrada"] .'</td>
+                            <td class="text-center">'. $value["precioEntrada"] .'</td>
+                            <td class="text-center">'. $value["nombre"] .'</td>
+                            <td class="text-center">'. $value["descripProducto"] .'</td>
+                            <td class="text-center">
+                              <button class="btn btn-social-icon btn-google" onclick="eraseEntrada(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                              </td>
+                              </tr>';
+                            }
+                        
                         }
                       }
                   ?>
