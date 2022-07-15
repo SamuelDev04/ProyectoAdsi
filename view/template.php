@@ -57,13 +57,52 @@
                 }
                 break;
             case 'eraseClientes':
-                include_once("view/module/eraseCliente.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseCliente.php");
+                } else {
+                    include_once("view/module/cliente.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'eraseProducto':
-                include_once("view/module/eraseProducto.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseProducto.php");
+                } else {
+                    include_once("view/module/producto.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case 'eraseTipoProducto':
-                include_once("view/module/eraseTipoProducto.php");
+                if ($_SESSION['rol'] == 1) {
+                    include_once("view/module/eraseTipoProducto.php");
+                } else {
+                    include_once("view/module/TipoProducto.php");
+                    echo "
+                    <script>
+                        Swal.fire(
+                            'No puede eliminar registros!',
+                            'Esto solo lo puede hacer el administrador',
+                            'error'
+                        );
+                    </script>
+                    ";
+                }
                 break;
             case  'eraseProveedor':
                 if ($_SESSION['rol'] == 1) {
