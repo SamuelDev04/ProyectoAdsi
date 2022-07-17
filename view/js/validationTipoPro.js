@@ -16,7 +16,6 @@ function validateTipoPro(e) {
 
 }
 
-
 function validateModTipoPro(e) {
     e.preventDefault();
     formulario = document.getElementById('modifiTipoPro');

@@ -1,6 +1,7 @@
 <?php
-
+    //Clase para crear la conexion a la base de datos
     class Conexion{
+        //Propiedades necesarias
         private $host;
         private $drive;
         private $base;
@@ -9,6 +10,7 @@
         private $url;
         private $charset;
 
+        //Metodo construct donde se definen todos los datos de la db
         public function __construct()
         {
             $this -> host = "localhost";
@@ -22,20 +24,18 @@
             $this -> charset = "UTF8";
         }
 
+        //Metodo para generar la conexion
         public function getConec()
         {
             try {
                 $con = new PDO($this -> url, $this -> user, $this -> pass);
-                //var_dump($con);
 
             } catch (Exception $e) {
                 echo "Error de conexion a la base de datos <br>" . $e ->getMessage();
             }
             return $con;
         }
+        
     }
-
-    //$objConex = new Conexion();
-    //$objConex -> getConec();
 
 ?>

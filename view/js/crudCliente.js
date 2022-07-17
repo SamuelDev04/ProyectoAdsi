@@ -21,13 +21,7 @@ function eraseCliente(obj) {
         if (result.isConfirmed) {
             window.location = "index.php?ruta=eraseClientes&codigo=" + idCliente;
 
-            /*swalWithBootstrapButtons.fire(
-                'Eliminado!',
-                'El registro ha sido eliminado.',
-                'success'
-            )*/
         } else if (
-            /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
             swalWithBootstrapButtons.fire(

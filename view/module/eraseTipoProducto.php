@@ -1,7 +1,8 @@
 <?php
-    //echo "Llego";
+    //Llamamos el metodo para que corra
     eraseTipoProducto();
 
+    //Creamos el metodo para eliminar el tipo de producto
     function eraseTipoProducto(){
         try {
             $objDtoTipoPro = new TipoPro();

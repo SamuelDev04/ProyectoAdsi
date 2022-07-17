@@ -1,102 +1,86 @@
-<input type="hidden" id="icodeProveedor" name="icodeProveedor">
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Proveedores
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-user"></i> Proveedores</a></li>
-      </ol>
-    </section>
+  <input type="hidden" id="icodeProveedor" name="icodeProveedor">
+    <div class="content-wrapper">
+      <section class="content-header">
+        <h1>
+          Proveedores
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-user"></i> Proveedores</a></li>
+        </ol>
+      </section>
 
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Ingreso de proveedores</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-              <i class="fa fa-minus"></i></button>
+      <section class="content">
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Ingreso de proveedores</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                      title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            </div>
           </div>
-        </div>
-        
-      <div class="box-body">  
-      <form method="POST" id="formularioProveedor">
-
+          
+        <div class="box-body">  
+        <form method="POST" id="formularioProveedor">
           <!-- ROW 1 -->
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Nombre </span>
-                  <input id="nombrePro" name="nombrePro" type="text" class="form-control">
-                </div>
-              </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Numero de Telefono</span>
-                  <input id="numTel" name="numTel" type="number" class="form-control">
-                </div>
+          <div class="row">
+            <div class="col-lg-6 col-xs-6">
+              <div class="input-group">
+                <span class="input-group-addon">Nombre </span>
+                <input id="nombrePro" name="nombrePro" type="text" class="form-control">
               </div>
             </div>
+            <div class="col-lg-6 col-xs-6">
+              <div class="input-group">
+                <span class="input-group-addon">Numero de Telefono</span>
+                <input id="numTel" name="numTel" type="number" class="form-control">
+              </div>
+            </div>
+          </div>
 
-            <br>
+          <br>
 
           <!-- ROW 2 -->  
-            <div class="row">
-              <div class="col-lg-12 col-xs-12">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Direccion</span>
-                  <input id="dirPro" name="dirPro" type="text" class="form-control">
-                </div>
+          <div class="row">
+            <div class="col-lg-12 col-xs-12">
+              <div class="input-group">
+                <span class="input-group-addon">Direccion</span>
+                <input id="dirPro" name="dirPro" type="text" class="form-control">
               </div>
-              <!-- ./col -->
             </div>
-          <br>
-        
-        <div class="box-footer">
-          <button class="btn btn-app bg-blue" type="submit" onclick="validateProveedor(event)">
-            <i class="fa fa-save"></i> Guardar
-          </button>
-          <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteProveedor(event)">
-            <i class="fa fa-print"></i> Reporte
-          </button>
-        </div>
-        <!-- /.box-footer-->
-      </form>
-      </div>
-      <?php
-        if (isset($_POST['nombrePro'])){
-          $objCtrProveedor = new ProveedorController();
-          $objCtrProveedor -> setInsertarProveedor($_POST['nombrePro'], $_POST['numTel'], $_POST['dirPro']);
-        }
-      ?>
-    </div>
-    <!-- /.box -->
-
-    <!-- Otro box -->
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title">Proveedores</h3>
-        
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-          title="Collapse">
-          <i class="fa fa-minus"></i></button>
           </div>
+
+          <br>
+      
+          <div class="box-footer">
+            <button class="btn btn-app bg-blue" type="submit" onclick="validateProveedor(event)">
+              <i class="fa fa-save"></i> Guardar
+            </button>
+            <button class="btn btn-app bg-gray" type="submit" onclick="getGenerarReporteProveedor(event)">
+              <i class="glyphicon glyphicon-list-alt"></i> Reporte
+            </button>
+          </div>
+        </form>
         </div>
-        <div class="box-body">
-          
+        <?php
+          if (isset($_POST['nombrePro'])){
+            $objCtrProveedor = new ProveedorController();
+            $objCtrProveedor -> setInsertarProveedor($_POST['nombrePro'], $_POST['numTel'], $_POST['dirPro']);
+          }
+        ?>
+        </div>
+
+        <div class="box">
+          <div class="box-header with-border">
+            <h3 class="box-title">Proveedores</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+              title="Collapse">
+              <i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <div class="box-body">
             <table id="users" class="table table-bordered table-striped table-hover">
               <thead>
                 <!-- Este tr sirve para los títulos -->
@@ -127,7 +111,7 @@
                           <td class="text-center">'. $value["numeroTelefono"] .'</td>
                           <td class="text-center">'. $value["direccion"] .'</td>
                           <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseProveedor(this.parentElement.parentElement)"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-social-icon btn-google" onclick="eraseProveedor(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
                             <button class="btn btn-social-icon bg-blue" onclick="getDataProveedor(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             </tr>';
@@ -137,83 +121,70 @@
                 </form>
               </tbody>
             </table> 
+          </div>
         </div>
-      
-        <!-- /.box-body -->
+      </section>
     </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
-  <!-- Modal para guardar -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <!-- Modal para guardar -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-blue">
+            <h4 class="modal-title">Modificar proveedores</h4>
+          </div>
 
-        <!-- Modal Header -->
-        <div class="modal-header bg-blue">
-          <h4 class="modal-title">Modificar proveedores</h4>
-        </div>
+          <div class="modal-body">
+            <form method="POST" id="formularioProveedorm">
+              <input type="hidden" name="icodeProveedorm" id="icodeProveedorm">
 
-        <!-- Modal body -->
-        <div class="modal-body">
-          <form method="POST" id="formularioProveedorm">
-            <input type="hidden" name="icodeProveedorm" id="icodeProveedorm">
-
-            <!-- ROW 1 MOD CONTIENE NOMBRE Y FECHA DE NACIMIENTO-->
-            <div class="row">
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Nombre</span>
-                  <input id="nombreProm" name="nombreProm" type="text" class="form-control">
+              <!-- ROW 1 MOD CONTIENE NOMBRE Y FECHA DE NACIMIENTO-->
+              <div class="row">
+                <div class="col-lg-6 col-xs-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">Nombre</span>
+                    <input id="nombreProm" name="nombreProm" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-xs-6">
+                  <div class="input-group">
+                    <span class="input-group-addon">Numero de Telefono</span>
+                    <input id="numTelm" name="numTelm" type="number" class="form-control">
+                  </div>
                 </div>
               </div>
-              <!-- ./col -->
-              <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Numero de Telefono</span>
-                  <input id="numTelm" name="numTelm" type="number" class="form-control">
+              <br>
+              <!-- ROW 2 MOD CONTIENE SEXO Y CIUDAD-->
+              <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                  <div class="input-group">
+                    <span class="input-group-addon">Direccion</span>
+                    <input id="dirProm" name="dirProm" type="text" class="form-control">
+                  </div>
                 </div>
               </div>
-            </div>
-            <br>
-            <!-- ROW 2 MOD CONTIENE SEXO Y CIUDAD-->
-            <div class="row">
-              <div class="col-lg-12 col-xs-12">
-                <!-- small box -->
-                <div class="input-group">
-                  <span class="input-group-addon">Direccion</span>
-                  <input id="dirProm" name="dirProm" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
 
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button class="btn btn-google bg-blue" type="submit" onclick="validateProveedorMod(event)">
-            <i class="fa fa-save"></i> Guardar
-          </button>
-          <?php
-          if (isset($_POST['nombreProm'])) {
-            $objCtrProveedor = new ProveedorController();
-            $objCtrProveedor -> setUpdateProveedor($_POST['icodeProveedorm'], $_POST['nombreProm'], $_POST['numTelm'], $_POST['dirProm']);
-          }
-          ?>
-          <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
-            <i class="fa fa-close"></i> Cerrar
-          </button>
+          <div class="modal-footer">
+            <button class="btn btn-google bg-blue" type="submit" onclick="validateProveedorMod(event)">
+              <i class="fa fa-save"></i> Guardar
+            </button>
+            <?php
+            if (isset($_POST['nombreProm'])) {
+              $objCtrProveedor = new ProveedorController();
+              $objCtrProveedor -> setUpdateProveedor($_POST['icodeProveedorm'], $_POST['nombreProm'], $_POST['numTelm'], $_POST['dirProm']);
+            }
+            ?>
+            <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
+              <i class="fa fa-close"></i> Cerrar
+            </button>
+          </div>
         </div>
-
       </div>
     </div>
-  </div>
-  <script>
-    let activarIcon = document.getElementById('claseProveedor');
+    <script>
+      let activarIcon = document.getElementById('claseProveedor');
 
-    activarIcon.classList.add('active');
-  </script>
+      activarIcon.classList.add('active');
+    </script>

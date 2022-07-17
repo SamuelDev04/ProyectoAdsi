@@ -18,13 +18,13 @@
             $this -> pdf->SetFont('Arial','B',16);
 
             // Logo
-            $this -> pdf ->Image('../img/Logo2.png',20,5,40);
+            $this -> pdf ->Image('../img/Icon.png',20,5,28);
             // Arial bold 15
             $this -> pdf ->SetFont('Arial','B',15);
             // Movernos a la derecha
             $this -> pdf ->Cell(80);
             // Título
-            $this -> pdf ->Cell(30,10,'Reporte RikoPollo',0,0,'C');
+            $this -> pdf ->Cell(30,10,'Reporte Tipos de Producto - RikoPollo',0,0,'C');
             // Salto de línea
             $this -> pdf ->Ln(30);
         }

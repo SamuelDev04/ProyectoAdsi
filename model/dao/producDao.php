@@ -1,11 +1,14 @@
 <?php
+    //Clase DAO del modulo producto
     class ProductoModel{
+        //Propiedades necesarias
         private $idProducto;
         private $descripProducto;
         private $cantProducto;
         private $costoProducto;
         private $idTipoProducto;
 
+        //Metodo construct donde se definen los getter de producto
         public function __construct($objDtoProducto)
         {
             $this -> idProducto = $objDtoProducto -> getIdPro();
@@ -15,6 +18,7 @@
             $this -> idTipoProducto = $objDtoProducto -> getTipoPro();
         }
 
+        //Metodo para llamar el procedimiento de insertar en la db
         public function mIdInsertProducto()
         {
             $sql = "CALL spInsertarProducto(?, ?, ?, ?);";
@@ -33,6 +37,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedimiento de eliminar en la db
         public function mIdEraseProducto()
         {
             $respon = false;
@@ -50,6 +55,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de traer todos en la db
         public function mIdSearchAllProducto()
         {
             $sql = "call spSearchAllProducto()";
@@ -66,6 +72,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateProducto()
         {
             $sql = "CALL spUpdateProducto(?, ?, ?, ?, ?);";

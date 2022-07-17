@@ -12,11 +12,11 @@
                 if (gettype($objDaoUsuario -> getQueryLogin() -> fetch()) == 'boolean') {
                     echo "
                     <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Your password is incorrect',
-                      })
+                        Swal.fire(
+                            'ERROR',
+                            'Usuario y/o contraseña incorrectos',
+                            'error'
+                        );
                     </script>
                     ";
                 }else{

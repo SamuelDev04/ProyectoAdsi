@@ -1,7 +1,8 @@
 <?php
-    //echo "Llego";
+    //Llamamos el metodo para que corra
     eraseProveedor();
 
+    //Creamos el metodo para eliminar el proveedor
     function eraseProveedor(){
         try {
             $objDtoProveedor = new Proveedor();

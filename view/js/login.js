@@ -13,17 +13,3 @@ $(".close-btn").click(function(){
     $("#login-button").fadeIn(800);
   });
 });
-
-/*function validarCampos(e) {
-  e.preventDefault();
-  let usuario = document.getElementById('usuario').value;
-  let contrasena = document.getElementById('password').value;
-
-  if (usuario.length == "" || contrasena.length == "") {
-    Swal.fire({
-      type:'warning',
-      title:'Debe ingresar un usuario y/o password',
-    });
-    return false;
-  }
-};*/
