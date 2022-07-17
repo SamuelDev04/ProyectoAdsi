@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo tipo producto 
     class TipoProController{
 
+        //Metodo para insertar todos los tipos productos
         public function setInsertarTipoProducto($descripcion)
         {
             try {
@@ -25,7 +27,9 @@
             }
         }
 
-        public function getSearchAllTipoProducto(){
+        //Metodo para traer todos los tipos productos
+        public function getSearchAllTipoProducto()
+        {
             $respon = false;
             try {
                 $objDtoTipoPro = new TipoPro();
@@ -39,6 +43,7 @@
             return $respon;
         }
 
+        //Metodo para actualizar informacion de tipo producto
         public function setUpdateTipoProducto($idTipoProducto, $descripcion)
         {
             try {

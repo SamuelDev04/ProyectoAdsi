@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo tipo usuario
     class TipoUsuarioController{
 
+        //Metodo para traer todos los tipos usuarios
         public function getSearchAllTipoUsuario()
         {
             $respon = false;

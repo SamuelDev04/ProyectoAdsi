@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo registro
     class UsuarioController{
 
+        //Metodo para evaluar el login
         public function getEvalClave($usuario, $contrasena)
         {
             try {
@@ -32,7 +34,9 @@
             }
         }
 
-        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena, $idTipoUsuario){
+        //Metodo para insertar todos los usuarios
+        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena, $idTipoUsuario)
+        {
             try {
                 $objDtoUsuario = new usuario();
                 $objDtoUsuario -> setNombre($nombre);
@@ -60,7 +64,9 @@
 
         }
 
-        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena, $idTipoUsuario){
+        //Metodo para actualizar informacion de usuario
+        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena, $idTipoUsuario)
+        {
             try {
                 $objDtoUsuario = new Usuario();
                 $objDtoUsuario -> setIdUser($idUsuario);
@@ -84,7 +90,9 @@
             }
         }
 
-        public function getSearchAllUsuario(){
+        //Metodo para traer todos los usuarios
+        public function getSearchAllUsuario()
+        {
             $respon = false;
             try {
                 $objDtoUsuario = new Usuario();

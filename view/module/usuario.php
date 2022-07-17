@@ -1,7 +1,5 @@
 <input type="hidden" id="icode" name="icode">
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Usuarios
@@ -12,10 +10,7 @@
       </ol>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Ingreso de usuarios</h3>
@@ -33,15 +28,13 @@
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Nombre</span>
                 <input id="iname" name="iname" type="text" class="form-control">
               </div>
             </div>
-            <!-- ./col -->
+
             <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Apellido</span>
                 <input id="iape" name="iape" type="text" class="form-control">
@@ -52,21 +45,18 @@
         <!-- ROW 2 -->
         <div class="row">
           <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
             <div class="input-group">
               <span class="input-group-addon">Usuario</span>
               <input id="iuser" name="iuser" type="text" class="form-control">
             </div>
           </div>
-          <!-- ./col -->
+
           <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
             <div class="input-group">
               <span class="input-group-addon">Contraseña</span>
               <input id="icontra" name="icontra" type="password" class="form-control">
             </div>
           </div>
-          <!-- ./col -->
         </div>
 
         <br>
@@ -74,7 +64,6 @@
         <!-- ROW 3 -->
         <div class="row">
           <div class="col-lg-12 col-xs-12">
-              <!-- small box -->
               <div class="input-group">
                   <span class="input-group-addon">Tipo Usuario</span>
                   <select class="form-control" id="itipousua" name="itipousua">
@@ -101,7 +90,6 @@
 
         <br>
 
-        <!-- /.box-body -->
         <div class="box-footer">
           <button class="btn btn-app bg-blue" type="submit" onclick="validate(event)">
             <i class="fa fa-save"></i> Guardar
@@ -110,7 +98,6 @@
             <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
-        <!-- /.box-footer-->
       </form>
       </div>
       <?php
@@ -121,9 +108,7 @@
       ?>
 
     </div>
-    <!-- /.box -->
 
-      <!-- Otro box -->
       <div class="box">
         <div class="box-header with-border">
         <h3 class="box-title">Usuarios</h3>
@@ -182,39 +167,31 @@
             </table> 
         </div>
       
-        <!-- /.box-body -->
     </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Modal para guardar -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-
-        <!-- Modal Header -->
         <div class="modal-header bg-blue">
           <h4 class="modal-title">Modificar usuario</h4>
         </div>
 
-        <!-- Modal body -->
         <div class="modal-body">
         <form method="POST" id="modifiUsuario">
           <input type="hidden" name="icodem" id="icodem">
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Nombre</span>
                 <input id="inamem" name="inamem" type="text" class="form-control">
               </div>
             </div>
-            <!-- ./col -->
+
             <div class="col-lg-6 col-xs-6">
-              <!-- small box -->
               <div class="input-group">
                 <span class="input-group-addon">Apellido</span>
                 <input id="iapem" name="iapem" type="text" class="form-control">
@@ -225,21 +202,18 @@
         <!-- ROW 2 -->
         <div class="row">
           <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
             <div class="input-group">
               <span class="input-group-addon">Usuario</span>
               <input id="iuserm" name="iuserm" type="text" class="form-control">
             </div>
           </div>
-          <!-- ./col -->
+      
           <div class="col-lg-6 col-xs-6">
-            <!-- small box -->
             <div class="input-group">
               <span class="input-group-addon">Contraseña</span>
               <input id="icontram" name="icontram" type="password" class="form-control">
             </div>
           </div>
-          <!-- ./col -->
         </div>
 
         <br>
@@ -247,7 +221,6 @@
         <!-- ROW 3 -->
         <div class="row">
           <div class="col-lg-12 col-xs-12">
-              <!-- small box -->
               <div class="input-group">
                   <span class="input-group-addon">Tipo Usuario</span>
                   <select class="form-control" id="itipousuam" name="itipousuam">
@@ -277,7 +250,6 @@
         </form>
         </div>
 
-        <!-- Modal footer -->
         <div class="modal-footer">
           <button class="btn btn-google bg-blue" type="submit" onclick="validateMod(event)">
             <i class="glyphicon glyphicon-ok-sign"></i> Guardar

@@ -1,7 +1,5 @@
 <input type="hidden" id="icodeSalida" name="icodeSalida">
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Salidas
@@ -12,10 +10,7 @@
       </ol>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Salidas de productos</h3>
@@ -32,15 +27,12 @@
         <!-- ROW 1 -->
         <div class="row">
             <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Fecha salida</span>
                     <input id="fechaSal" name="fechaSal" type="date" class="form-control">
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Cantidad salida</span>
                     <input id="cantSal" name="cantSal" type="number" class="form-control">
@@ -53,15 +45,12 @@
         <!-- ROW 2 -->  
         <div class="row">
             <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Valor total</span>
                     <input id="valTot" name="valTot" type="number" class="form-control">
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Cliente</span>
                     <select class="form-control" id="clienSal" name="clienSal">
@@ -91,7 +80,6 @@
         <!-- ROW 3 -->
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Producto</span>
                     <select class="form-control" id="prodSal" name="prodSal">
@@ -126,7 +114,6 @@
             <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
-        <!-- /.box-footer-->
       </form>
       </div>
       <?php
@@ -137,13 +124,10 @@
         }
       ?>
     </div>
-    <!-- /.box -->
 
-    <!-- Otro box -->
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Salidas</h3>
-        
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
           title="Collapse">
@@ -214,24 +198,18 @@
             </table> 
         </div>
       
-        <!-- /.box-body -->
     </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Modal para guardar -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-
-        <!-- Modal Header -->
         <div class="modal-header bg-blue">
           <h4 class="modal-title">Modificar producto</h4>
         </div>
 
-        <!-- Modal body -->
         <div class="modal-body">
           <form method="POST" id="formularioSalidam">
             <input type="hidden" name="icodeSalidam" id="icodeSalidam">
@@ -239,15 +217,14 @@
             <!-- ROW 1 MOD CONTIENE FECHA DE SALIDA Y CANTIDAD DE SALIDA-->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
-                  <!-- small box -->
+
                   <div class="input-group">
                       <span class="input-group-addon">Fecha salida</span>
                       <input id="fechaSalm" name="fechaSalm" type="date" class="form-control">
                   </div>
               </div>
-              <!-- ./col -->
+    
               <div class="col-lg-6 col-xs-6">
-                  <!-- small box -->
                   <div class="input-group">
                       <span class="input-group-addon">Cantidad salida</span>
                       <input id="cantSalm" name="cantSalm" type="number" class="form-control">
@@ -258,15 +235,13 @@
             <!-- ROW 2 MOD CONTIENE VALOR TOTAL Y CLIENTE-->
             <div class="row">
               <div class="col-lg-6 col-xs-6">
-                  <!-- small box -->
                   <div class="input-group">
                       <span class="input-group-addon">Valor total</span>
                       <input id="valTotm" name="valTotm" type="number" class="form-control">
                   </div>
               </div>
-              <!-- ./col -->
+              
               <div class="col-lg-6 col-xs-6">
-                <!-- small box -->
                 <div class="input-group">
                     <span class="input-group-addon">Cliente</span>
                     <select class="form-control" id="clienSalm" name="clienSalm">
@@ -289,13 +264,11 @@
                     </select>
                 </div>
               </div>
-              <!-- ./col -->
             </div>
             <br>
             <!-- ROW 3 MOD CONTIENE PRODUCTO-->
             <div class="row">
               <div class="col-lg-12 col-xs-12">
-                  <!-- small box -->
                   <div class="input-group">
                       <span class="input-group-addon">Producto</span>
                       <select class="form-control" id="prodSalm" name="prodSalm">
@@ -322,7 +295,6 @@
           </form>
         </div>
 
-        <!-- Modal footer -->
         <div class="modal-footer">
           <button class="btn btn-google bg-blue" type="submit" onclick="validateSalidaMod(event)">
             <i class="glyphicon glyphicon-ok-sign"></i> Guardar

@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo salida
     class SalidaController{
 
+        //Metodo para insertar todas las salidas
         public function setInsertarSalida($fechaSalida, $cantidadSalida, $valorTotal, $idCliente, $idProducto)
         {
             try {
@@ -28,7 +30,8 @@
                 echo "Error en el controlador de inserción " .$e -> getMessage();
             }
         }
-
+        
+        //Metodo para traer todas las salidas
         public function getSearchAllSalida()
         {
             $respon = false;
@@ -43,7 +46,8 @@
 
             return $respon;
         }
-
+        
+        //Metodo para actualizar informacion de salidas 
         public function setUpdateSalida($idDetSalida, $fechaSalida, $cantidadSalida, $valorTotal, $idCliente, $idProducto)
         {
             try {
@@ -68,7 +72,8 @@
                 echo "Error al modificar la salida " . $e->getMessage();
             }
         }
-
+        
+        ////Metodo para actualizar la cantidad de salida
         public function setUpdateMercanciaS($idProducto, $cantidadSalida)
         {
             try {

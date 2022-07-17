@@ -1,4 +1,5 @@
 <?php
+    //Clase Dao del modulo registro
     class UsuarioModel{
         private $idUsuario;
         private $nombre;
@@ -7,6 +8,7 @@
         private $contrasena;
         private $idTipoUsuario;
 
+        //Metodo construct donde se define los getter de usuario
         public function __construct($objDtoUsuario)
         {
             $this -> idUsuario = $objDtoUsuario -> getIdUser();
@@ -17,6 +19,7 @@
             $this -> idTipoUsuario = $objDtoUsuario -> getIdTipoUsua();
         }
 
+        //Metodo para validar login
         public function getQueryLogin()
         {
             $sql = "SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?";
@@ -35,6 +38,7 @@
             return $result;
         }
         
+        //Metodo para llamar el procedemiento de insertar en la db 
         public function mIdInsertUsuario()
         {
             $sql = "CALL spInsertarUsuario(?, ?, ?, ?, ?);";
@@ -54,6 +58,7 @@
             return $estado;
         }
 
+         //Metodo para llamar el procedemiento de traer todos en la db 
         public function mIdSearchAllUsuario()
         {
             $sql = "call spSearchAllUsuario()";
@@ -70,6 +75,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedemiento de eliminar en la db 
         public function mIdEraseUsuario()
         {
             $respon = false;
@@ -88,6 +94,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateUsuario()
         {
             $sql = "CALL spUpdateUsuario(?, ?, ?, ?, ?, ?);";

@@ -1,5 +1,7 @@
 <?php
+    //Clase Dao del modulo salida 
     class SalidaModel{
+        //Propiedades necesarias 
         private $idDetSalida;
         private $fechaSalida;
         private $cantidadSalida;
@@ -7,6 +9,7 @@
         private $idCliente;
         private $idProducto;
 
+        //Metodo construct donde se define los getter de salida
         public function __construct($objDtoSalida)
         {
             $this -> idDetSalida = $objDtoSalida -> getIdDetSal();
@@ -17,6 +20,7 @@
             $this -> idProducto = $objDtoSalida -> getIdPro();
         }
 
+        //Metodo para llamar el procedemiento de insertar en la db 
         public function mIdInsertSalida()
         {
             $sql = "CALL spInsertarDetSal(?, ?, ?, ?, ?);";
@@ -36,6 +40,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedemiento de eliminar en la db 
         public function mIdEraseSalida()
         {
             $respon = false;
@@ -53,6 +58,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedemiento de traer todos en la db 
         public function mIdSearchAllSalida()
         {
             $sql = "call spSearchAllDetSal()";
@@ -69,6 +75,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateSalida()
         {
             $sql = "CALL spUpdateDetSal(?, ?, ?, ?, ?, ?);";
@@ -90,6 +97,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedimiento de actualizar cantidad de salida
         public function mIdUpdateMercanciaS()
         {
             $sql = "CALL spSalidaMercancia(?, ?)";

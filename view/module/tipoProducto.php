@@ -1,7 +1,5 @@
 <input type="hidden" id="icode" name="icode">
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Tipo productos
@@ -13,10 +11,7 @@
       </ol>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Ingreso de tipo de productos</h3>
@@ -34,16 +29,14 @@
           <!-- ROW 1 -->
             <div class="row">
               <div class="col-lg-12 col-xs-12">
-                <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Descripción</span>
                   <input id="idescrip" name="idescrip" type="text" class="form-control">
                 </div>
               </div>
-              <!-- ./col -->
             </div>
           <br>
-        <!-- /.box-body -->
+
         <div class="box-footer">
           <button class="btn btn-app bg-blue" type="submit" onclick="validateTipoPro(event)">
             <i class="fa fa-save"></i> Guardar
@@ -52,7 +45,6 @@
             <i class="glyphicon glyphicon-list-alt"></i> Reporte
           </button>
         </div>
-        <!-- /.box-footer-->
       </form>
       </div>
       <?php
@@ -63,9 +55,7 @@
       ?>
 
     </div>
-    <!-- /.box -->
 
-    <!-- Otro box -->
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Tipos de producto</h3>
@@ -114,44 +104,34 @@
               </tbody>
             </table> 
         </div>
-      
-        <!-- /.box-body -->
     </div>
     </section>
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
   <!-- Modal para guardar -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
-
-        <!-- Modal Header -->
         <div class="modal-header bg-blue">
           <h4 class="modal-title">Modificar tipo producto</h4>
         </div>
 
-        <!-- Modal body -->
         <div class="modal-body">
         <form method="POST" id="modifiTipoPro">
           <input type="hidden" name="icodeTipoProm" id="icodeTipoProm">
         <!-- ROW 1 -->
           <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <!-- small box -->
                 <div class="input-group">
                   <span class="input-group-addon">Descripción</span>
                   <input id="idescripm" name="idescripm" type="text" class="form-control">
                 </div>
             </div>
-            <!-- ./col -->
           </div>
         <br>
         </form>
         </div>
 
-        <!-- Modal footer -->
         <div class="modal-footer">
           <button class="btn btn-google bg-blue" type="submit" onclick="validateModTipoPro(event)">
             <i class="glyphicon glyphicon-ok-sign"></i> Guardar
