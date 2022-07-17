@@ -1,6 +1,10 @@
 <?php
+    //Clase controlador para el modulo de entrada
     class EntradaController{
-        public function getSearchAllEntrada(){
+
+        //Metodo para traer todas las entradas
+        public function getSearchAllEntrada()
+        {
             $respon = false;
             try {
                 $objDtoEntrada = new Entrada();
@@ -14,7 +18,9 @@
             return $respon;
         }
 
-        public function setInsertEntrada($fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
+        //Metodo para insertar entradas
+        public function setInsertEntrada($fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto )
+        {
             try {
                 $objDtoEntrada = new Entrada();
                 $objDtoEntrada -> setFechaEnt($fechaEntrada);
@@ -43,7 +49,10 @@
             }
 
         }
-        public function setUpdateEntrada($idDetEntrada ,$fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto ){
+
+        //Metodo para actualizar informacion de entradas
+        public function setUpdateEntrada($idDetEntrada ,$fechaEntrada, $cantProEntrada, $precioEntrada, $idProveedor, $idProducto )
+        {
             try {
                 $objDtoEntrada = new Entrada();
                 $objDtoEntrada -> setIdDetEnt($idDetEntrada);
@@ -69,6 +78,7 @@
             }
         }
 
+        //Metodo para actualizar la cantidad de producto
         public function setUpdateMercancia($idProducto, $cantProEntrada)
         {
             try {
@@ -89,5 +99,6 @@
                 echo "Error al actualizar en el controlador" . $e -> getMessage();
             }
         }
+
     }
 ?>

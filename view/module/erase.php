@@ -1,7 +1,8 @@
 <?php
-    //echo "Llego";
+    //Llamamos el metodo para que corra
     eraseUsuario();
  
+    //Creamos el metodo para eliminar el usuario
     function eraseUsuario(){
         try {
             $objDtoUsuario = new Usuario();

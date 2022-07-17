@@ -1,11 +1,14 @@
 <?php
+    //Clase DAO del modulo cliente
     class ClienteModel{
+        //Propiedades necesarias
         private $idCliente;
         private $nombre;
         private $telefono;
         private $celular;
         private $direccion;
 
+        //Metodo construct donde se definen los getter de cliente
         public function __construct($objDtoCliente)
         {
             $this -> idCliente = $objDtoCliente -> getIdCliente();
@@ -15,6 +18,7 @@
             $this -> direccion = $objDtoCliente -> getDireccion();
         }
         
+        //Metodo para llamar el procedimiento de insertar en la db
         public function mIdInsertCliente()
         {
             $sql = "CALL spInsertarCliente(?, ?, ?, ?);";
@@ -33,6 +37,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedimiento de traer todos en la db
         public function mIdSearchAllCliente()
         {
             $sql = "call spSearchAllCliente()";
@@ -49,6 +54,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de eliminar en la db
         public function mIdEraseCliente()
         {
             $respon = false;
@@ -67,6 +73,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateCliente()
         {
             $sql = "CALL spUpdateCliente(?, ?, ?, ?, ?);";

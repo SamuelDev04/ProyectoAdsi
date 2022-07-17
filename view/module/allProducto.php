@@ -19,13 +19,13 @@
             $this -> pdf->SetFont('Arial','B',16);
 
             // Logo
-            $this -> pdf ->Image('../img/sena.png',20,5,30);
+            $this -> pdf ->Image('../img/Icon.png',20,5,28);
             // Arial bold 15
             $this -> pdf ->SetFont('Arial','B',15);
             // Movernos a la derecha
             $this -> pdf ->Cell(80);
             // Título
-            $this -> pdf ->Cell(30,10,'Reporte Aprendices',0,0,'C');
+            $this -> pdf ->Cell(30,10,'Reporte Productos - RikoPollo',0,0,'C');
             // Salto de línea
             $this -> pdf ->Ln(30);
 
@@ -47,15 +47,15 @@
             // Cabecera
             $header = array('Codigo', 'Descripcion', 'Cantidad', 'Costo', 'Tipo Producto');
             foreach($header as $col)  
-                $this-> pdf -> Cell(38,10,$col,1,0,'C');
+                $this-> pdf -> Cell(39,10,$col,1,0,'C');
                 $this-> pdf -> Ln(10); 
             
             foreach ($respon as $key => $value) {
-                $this -> pdf->Cell(38,10, $value['idProducto'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['descripProducto'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['cantProducto'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['costoProducto'],1,0,'C');
-                $this -> pdf->Cell(38,10, $value['idTipoProducto'],1,0,'C');
+                $this -> pdf->Cell(39,10, $value['idProducto'],1,0,'C');
+                $this -> pdf->Cell(39,10, $value['descripProducto'],1,0,'C');
+                $this -> pdf->Cell(39,10, $value['cantProducto'],1,0,'C');
+                $this -> pdf->Cell(39,10, $value['costoProducto'],1,0,'C');
+                $this -> pdf->Cell(39,10, $value['descripcion'],1,0,'C');
                 $this -> pdf -> Ln(10);
             }      
 

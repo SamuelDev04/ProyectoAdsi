@@ -1,6 +1,8 @@
 <?php
+    //Llamamos el metodo para que corra
     eraseEntrada();
  
+    //Creamos el metodo para eliminar la entrada
     function eraseEntrada(){
         try {
             $objDtoEntrada = new Entrada();

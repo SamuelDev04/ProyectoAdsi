@@ -1,6 +1,8 @@
 <?php
+    //Llamamos el metodo para que corra
     eraseSalida();
 
+    //Creamos el metodo para eliminar la salida
     function eraseSalida(){
         try {
             $objDtoSalida = new Salida();

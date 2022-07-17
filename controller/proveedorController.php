@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo de proveedor
     class ProveedorController{
 
+        //Metodo para insertar proveedores
         public function setInsertarProveedor($nombre, $numeroTelefono, $direccion)
         {
             try {
@@ -27,7 +29,9 @@
             }
         }
 
-        public function getSearchAllProveedor(){
+        //Metodo para traer todos los proveedores
+        public function getSearchAllProveedor()
+        {
             $respon = false;
             try {
                 $objDtoProveedor = new Proveedor();
@@ -41,6 +45,7 @@
             return $respon;
         }
 
+        //Metodo para actualizar informacion de proveedores
         public function setUpdateProveedor($idProveedor, $nombre,$numeroTelefono,$direccion)
         {
             try {

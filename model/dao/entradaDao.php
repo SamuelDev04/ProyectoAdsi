@@ -1,5 +1,7 @@
 <?php
+    //Clase DAO del modulo entrada
     class EntradaModel{
+        //Propiedades necesarias
         private $idDetEntrada;
         private $fechaEntrada;
         private $cantProEntrada;
@@ -7,6 +9,7 @@
         private $idProveedor;
         private $idProducto;
 
+        //Metodo construct donde se definen los getter de entrada
         public function __construct($objDtoEntrada)
         {
             $this -> idDetEntrada = $objDtoEntrada -> getIdDetEnt();
@@ -17,6 +20,7 @@
             $this -> idProducto = $objDtoEntrada -> getIdProduc();
         }
 
+        //Metodo para llamar el procedimiento de insertar en la db
         public function mIdInsertEntrada()
         {
             $sql = "CALL spInsertarDetEnt(?, ?, ?, ?, ?);";
@@ -36,6 +40,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedimiento de eliminar en la db
         public function mIdEraseEntrada()
         {
             $respon = false;
@@ -53,6 +58,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de traer todos en la db
         public function mIdSearchAllEntrada()
         {
             $sql = "call spSearchAllDetEnt()";
@@ -69,6 +75,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateEntrada()
         {
             $sql = "CALL spUpdateDetEnt(?, ?, ?, ?, ?, ?);";
@@ -90,6 +97,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedimiento de actualizar cantidad de producto
         public function mIdUpdateMercancia()
         {
             $sql = "CALL spEntradaMercancia(?, ?)";

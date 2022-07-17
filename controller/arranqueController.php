@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    //Clase controlador para el arranque del aplicativo "Validar el login"
     class Arranque{
         public function getIntro()
         {

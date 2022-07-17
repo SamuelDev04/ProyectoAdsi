@@ -1,5 +1,5 @@
 <?php
-    //echo "Llego";
+    //Llamamos el metodo para que corra
     eraseCliente();
  
     function eraseCliente(){
@@ -17,10 +17,11 @@
                         )
                     </script>
                 ";
-                include_once("view/module/Cliente.php");
+                include_once("view/module/cliente.php");
             }
         } catch (PDOException $e) {
             echo "Error en el borrado del registro " . $e -> getMessage();
         }
+
     }
 ?>
