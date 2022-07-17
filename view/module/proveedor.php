@@ -168,7 +168,7 @@
 
           <div class="modal-footer">
             <button class="btn btn-google bg-blue" type="submit" onclick="validateProveedorMod(event)">
-              <i class="fa fa-save"></i> Guardar
+              <i class="glyphicon glyphicon-ok-sign"></i> Guardar
             </button>
             <?php
             if (isset($_POST['nombreProm'])) {
@@ -177,7 +177,7 @@
             }
             ?>
             <button type="button" class="btn btn-google bg-red" data-dismiss="modal">
-              <i class="fa fa-close"></i> Cerrar
+              <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
             </button>
           </div>
         </div>
