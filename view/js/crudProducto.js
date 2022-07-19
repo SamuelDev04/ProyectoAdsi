@@ -21,13 +21,7 @@ function eraseProducto(obj) {
         if (result.isConfirmed) {
             window.location = "index.php?ruta=eraseProducto&codigo=" + codigoProducto;
 
-            /*swalWithBootstrapButtons.fire(
-                'Eliminado!',
-                'El registro ha sido eliminado.',
-                'success'
-            )*/
         } else if (
-            /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
             swalWithBootstrapButtons.fire(
@@ -55,7 +49,7 @@ function getDataProducto(obj) {
 
 }
 
-function getGenerarReporteAprendiz(e) {
+function getGenerarReporteProducto(e) {
     e.preventDefault();
     window.open('view/module/allProducto.php', '_blank');
 }

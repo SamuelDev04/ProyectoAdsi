@@ -1,11 +1,14 @@
 <?php
+    //Clase Dao del modulo registro
     class UsuarioModel{
         private $idUsuario;
         private $nombre;
         private $apellido;
         private $usuario;
         private $contrasena;
+        private $idTipoUsuario;
 
+        //Metodo construct donde se define los getter de usuario
         public function __construct($objDtoUsuario)
         {
             $this -> idUsuario = $objDtoUsuario -> getIdUser();
@@ -13,8 +16,10 @@
             $this -> apellido = $objDtoUsuario -> getApellido();
             $this -> usuario = $objDtoUsuario -> getUsuario();
             $this -> contrasena = $objDtoUsuario -> getContrasena();
+            $this -> idTipoUsuario = $objDtoUsuario -> getIdTipoUsua();
         }
 
+        //Metodo para validar login
         public function getQueryLogin()
         {
             $sql = "SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?";
@@ -33,9 +38,10 @@
             return $result;
         }
         
+        //Metodo para llamar el procedemiento de insertar en la db 
         public function mIdInsertUsuario()
         {
-            $sql = "CALL spInsertarUsuario(?, ?, ?, ?);";
+            $sql = "CALL spInsertarUsuario(?, ?, ?, ?, ?);";
             $estado = false;
             try {
                 $objCon = new Conexion();
@@ -44,6 +50,7 @@
                 $stmt -> bindParam(2, $this -> apellido, PDO::PARAM_STR);
                 $stmt -> bindParam(3, $this -> usuario,    PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> contrasena, PDO::PARAM_STR);
+                $stmt -> bindParam(5, $this -> idTipoUsuario, PDO::PARAM_INT);
                 $estado = $stmt -> execute();
             } catch (PDOexception $e) {
                 echo "Error al insertar usuarios " . $e -> getMessage();
@@ -51,6 +58,7 @@
             return $estado;
         }
 
+         //Metodo para llamar el procedemiento de traer todos en la db 
         public function mIdSearchAllUsuario()
         {
             $sql = "call spSearchAllUsuario()";
@@ -67,6 +75,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedemiento de eliminar en la db 
         public function mIdEraseUsuario()
         {
             $respon = false;
@@ -85,9 +94,10 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateUsuario()
         {
-            $sql = "CALL spUpdateUsuario(?, ?, ?, ?, ?);";
+            $sql = "CALL spUpdateUsuario(?, ?, ?, ?, ?, ?);";
             $estado = false;
             try {
                 $objCon = new Conexion();
@@ -97,6 +107,7 @@
                 $stmt -> bindParam(3, $this -> apellido, PDO::PARAM_STR);
                 $stmt -> bindParam(4, $this -> usuario,    PDO::PARAM_STR);
                 $stmt -> bindParam(5, $this -> contrasena, PDO::PARAM_STR);
+                $stmt -> bindParam(6, $this -> idTipoUsuario, PDO::PARAM_INT);
                 $estado = $stmt -> execute();
             } catch (PDOexception $e) {
                 echo "Error al modificar usuarios " . $e -> getMessage();

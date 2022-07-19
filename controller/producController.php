@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo de producto
     class ProductoController{
 
+        //Metodo insertar productos
         public function setInsertarProducto($descripProducto, $cantProducto, $costoProducto, $idTipoProducto)
         {
             try {
@@ -16,7 +18,7 @@
                     echo "<script>
                         Swal.fire({
                             icon: 'success',
-                            title: 'El Producto se ha guardado',
+                            title: 'El producto se ha guardado',
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -28,7 +30,9 @@
             }
         }
 
-        public function getSearchAllProducto(){
+        //Metodo para traer todos los productos
+        public function getSearchAllProducto()
+        {
             $respon = false;
             try {
                 $objDtoProducto = new Producto();
@@ -42,6 +46,7 @@
             return $respon;
         }
 
+        //Metodo para actualizar informacion de productos
         public function setUpdateProducto($idProducto, $descripProducto, $cantProducto, $costoProducto, $idTipoProducto)
         {
             try {
@@ -62,7 +67,7 @@
                         </script>";
                 }
             } catch (PDOException $e) {
-                echo "Error al modificar la Producto parcero" . $e->getMessage();
+                echo "Error al modificar el producto " . $e->getMessage();
             }
         }
 

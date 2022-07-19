@@ -1,14 +1,17 @@
 <?php
+    //Clase Dao del modulo producto
     class TipoProModel{
         private $idTipoProducto;
         private $descripcion;
 
+        //Metodo construct donde se define los getter de tipo prodducto
         public function __construct($objDtoTipoPro)
         {
             $this -> idTipoProducto = $objDtoTipoPro -> getIdTipoPro();
             $this -> descripcion = $objDtoTipoPro -> getDescripPro();
         }
 
+        //Metodo para llamar el procedemiento de insertar en la db
         public function mIdInsertTipoPro()
         {
             $sql = "CALL spInsertarTipoPro(?);";
@@ -24,6 +27,7 @@
             return $estado;
         }
 
+        //Metodo para llamar el procedemiento de eliminar en la db
         public function mIdEraseTipoPro()
         {
             $respon = false;
@@ -41,6 +45,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedemiento de traer todsos en la db
         public function mIdSearchAllTipoProducto()
         {
             $sql = "call spSearchAllTipoPro()";
@@ -57,6 +62,7 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateTipoProducto()
         {
             $sql = "CALL spUpdateTipoPro(?, ?);";

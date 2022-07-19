@@ -1,6 +1,8 @@
 <?php
+    //Clase controlador para el modulo registro
     class UsuarioController{
 
+        //Metodo para evaluar el login
         public function getEvalClave($usuario, $contrasena)
         {
             try {
@@ -12,15 +14,18 @@
                 if (gettype($objDaoUsuario -> getQueryLogin() -> fetch()) == 'boolean') {
                     echo "
                     <script>
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Your password is incorrect',
-                      })
+                        Swal.fire(
+                            'ERROR',
+                            'Usuario y/o contraseña incorrectos',
+                            'error'
+                        );
                     </script>
                     ";
                 }else{
                     $_SESSION['login'] = false;
+                    $varNom = $objDaoUsuario -> getQueryLogin() -> fetch();
+                    $_SESSION['name'] = $varNom[1];
+                    $_SESSION['rol'] = $varNom[5];
                     header('location:index.php');
                 }
 
@@ -29,13 +34,16 @@
             }
         }
 
-        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena){
+        //Metodo para insertar todos los usuarios
+        public function setInsertUsuario($nombre, $apellido, $usuario, $contrasena, $idTipoUsuario)
+        {
             try {
                 $objDtoUsuario = new usuario();
                 $objDtoUsuario -> setNombre($nombre);
                 $objDtoUsuario -> setapellido($apellido);
                 $objDtoUsuario -> setUsuario($usuario);
                 $objDtoUsuario -> setcontrasena($contrasena);
+                $objDtoUsuario -> setIdTipoUsua($idTipoUsuario);
 
                 $objDaoUser = new UsuarioModel($objDtoUsuario);
 
@@ -56,7 +64,9 @@
 
         }
 
-        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena){
+        //Metodo para actualizar informacion de usuario
+        public function setUpdateUsuario($idUsuario ,$nombre, $apellido, $usuario, $contrasena, $idTipoUsuario)
+        {
             try {
                 $objDtoUsuario = new Usuario();
                 $objDtoUsuario -> setIdUser($idUsuario);
@@ -64,20 +74,15 @@
                 $objDtoUsuario -> setApellido($apellido);
                 $objDtoUsuario -> setUsuario($usuario);
                 $objDtoUsuario -> setContrasena($contrasena);
+                $objDtoUsuario -> setIdTipoUsua($idTipoUsuario);
 
                 $objDaoUsuario = new UsuarioModel($objDtoUsuario);
 
                 if ($objDaoUsuario -> mIdUpdateUsuario()) {
-                    echo "
-                        <script>
-                        Swal.fire({
-                            'Actualizado!',
-                            'Los campos ingresados se han actualizado',
-                            'success'
-                        })
-                        </script>
-                    ";
-                    include_once("view/module/user.php");
+                    echo 
+                    "<script>
+                        location.replace('usuario');
+                    </script>";
                 }
 
             } catch(PDOException $e) {
@@ -85,7 +90,9 @@
             }
         }
 
-        public function getSearchAllUsuario(){
+        //Metodo para traer todos los usuarios
+        public function getSearchAllUsuario()
+        {
             $respon = false;
             try {
                 $objDtoUsuario = new Usuario();
@@ -101,9 +108,5 @@
 
         
     }
-
-    //$objContro = new UserController();
-    //$objContro -> getEvalClave("Juan32","22776172");
-    
 
 ?>

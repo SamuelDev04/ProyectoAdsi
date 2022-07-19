@@ -21,13 +21,7 @@ function erase(obj) {
         if (result.isConfirmed) {
             window.location = "index.php?ruta=erase&codigo=" + idUsuario;
 
-            /*swalWithBootstrapButtons.fire(
-                'Eliminado!',
-                'El registro ha sido eliminado.',
-                'success'
-            )*/
         } else if (
-            /* Read more about handling dismissals below */
             result.dismiss === Swal.DismissReason.cancel
         ) {
             swalWithBootstrapButtons.fire(
@@ -46,13 +40,14 @@ function getData(obj) {
     let apellido = obj.children[2].innerHTML;
     let usuario = obj.children[3].innerHTML;
     let clave = obj.children[4].innerHTML;
-
+    let TipoUsuario =obj.children[5].innerHTML;
 
     document.getElementById('icodem').value = codigo;
     document.getElementById('inamem').value = nombre;
     document.getElementById('iapem').value = apellido;
     document.getElementById('iuserm').value = usuario;
     document.getElementById('icontram').value = clave;
+    document.getElementById('itipousuam').value = TipoUsuario;
 
 }
 

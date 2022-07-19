@@ -5,6 +5,7 @@
         private $apellido;
         private $usuario;
         private $contrasena;
+        private $idTipoUsuario;
         
         /***********************/
         /**      Getters      **/
@@ -30,6 +31,10 @@
         {
             return $this -> contrasena;
         }
+        public function getIdTipoUsua()
+        {
+            return $this -> idTipoUsuario;
+        }
 
         /***********************/
         /**      Setters      **/
@@ -54,6 +59,10 @@
         public function setContrasena($contrasena)
         {
             $this -> contrasena = $contrasena;
+        }
+        public function setIdTipoUsua($idTipoUsuario)
+        {
+            $this -> idTipoUsuario = $idTipoUsuario;
         }
 
     }
