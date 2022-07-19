@@ -6,7 +6,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
-        <li><a href="productos"><i class="glyphicon glyphicon-th-list"></i> Productos</a></li>
         <li><a href="#"><i class="glyphicon glyphicon-th-list"></i> Tipo productos</a></li>
       </ol>
     </section>
@@ -146,7 +145,10 @@
           <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
           </button>
         </div>
-
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseTipoProducto');
+    activarIcon.classList.add('active');
+  </script>
