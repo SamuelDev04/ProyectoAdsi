@@ -117,11 +117,27 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['fechaSal'])){
-          $objCtrSalida = new SalidaController();
-          $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
-          $objCtrSalida -> setUpdateMercanciaS($_POST['prodSal'], $_POST['cantSal']);
+        $objCtrProductoAll = new ProductoController();
+        $objCtrProductoAll -> setQueryProductos($_POST['icodeSalida']);
+
+        if ($value['cantProducto'] > $_POST['cantSal']) {
+          if (isset($_POST['fechaSal'])){
+            $objCtrSalida = new SalidaController();
+            $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
+            $objCtrSalida -> setUpdateMercanciaS($_POST['prodSal'], $_POST['cantSal']);
+          }
+        } else {
+          echo "
+          <script>
+              Swal.fire(
+                  'ERROR',
+                  'La cantidad de producto que intenta ingresar es mayor que el stock',
+                  'error'
+              );
+          </script>
+          ";
         }
+
       ?>
     </div>
 

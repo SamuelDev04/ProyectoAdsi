@@ -6,7 +6,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Login</title>
+        <title>Log In</title>
         <link rel="stylesheet" href="view/bower_components/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="view/css/login.css">
         <link rel="stylesheet" href="view/css/sweetalert2.min.css">        
@@ -18,7 +18,7 @@
         <div class="container-login">
             <div class="wrap-login">
                 <form class="login-form validate-form" id="formLogin" action="" method="post">
-                    <span class="login-form-title">LOGIN</span>
+                    <span class="login-form-title">LOG IN</span>
                     
                     <div class="wrap-input100" data-validate = "Usuario incorrecto">
                         <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario">

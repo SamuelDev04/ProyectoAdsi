@@ -72,6 +72,24 @@
             return $respon;
         }
 
+        //Metodo para llamar el procedimiento de consultar en la db
+        public function mIdQueryProducto()
+        {
+            $respon = false;
+            $sql = "CALL spConsultarProducto(?)";
+
+            try {
+                $objCon = new Conexion;
+                $stmt = $objCon -> getConec() -> prepare($sql);
+                $stmt -> bindParam(1, $this -> idProducto, PDO::PARAM_INT);
+                $stmt -> execute();
+                $respon = true;
+            } catch (PDOException $e) {
+                echo "Ha ocurrido un error al consultar los datos en el dao " .$e -> getMessage();
+            }
+            return $respon;
+        }
+
         //Metodo para llamar el procedimiento de actualizar datos en la db
         public function mIdUpdateProducto()
         {
