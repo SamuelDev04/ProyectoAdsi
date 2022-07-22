@@ -200,9 +200,7 @@
                             <td class="text-center">'. $value["valorTotal"] .'</td>
                             <td class="text-center">'. $value["nombre"] .'</td>
                             <td class="text-center">'. $value["descripProducto"] .'</td>
-                            <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            </td>
+                            <td class="text-center">No hay acciones</td>
                           </tr>';
                         }
                         
