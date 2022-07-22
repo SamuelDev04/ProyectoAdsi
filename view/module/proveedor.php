@@ -27,7 +27,7 @@
           <div class="row">
             <div class="col-lg-6 col-xs-6">
               <div class="input-group">
-                <span class="input-group-addon">Nombre </span>
+                <span class="input-group-addon">Nombre Completo</span>
                 <input id="nombrePro" name="nombrePro" type="text" class="form-control">
               </div>
             </div>
@@ -142,7 +142,7 @@
               <div class="row">
                 <div class="col-lg-6 col-xs-6">
                   <div class="input-group">
-                    <span class="input-group-addon">Nombre</span>
+                    <span class="input-group-addon">Nombre Completo</span>
                     <input id="nombreProm" name="nombreProm" type="text" class="form-control">
                   </div>
                 </div>
