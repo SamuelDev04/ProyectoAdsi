@@ -104,17 +104,30 @@
                       </tr>';  
                     } else {
                       foreach ($objCtrProveedorAll -> getSearchAllProveedor() as $key => $value) {
-                        echo '
-                        <tr>
-                          <td class="text-center">'. $value["idProveedor"] .'</td>
-                          <td class="text-center">'. $value["nombre"] .'</td>
-                          <td class="text-center">'. $value["numeroTelefono"] .'</td>
-                          <td class="text-center">'. $value["direccion"] .'</td>
-                          <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseProveedor(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getDataProveedor(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                        if ($_SESSION['rol'] == 1) {
+                          echo '
+                          <tr>
+                            <td class="text-center">'. $value["idProveedor"] .'</td>
+                            <td class="text-center">'. $value["nombre"] .'</td>
+                            <td class="text-center">'. $value["numeroTelefono"] .'</td>
+                            <td class="text-center">'. $value["direccion"] .'</td>
+                            <td class="text-center">
+                              <button class="btn btn-social-icon btn-google" onclick="eraseProveedor(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                              <button class="btn btn-social-icon bg-blue" onclick="getDataProveedor(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
+                          </tr>';
+                          } else {
+                            echo '
+                            <tr>
+                              <td class="text-center">'. $value["idProveedor"] .'</td>
+                              <td class="text-center">'. $value["nombre"] .'</td>
+                              <td class="text-center">'. $value["numeroTelefono"] .'</td>
+                              <td class="text-center">'. $value["direccion"] .'</td>
+                              <td class="text-center">
+                                <button class="btn btn-social-icon bg-blue" onclick="getDataProveedor(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                              </td>
                             </tr>';
+                          }
                         }
                       }
                   ?>

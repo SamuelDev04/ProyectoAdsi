@@ -1,4 +1,4 @@
-  <input type="hidden" id="icodeProduc" name="icodeProduc">
+    <input type="hidden" id="icodeProduc" name="icodeProduc">
     <div class="content-wrapper">
       <section class="content-header">
         <h1>
@@ -128,18 +128,32 @@
                         </tr>';  
                       } else {
                         foreach ($objCtrProductoAll -> getSearchAllProducto() as $key => $value) {
-                          echo '
-                          <tr>
-                            <td class="text-center">'. $value["idProducto"] .'</td>
-                            <td class="text-center">'. $value["descripProducto"] .'</td>
-                            <td class="text-center">'. $value["cantProducto"] .'</td>
-                            <td class="text-center">'. $value["costoProducto"] .'</td>
-                            <td class="text-center">'. $value["descripcion"] .'</td>
-                            <td class="text-center">
-                              <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                              <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                          if ($_SESSION['rol'] == 1) {
+                            echo '
+                            <tr>
+                              <td class="text-center">'. $value["idProducto"] .'</td>
+                              <td class="text-center">'. $value["descripProducto"] .'</td>
+                              <td class="text-center">'. $value["cantProducto"] .'</td>
+                              <td class="text-center">'. $value["costoProducto"] .'</td>
+                              <td class="text-center">'. $value["descripcion"] .'</td>
+                              <td class="text-center">
+                                <button class="btn btn-social-icon btn-google" onclick="eraseProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                                <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                               </td>
+                            </tr>';
+                            } else {
+                              echo '
+                              <tr>
+                                <td class="text-center">'. $value["idProducto"] .'</td>
+                                <td class="text-center">'. $value["descripProducto"] .'</td>
+                                <td class="text-center">'. $value["cantProducto"] .'</td>
+                                <td class="text-center">'. $value["costoProducto"] .'</td>
+                                <td class="text-center">'. $value["descripcion"] .'</td>
+                                <td class="text-center">
+                                  <button class="btn btn-social-icon bg-blue" onclick="getDataProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                                </td>
                               </tr>';
+                            }
                           }
                         }
                     ?>
