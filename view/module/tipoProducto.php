@@ -6,7 +6,6 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a></li>
-        <li><a href="productos"><i class="glyphicon glyphicon-th-list"></i> Productos</a></li>
         <li><a href="#"><i class="glyphicon glyphicon-th-list"></i> Tipo productos</a></li>
       </ol>
     </section>
@@ -88,15 +87,26 @@
                       </tr>';  
                     } else {
                       foreach ($objCtrTipoProAll -> getSearchAllTipoProducto() as $key => $value) {
-                        echo '
-                        <tr>
-                          <td class="text-center">'. $value["idTipoProducto"] .'</td>
-                          <td class="text-center">'. $value["descripcion"] .'</td>
-                          <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseTipoProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            <button class="btn btn-social-icon bg-blue" onclick="getDataTipoProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                        if ($_SESSION['rol'] == 1) {
+                          echo '
+                          <tr>
+                            <td class="text-center">'. $value["idTipoProducto"] .'</td>
+                            <td class="text-center">'. $value["descripcion"] .'</td>
+                            <td class="text-center">
+                              <button class="btn btn-social-icon btn-google" onclick="eraseTipoProducto(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
+                              <button class="btn btn-social-icon bg-blue" onclick="getDataTipoProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
+                          </tr>';
+                          } else {
+                            echo '
+                            <tr>
+                              <td class="text-center">'. $value["idTipoProducto"] .'</td>
+                              <td class="text-center">'. $value["descripcion"] .'</td>
+                              <td class="text-center">
+                                <button class="btn btn-social-icon bg-blue" onclick="getDataTipoProducto(this.parentElement.parentElement)" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o"></i></button>
+                              </td>
                             </tr>';
+                          }
                         }
                       }
                   ?>
@@ -146,7 +156,10 @@
           <i class="glyphicon glyphicon-remove-sign"></i> Cerrar
           </button>
         </div>
-
       </div>
     </div>
   </div>
+  <script>
+    let activarIcon = document.getElementById('claseTipoProducto');
+    activarIcon.classList.add('active');
+  </script>

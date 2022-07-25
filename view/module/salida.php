@@ -117,11 +117,29 @@
       </form>
       </div>
       <?php
-        if (isset($_POST['fechaSal'])){
-          $objCtrSalida = new SalidaController();
-          $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
-          $objCtrSalida -> setUpdateMercanciaS($_POST['prodSal'], $_POST['cantSal']);
+        if (isset($_POST['prodSal'])) {
+          $objCtrProductoAll = new ProductoController();
+          $objCtrProductoAll -> setQueryProductos($_POST['prodSal']);
+  
+          if ($value['cantProducto'] > $_POST['cantSal']) {
+            if (isset($_POST['fechaSal'])){
+              $objCtrSalida = new SalidaController();
+              $objCtrSalida -> setInsertarSalida($_POST['fechaSal'], $_POST['cantSal'], $_POST['valTot'], $_POST['clienSal'], $_POST['prodSal']);
+              $objCtrSalida -> setUpdateMercanciaS($_POST['prodSal'], $_POST['cantSal']);
+            }
+          } else {
+            echo "
+            <script>
+                Swal.fire(
+                    'ERROR',
+                    'La cantidad de producto que intenta ingresar es mayor que el stock',
+                    'error'
+                );
+            </script>
+            ";
+          }
         }
+
       ?>
     </div>
 
@@ -184,9 +202,7 @@
                             <td class="text-center">'. $value["valorTotal"] .'</td>
                             <td class="text-center">'. $value["nombre"] .'</td>
                             <td class="text-center">'. $value["descripProducto"] .'</td>
-                            <td class="text-center">
-                            <button class="btn btn-social-icon btn-google" onclick="eraseSalida(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
-                            </td>
+                            <td class="text-center">No hay acciones</td>
                           </tr>';
                         }
                         

@@ -1,7 +1,6 @@
 <?php
     //Clase controlador para el modulo salida
     class SalidaController{
-
         //Metodo para insertar todas las salidas
         public function setInsertarSalida($fechaSalida, $cantidadSalida, $valorTotal, $idCliente, $idProducto)
         {

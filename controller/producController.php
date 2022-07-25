@@ -71,6 +71,24 @@
             }
         }
 
+        //Metodo para consultar informacion de productos
+        public function setQueryProductos($idProducto)
+        {
+            $respon = false;
+
+            try {
+                $objDtoProducto = new Producto();
+                $objDtoProducto -> setIdPro($idProducto);
+                $objDaoProducto = new ProductoModel($objDtoProducto);
+                $respon = $objDaoProducto -> mIdQueryProducto();
+
+            } catch (PDOException $e) {
+                echo "Error al consultar los productos" . $e -> getMessage();
+            }
+
+            return $respon;
+        }
+
     }
 
 ?>

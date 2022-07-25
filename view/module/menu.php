@@ -30,6 +30,13 @@
                 <span>Productos</span>
               </a>
             </li>
+            <!-- MENU - MODULO DE TIPOS DE PRODUCTO -->        
+            <li class="" id="claseTipoProducto">
+              <a href="tipoProductos">
+                <i class="glyphicon glyphicon-th-list"></i>
+                <span>Tipos de producto</span>
+              </a>
+            </li>
             <!-- MENU - MODULO DE ENTRADAS -->        
             <li class="" id="claseEntrada">
               <a href="entradas">
