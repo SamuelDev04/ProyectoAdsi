@@ -146,13 +146,14 @@
                       </tr>';  
                     } else {
                       foreach ($objCtrUserAll -> getSearchAllUsuario() as $key => $value) {
+                        
                         echo '
                         <tr>
                           <td class="text-center">'. $value["idUsuario"] .'</td>
                           <td class="text-center">'. $value["nombre"] .'</td>
                           <td class="text-center">'. $value["apellido"] .'</td>
                           <td class="text-center">'. $value["usuario"] .'</td>
-                          <td class="text-center">'. $value["contrasena"] .'</td>
+                          <td class="text-center">'. password_hash($value["contrasena"],PASSWORD_DEFAULT) .'</td>
                           <td class="text-center">'. $value["descripcion"] .'</td>
                           <td class="text-center">
                             <button class="btn btn-social-icon btn-google" onclick="erase(this.parentElement.parentElement)"><i class="glyphicon glyphicon-trash"></i></button>
